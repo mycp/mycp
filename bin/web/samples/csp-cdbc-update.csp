@@ -1,0 +1,20 @@
+ <html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h1>C/C++ Data Base Connectivity: CDBC Samples</h1>
+<h1>UPDATE DataSource</h1>
+
+<?csp
+$var_sql = 'UPDATE userinfo_t SET nick='akee.yang' WHERE account='newaccount'';
+$var_result = cdbc_exec(D$biwoo, $var_sql);
+?>
+
+	sql = <%=$var_sql%><br>
+	$var_result = <%=$var_result%><br>
+	<%--
+	<csp:cdbc:exec id="D$biwoo" sql="$var_sql" />
+	UPDATE Return = <%=_$result%><br>
+	--%>
+</body>
+</html>

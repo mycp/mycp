@@ -1,0 +1,48 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h1>while if Samples</h1>
+
+	<csp:define id="$var2" value="0" type="int" />
+	define $var2 = "<%=$var2%>".<br>
+
+	<csp:while:< id="$var2" value="10" />
+		$var2 = <%=$var2%>, less 10<br>
+		<csp:++ id="$var2" />
+		$var2 ++<br>
+
+		<csp:if:== id="$var2" value="5" />
+			csp:if:== $var2 == 5 : true<br>
+		<csp:if:== id="$var2" value="6" />
+			csp:if:== $var2 == 6 : true<br>
+		<csp:if:else>
+			csp:if:else<br>
+		<csp:end>	
+
+	<csp:end>
+
+<h1>if while Samples</h1>
+
+	<csp:define id="$var2" value="0" type="int" />
+	define $var2 = "<%=$var2%>".<br>
+
+	<csp:if:== id="$var2" value="0" />
+		$var2 == 0 : true<br>
+		
+		<csp:while:< id="$var2" value="10" />
+			$var2 < 10<br>
+			<csp:++ id="$var2" />
+			$var2 ++<br>
+			
+				<csp:if:== id="$var2" value="8" />
+					$var2 == 8 : true<br>
+				<csp:end>
+				
+		<csp:end>
+		
+	<csp:end>	
+
+
+</body>
+</html>

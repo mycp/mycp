@@ -1,0 +1,31 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h1>S$... Header Variable</h1>
+
+	H$Connection = <%=H$Connection%><br>
+	H$Host = <%=H$Host%><br>
+	...<br>
+
+<h1>S$HeadNames System Variable</h1>
+	S$HeadNames:<br>
+	<csp:foreach id="S$HeadNames" />
+		<%=_$index%>: <%=_$value%><br>
+	<csp:end>
+
+<h1>S$HeadValues System Variable</h1>
+	S$HeadValues:<br>
+	<csp:foreach id="S$HeadValues" />
+		<%=_$index%>: <%=_$value%><br>
+	<csp:end>
+
+<h1>S$Heads System Variable</h1>
+	S$Heads:<br>
+	<csp:foreach id="S$Heads" />
+		<%=_$index%>: <%=_$value%><br>
+	<csp:end>
+
+
+</body>
+</html>

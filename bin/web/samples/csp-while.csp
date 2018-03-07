@@ -1,0 +1,35 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h2>csp:while:== Samples</h2>
+	
+	<csp:define id="$var1" type="int" value="1" />
+
+	$var1 = <%=$var1%><br>
+	<csp:while:== id="$var1" value="1" />
+		csp:while:== $var1 == 1 : true<br>
+		<csp:++ id="$var1" />
+		$var1 ++<br>
+	<csp:end>
+	
+<h2>csp:while:!= Samples</h2>
+	
+	<csp:define id="$var2" type="int" value="1" />
+	
+	<csp:while:!= id="$var2" value="10" />
+		_$index = <%=_$index%>; 
+		$var2 = <%=$var2%>; notEqual 10: true;
+		<csp:++ id="$var2" />
+		continue;<br>
+	<csp:end>
+
+<h2>csp:while:> Samples</h2>
+<h2>csp:while:>= Samples</h2>
+<h2>csp:while:< Samples</h2>
+<h2>csp:while:<= Samples</h2>
+<h2>csp:while:&& Samples</h2>
+<h2>csp:while:|| Samples</h2>
+
+</body>
+</html>

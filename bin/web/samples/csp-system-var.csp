@@ -1,0 +1,67 @@
+<html>
+<head><title><%=S$ServletName%></title></head>
+<body>
+
+<h2>System Variable Samples</h2>
+
+	S$ServerName = <%=S$ServerName%><br>
+	S$ServerPort = <%=S$ServerPort%><br>
+	S$ContextPath = <%=S$ContextPath%><br>
+	S$ServletName = <%=S$ServletName%><br>
+	S$AuthAccount = <%=S$AuthAccount%><br>
+	S$AuthSecure = <%=S$AuthSecure%><br>
+	==<br>
+	S$IsNewSession = <%=S$IsNewSession%><br>
+	S$IsInvalidate = <%=S$IsInvalidate%><br>
+	S$SessionId = <%=S$SessionId%><br>
+	S$SessionCreationTime = <%=S$SessionCreationTime%><br>
+	S$SessionLastAccessed = <%=S$SessionLastAccessed%><br>
+
+	==<br>
+	S$Method = <%=S$Method%><br>
+	S$MethodString = <%=S$MethodString%><br>
+	S$Protocol = <%=S$Protocol%><br>
+	S$ContentLength = <%=S$ContentLength%><br>
+	S$ContentType = <%=S$ContentType%><br>
+	==<br>
+	S$RequestURL = <%=S$RequestURL%><br>
+	S$RequestURI = <%=S$RequestURI%><br>
+	S$QueryString = <%=S$QueryString%><br>
+	==<br>
+	S$RemoteAddr = <%=S$RemoteAddr%><br>
+	S$RemoteHost = <%=S$RemoteHost%><br>
+	S$RemoteUser = <%=S$RemoteUser%><br>
+	==<br>
+
+	S$HeadNames:<br>
+	<csp:foreach id="S$Heads" />
+		<%=_$index%>: <%=_$value%><br>
+	<csp:end>
+
+	S$HeadValues:<br>
+	<csp:foreach id="S$HeadValues" />
+		<%=_$index%>: <%=_$value%><br>
+	<csp:end>
+
+	S$Heads:<br>
+	<csp:foreach id="S$Heads" />
+		<%=_$index%>: <%=_$value%><br>
+	<csp:end>
+	
+	S$ParamNames:<br>
+	<csp:foreach id="S$ParamNames" />
+		<%=_$index%>: <%=_$value%><br>
+	<csp:end>
+	
+	S$ParamValues:<br>
+	<csp:foreach id="S$ParamValues" />
+		<%=_$index%>: <%=_$value%><br>
+	<csp:end>
+
+	S$Params:<br>
+	<csp:foreach id="S$Params" />
+		<%=_$index%>: <%=_$value%><br>
+	<csp:end>
+
+</body>
+</html>

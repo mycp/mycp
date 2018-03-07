@@ -1,0 +1,73 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h1>csp:+= Samples</h1>
+	
+	define $var1 = "text1"<br>
+	<csp:define id="$var1" value="text1" />
+	$var1 += "text2"<br>
+	<csp:+= id="$var1" value="text2" />
+	$var1 = <%=$var1%><br>
+	
+	define vector type $var2 = "text1"<br>
+	<csp:define id="$var2" value="text1" type="vector" />
+	$var2 += "text2"<br>
+	<csp:+= id="$var2" value="text2" />
+	
+	<csp:size id="$var2" />
+	$var2 size = <%=_$size%><br>
+	<csp:foreach id="$var2" />
+		<%=_$index%>: <%=_$value%><br>
+	<csp:end>
+
+<h1>csp:-= Samples</h1>
+
+	define int type $var3 = 100<br>
+	<csp:define id="$var3" value="100" type="int" />
+	$var3 -= 20<br>
+	<csp:-= id="$var3" value="20" />
+	$var3 = <%=$var3%><br>
+
+<h1>csp:*= Samples</h1>
+
+	define int type $var4 = 15<br>
+	<csp:define id="$var4" value="15" type="int" />
+	$var4 *= 25<br>
+	<csp:*= id="$var4" value="25" />
+	$var4 = <%=$var4%><br>
+
+<h1>csp:/= Samples</h1>
+
+	define float type $var5 = 1000.0<br>
+	<csp:define id="$var5" value="1000.0" type="float" />
+	$var5 /= 1.5<br>
+	<csp:/= id="$var5" value="1.8" />
+	$var5 = <%=$var5%><br>
+
+<h1>csp:++ Samples</h1>
+	
+	define int type $var6 = 10<br>
+	<csp:define id="$var6" type="int" value="10" />
+	$var6 ++<br>
+	<csp:++ id="$var6" />
+	$var6 = <%=$var6%><br>
+
+	$var6 ++<br>
+	<csp:++ id="$var6" />
+	$var6 = <%=$var6%><br>
+
+<h1>csp:-- Samples</h1>
+
+	define int type $var7 = 100<br>
+	<csp:define id="$var7" type="int" value="100" />
+	$var7 --<br>
+	<csp:-- id="$var7" />
+	$var7 = <%=$var7%><br>
+
+	$var7 --<br>
+	<csp:-- id="$var7" />
+	$var7 = <%=$var7%><br>
+	
+</body>
+</html>

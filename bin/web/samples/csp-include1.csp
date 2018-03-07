@@ -1,0 +1,7 @@
+
+<h3>include csp file test</h3>
+
+<csp:define id="$hi" value="Welcome to " />
+<csp:define id="$var" value="CSP" />
+
+<%=$hi%><%=$var%>!!!<br>

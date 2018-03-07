@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+
+  <port-app>
+  	<port>2526</port>
+  	<app>mbs</app>
+  	<disable>0</disable>
+  </port-app>
+  <port-app>
+  	<port>2526</port>
+  	<app>mbs</app>
+  	<disable>0</disable>
+  </port-app>  
+  
+</root>

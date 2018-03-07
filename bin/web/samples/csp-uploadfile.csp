@@ -1,0 +1,28 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h2>Upload File Samples</h2>
+
+	<csp:size id="S$UploadFiles" />
+	upload files = <%=_$size%><br>
+	
+	<csp:foreach id="S$UploadFiles" />
+		<%=_$index%> : _$filename = <%=_$filename%><br>
+		<%=_$index%> : _$filepath = <%=_$filepath%><br>
+		<%=_$index%> : _$filesize = <%=_$filesize%><br>
+		<%=_$index%> : _$filetype = <%=_$filetype%><br>
+		
+		=======<br>
+		<csp:define id="$myfile" value="c:/" />
+		<csp:+= id="$myfile" value="_$filename" />
+		
+		<csp:define id="$copyto_property" value="_$filepath" type="vector" />
+		<csp:+= id="$copyto_property" value="$myfile" />
+		<csp:app:call id="A$fs" name="copyto" property="$copyto_property" />
+		
+		copyto <%=$myfile%><br>
+	<csp:end>
+
+</body>
+</html>

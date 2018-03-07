@@ -1,0 +1,16 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h1>log APP Samples</h1>
+	
+<h1>exists</h1>
+
+	<csp:app:call id="A$log" name="log" in="abc" />
+	<csp:app:call id="A$log" name="log" in="111" />
+	debug "abc"<br>
+	debug "111"<br>
+
+	see MYCP console and $(MYCP_PATH)/log/csplog dir<br>
+</body>
+</html>

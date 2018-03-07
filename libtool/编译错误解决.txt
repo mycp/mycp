@@ -1,0 +1,5 @@
+
+** linux 环境 make 编译出现以下类似错误：
+../libtool: line 494: syntax error near unexpected token `newline'
+../libtool: line 494: `  case `(set -o) 2>/dev/null` in *posix*) set -o posix;; 'sac
+解决：复制 libtool 文件到指定编译路径，重新 make 即可。

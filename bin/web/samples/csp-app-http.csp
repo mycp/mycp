@@ -1,0 +1,37 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h1>HttpService Samples</h1>
+	
+<h1>HTTP GET</h1>
+
+<?csp
+$var_httprequest = map();
+$var_httprequest['host'] = 'www.baidu.com';
+$var_httprequest['port'] = 80;
+$var_httprequest['url'] = '/';
+
+$var_httpresponse = app_call(A$http, "GET", $var_httprequest);
+echo $var_httpresponse;
+echo '<BR>';
+
+?>
+
+<h1>HTTP POST</h1>
+
+<?csp
+
+$var_httprequest = map();
+$var_httprequest['host'] = 'www.yahoo.com.cn';
+$var_httprequest['port'] = 80;
+$var_httprequest['url'] = '/';
+
+$var_httpresponse = app_call(A$http, "POST", $var_httprequest);
+echo $var_httpresponse;
+echo '<BR>';
+
+?>
+
+</body>
+</html>

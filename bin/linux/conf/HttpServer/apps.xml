@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<apps>
+
+	<app>
+		<app-id>fs</app-id>
+		<app-name>FileSystemService</app-name>
+		<init-param></init-param>
+		<disable>0</disable>
+	</app>
+	<app>
+		<app-id>string</app-id>
+		<app-name>StringService</app-name>
+		<init-param></init-param>
+		<disable>0</disable>
+	</app>
+	<app>
+		<app-id>http</app-id>
+		<app-name>HttpService</app-name>
+		<init-param></init-param>
+		<disable>0</disable>
+	</app>
+	<app>
+		<app-id>xml</app-id>
+		<app-name>XmlService</app-name>
+		<init-param></init-param>
+		<disable>0</disable>
+	</app>
+	<app>
+		<app-id>dt</app-id>
+		<app-name>DateTimeService</app-name>
+		<init-param></init-param>
+		<disable>0</disable>
+	</app>
+
+	<app>
+		<app-id>log</app-id>
+		<app-name>LogService</app-name>
+		<init-param>csplog</init-param>
+	</app>
+
+</apps>

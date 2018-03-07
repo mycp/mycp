@@ -1,0 +1,42 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<a href="/csp-param.csp?a=a&b=b">sample1</a><br>
+<a href="/csp-param.csp?1=111&2=222">sample2</a><br>
+
+	<form action="/csp-param.csp">
+		First name: 
+		<input type="text" name="firstname" value="<%=P$firstname%>" />
+		<br />
+		Last name: 
+		<input type="text" name="lastname" value="<%=P$lastname%>" />
+		<input type="submit" value="Submit" />
+	</form>
+
+<h1>P$... Request Parameter Variable</h1>
+	
+	P$firstname = <%=P$firstname%><br>
+	P$lastname = <%=P$lastname%><br>
+	...<br>
+
+<h1>S$ParamNames System Variable</h1>
+	S$ParamNames:<br>
+	<csp:foreach id="S$ParamNames" />
+		<%=_$index%>: <%=_$value%><br>
+	<csp:end>
+
+<h1>S$ParamValues System Variable</h1>
+	S$ParamValues:<br>
+	<csp:foreach id="S$ParamValues" />
+		<%=_$index%>: <%=_$value%><br>
+	<csp:end>
+
+<h1>S$Params System Variable</h1>
+	S$Params:<br>
+	<csp:foreach id="S$Params" />
+		<%=_$index%>: <%=_$value%><br>
+	<csp:end>
+
+</body>
+</html>

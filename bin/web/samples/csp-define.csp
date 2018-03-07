@@ -1,0 +1,38 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h1>csp:define Samples</h1>
+<h1>Define Variable from constant</h1>
+
+	define $var1 = "vartest1"<br>
+	<csp:define id="$var1" value="vartest1" />
+	$var1 = <%=$var1%><br>
+
+	define $var2 = "vartest1", and readonly property.<br>
+	<csp:define id="$var2" value="vartest2" property="const" />
+	$var2 = <%=$var2%><br>
+	
+<h1>Define Variable from Variable</h1>
+
+	define $var3 = $var1<br>
+	<csp:define id="$var3" value="$var1" />
+	$var3 = <%=$var3%><br>
+
+<h1>Define Variable from APP property</h1>
+
+	define $var_logapp app "LogService"<br>
+	<csp:define type="app" id="$var_logapp" name="LogService" value="logtest" />
+	
+	app:set $var_logapp property "p1" = "111"<br>
+	<csp:app:set id="$var_logapp" name="p1" property="111" />
+	<br>
+	define $var4 = $var_logapp property "p1"<br>
+	<csp:define id="$var4" name="$var_logapp" property="p1" />
+	$var4 = <%=$var4%>
+
+<h1>csp:= Samples</h1>
+<h1>csp:%= Samples</h1>
+
+</body>
+</html>

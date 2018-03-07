@@ -1,0 +1,23 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h1>Execute Servlet Samples</h1>
+	
+<?csp
+
+$var_status = exe_servlet("cspApp", "ServiceTest");
+	
+?>
+
+	$var_status = <%=$var_status%><br>
+	
+	execute begin<br>
+	<csp:execute id="cspApp" function="ServiceTest" />
+	===========<br>
+	execute end<br>
+	
+	see cspApp.cpp file doServiceTest function.
+
+</body>
+</html>

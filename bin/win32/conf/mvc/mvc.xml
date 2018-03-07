@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+
+<mvc>
+	<enable-mvc>
+		<mvc-servlet>mvctest</mvc-servlet>
+		<disable>0</disable>
+	</enable-mvc>
+		
+</mvc>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<root>  
+	<!-- 
+	name: client invoke name
+	method: function name
+	-->
+	<allow><name>doGET</name><method>doMVCServer</method></allow>
+	<allow><name>doPOST</name><method>doMVCServer</method></allow>
+	
+</root>

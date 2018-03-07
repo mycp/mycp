@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DLLTest", "DLLTest.vcproj", "{7CC99CAC-4BCA-4AA5-9685-33C229CCF5F4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DLLTestClient", "DLLTestClient.vcproj", "{BEA67C89-8963-4CA2-AD49-E4F0EB929294}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7CC99CAC-4BCA-4AA5-9685-33C229CCF5F4} = {7CC99CAC-4BCA-4AA5-9685-33C229CCF5F4}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenCommunication", "OpenCommunication.vcproj", "{A9217C14-B040-46E2-BE61-C4C6F0D13D3C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cspServlet", "cspServlet.vcproj", "{80BFE8B8-D42C-44FC-8B49-7245D6B5046E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cspApp", "cspApp.vcproj", "{F900073F-9FB3-4446-A361-37DB1FD93F1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7CC99CAC-4BCA-4AA5-9685-33C229CCF5F4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7CC99CAC-4BCA-4AA5-9685-33C229CCF5F4}.Debug|Win32.Build.0 = Debug|Win32
+		{7CC99CAC-4BCA-4AA5-9685-33C229CCF5F4}.Release|Win32.ActiveCfg = Release|Win32
+		{7CC99CAC-4BCA-4AA5-9685-33C229CCF5F4}.Release|Win32.Build.0 = Release|Win32
+		{BEA67C89-8963-4CA2-AD49-E4F0EB929294}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BEA67C89-8963-4CA2-AD49-E4F0EB929294}.Debug|Win32.Build.0 = Debug|Win32
+		{BEA67C89-8963-4CA2-AD49-E4F0EB929294}.Release|Win32.ActiveCfg = Release|Win32
+		{BEA67C89-8963-4CA2-AD49-E4F0EB929294}.Release|Win32.Build.0 = Release|Win32
+		{A9217C14-B040-46E2-BE61-C4C6F0D13D3C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A9217C14-B040-46E2-BE61-C4C6F0D13D3C}.Debug|Win32.Build.0 = Debug|Win32
+		{A9217C14-B040-46E2-BE61-C4C6F0D13D3C}.Release|Win32.ActiveCfg = Release|Win32
+		{A9217C14-B040-46E2-BE61-C4C6F0D13D3C}.Release|Win32.Build.0 = Release|Win32
+		{80BFE8B8-D42C-44FC-8B49-7245D6B5046E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{80BFE8B8-D42C-44FC-8B49-7245D6B5046E}.Debug|Win32.Build.0 = Debug|Win32
+		{80BFE8B8-D42C-44FC-8B49-7245D6B5046E}.Release|Win32.ActiveCfg = Release|Win32
+		{80BFE8B8-D42C-44FC-8B49-7245D6B5046E}.Release|Win32.Build.0 = Release|Win32
+		{F900073F-9FB3-4446-A361-37DB1FD93F1A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F900073F-9FB3-4446-A361-37DB1FD93F1A}.Debug|Win32.Build.0 = Debug|Win32
+		{F900073F-9FB3-4446-A361-37DB1FD93F1A}.Release|Win32.ActiveCfg = Release|Win32
+		{F900073F-9FB3-4446-A361-37DB1FD93F1A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,40 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h1>vector Samples</h1>
+	
+	define vector type $var1 = "text1"<br>
+	==<br>
+	<csp:define id="$var1" value="text1" type="vector" />
+	$var1 add string "text2"<br>
+	<csp:+= id="$var1" value="text2" />
+	$var1 add int type 12<br>
+	<csp:+= id="$var1" value="12" type="int" />
+	$var1 add float type 100<br>
+	<csp:+= id="$var1" value="100" type="float" />
+	$var1 add boolean type false<br>
+	<csp:+= id="$var1" value="false" type="boolean" />
+	
+	<b>foreach:</b><br>
+	<csp:size id="$var1" />
+	$var1 : _$size = <%=_$size%><br>
+	<csp:foreach id="$var1" />
+		<%=_$index%>: <%=_$value%><br>
+	<csp:end>
+	
+	==<br>
+	<b>index:</b><br>
+	<csp:index id="$var1" index="0" out="$value" />
+	$var1[0] = <%=$value%><br>
+	<csp:index id="$var1" index="1" out="$value" />
+	$var1[1] = <%=$value%><br>
+	
+	==<br>
+	<b>reset</b> $var1<br>
+	<csp:reset id="$var1" />
+	<csp:size id="$var1" value="$size" />
+	$var1 size = <%=$size%><br>
+
+</body>
+</html>

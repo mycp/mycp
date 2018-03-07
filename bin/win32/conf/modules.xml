@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+	<supportdebug>1</supportdebug>
+	
+	<app>
+	  <!-- 
+	  	lockstate: "LS_NONE"(default); "LS_WAIT"; "LS_RETURN"
+	  	allowall: 0,1
+	  	authaccount: 0,1
+	  -->
+	  <module>
+			<file>SotpClientService</file>
+			<name>SotpClientService</name>
+			<protocol>8</protocol>
+			<disable>0</disable>
+	  </module>
+	  
+	  <module>
+	  	<file>DLLTest</file>
+	  	<name>DLLTest</name>
+	  	<allowall>1</allowall>
+	  	<authaccount>1</authaccount>
+	  	<lockstate>LS_WAIT</lockstate>
+	  	<disable>0</disable>
+	  </module>
+	  
+	  <module>
+	  	<file>cspServlet</file>
+	  	<name>cspServlet</name>
+	  	<allowall>1</allowall>
+	  </module>
+	  <module>
+	  	<file>cspApp</file>
+	  	<name>cspApp</name>
+	  	<allowall>1</allowall>
+	  </module>
+	  
+	  <module>
+	  	<file>StreamModule</file>
+	  	<name>StreamModule</name>
+	  	<allowall>1</allowall>
+	  	<authaccount>0</authaccount>
+	  	<lockstate>LS_WAIT</lockstate>
+	  	<disable>1</disable>
+	  </module>
+		
+	  <module>
+	  	<file>StringService</file>
+	  	<name>StringService</name>
+	  	<disable>1</disable>
+	  </module>
+	  <module>
+	  	<file>HttpService</file>
+	  	<name>HttpService</name>
+	  	<disable>0</disable>
+	  </module>
+	  <module>
+	  	<file>XmlService</file>
+	  	<name>XmlService</name>
+	  	<disable>0</disable>
+	  </module>
+	  <module>
+	  	<file>DateTimeService</file>
+	  	<name>DateTimeService</name>
+	  	<disable>0</disable>
+	  </module>	  
+	  <module>
+	  	<file>FileSystemService</file>
+	  	<name>FileSystemService</name>
+	  </module>
+	  <module>
+	  	<file>MysqlService</file>
+	  	<name>MysqlService</name>
+	  	<disable>0</disable>
+	  </module>
+	  <module>
+	  	<file>BodbService</file>
+	  	<name>BodbService</name>
+	  	<disable>0</disable>
+	  </module>
+	  <!-- ******** RTP -->
+	  <module>
+	  	<file>RtpService90</file>
+	  	<name>RtpService</name>
+	  	<disable>1</disable>
+	  </module>
+	  <module>
+	  	<file>SipService</file>
+	  	<name>SipService</name>
+	  	<disable>1</disable>
+	  </module>
+	  
+	</app>
+	
+  <parser>
+	  <module>
+	  	<file>ParserSotp</file>
+	  	<name>ParserSotp</name>
+	  </module>
+	  <module>
+	  	<file>ParserHttp</file>
+	  	<name>ParserHttp</name>
+	  	<protocol>1</protocol>
+	  </module>
+	  
+	</parser>
+  
+  <communication>
+	  <!-- param: 1 - 100, [DEFAULT] 1 -->
+	  <module>
+	  	<file>CommTcpServer</file>
+	  	<name>CommTcpServer</name>
+	  	<protocol>1</protocol>
+	  	<commport>9090</commport>
+	  	<param>3</param>
+	  	<disable>0</disable>
+	  </module>
+	  <module>
+	  	<file>CommTcpServer</file>
+	  	<name>uploadfile</name>
+	  	<protocol>1</protocol>
+	  	<commport>82</commport>
+	  	<param>1</param>
+	  	<disable>0</disable>
+	  </module>  
+	  <module>
+	  	<file>CommUdpServer</file>
+	  	<name>CommUdpServer</name>
+	  	<commport>8012</commport>
+	  	<param>3</param>
+	  	<disable>0</disable>
+	  </module>
+	  <module>
+			<file>CommRtpServer</file>
+			<name>CommRtpServer</name>
+			<commport>8020</commport>
+			<param>3</param>
+			<disable>1</disable>
+	  </module>
+	  
+	</communication>
+
+  <server>
+	  <module>
+			<file>HttpServer</file>
+			<name>HttpServer</name>
+			<protocol>1</protocol>
+			<disable>0</disable>
+	  </module>
+	  <module>
+			<file>MVCServer</file>
+			<name>mvc</name>
+			<protocol>1</protocol>
+			<allowall>1</allowall>
+			<param>doMVCServer</param>
+			<disable>1</disable>
+	  </module>
+	  
+	</server>
+  
+  <log>
+	  <module>
+	  	<file>LogService</file>
+	  	<name>LogService</name>
+	  </module>
+  </log>
+    
+</root>

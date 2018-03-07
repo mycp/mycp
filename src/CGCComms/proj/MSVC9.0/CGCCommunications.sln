@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CommRtpServer", "CommRtpServer.vcproj", "{00D4E39B-F897-48E9-B666-14D142F6244A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CommTcpServer", "CommTcpServer.vcproj", "{6739CACC-CB5E-4716-A3A2-B586AF39027A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CommUdpServer", "CommUdpServer.vcproj", "{028D0B74-229B-4C0D-A6F6-3EB7CD6D49D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00D4E39B-F897-48E9-B666-14D142F6244A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{00D4E39B-F897-48E9-B666-14D142F6244A}.Debug|Win32.Build.0 = Debug|Win32
+		{00D4E39B-F897-48E9-B666-14D142F6244A}.Release|Win32.ActiveCfg = Release|Win32
+		{00D4E39B-F897-48E9-B666-14D142F6244A}.Release|Win32.Build.0 = Release|Win32
+		{6739CACC-CB5E-4716-A3A2-B586AF39027A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6739CACC-CB5E-4716-A3A2-B586AF39027A}.Debug|Win32.Build.0 = Debug|Win32
+		{6739CACC-CB5E-4716-A3A2-B586AF39027A}.Release|Win32.ActiveCfg = Release|Win32
+		{6739CACC-CB5E-4716-A3A2-B586AF39027A}.Release|Win32.Build.0 = Release|Win32
+		{028D0B74-229B-4C0D-A6F6-3EB7CD6D49D9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{028D0B74-229B-4C0D-A6F6-3EB7CD6D49D9}.Debug|Win32.Build.0 = Debug|Win32
+		{028D0B74-229B-4C0D-A6F6-3EB7CD6D49D9}.Release|Win32.ActiveCfg = Release|Win32
+		{028D0B74-229B-4C0D-A6F6-3EB7CD6D49D9}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

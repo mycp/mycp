@@ -1,0 +1,62 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h1>date format</h1>
+
+<?csp
+
+$var_check = map();
+$var_check['year'] = 2011;
+$var_check['month'] = 5;
+$var_check['mday'] = 5;
+$var_checkdateres = app_call(A$dt, "checkdate", $var_check);
+echo $var_checkdateres;
+echo '<BR/>';
+
+// 20110101 or 2011-1-01 or 2011/01/01 or 2003-Jan-25
+$var_strtodate = app_call(A$dt, "strtodate", "2011-01-10");
+echo $var_strtodate;
+echo '<BR/>';
+$var_strtodate = app_call(A$dt, "strtotime", "2011-01-10 0:0:0");
+echo $var_strtodate;
+echo '<BR/>';
+
+echo 'time=';
+$var_time = app_call(A$dt, "time");
+echo $var_time;
+echo '<BR/>';
+echo 'localtime=';
+$var_localtime = app_call(A$dt, "localtime");
+echo $var_localtime;
+echo '<BR/>';
+
+$var_localtime['tm_mon'] = 6;
+$var_mktime = app_call(A$dt, "mktime", $var_localtime);
+echo $var_mktime;
+echo '<BR/>';
+
+$var_timestamp = app_call(A$dt, "fmdate", "%A %B %d/%Y");
+echo $var_timestamp;
+echo '<BR/>';
+
+$var_fmdate_input = map();
+$var_fmdate_input['format'] = '%Y-%m-%d';
+$var_fmdate_input['timestamp'] = $var_time;
+
+$var_timestamp = app_call(A$dt, "fmdate", $var_fmdate_input);
+echo $var_timestamp;
+echo '<BR/>';
+
+$var_fmdate_input['format'] = '%Y-%m-%d %H:%M:%S';
+$var_fmdate_input['timestamp'] = $var_time;
+$var_timestamp = app_call(A$dt, "fmtime", $var_fmdate_input);
+echo $var_timestamp;
+echo '<BR/>';
+
+
+?>
+
+
+</body>
+</html>

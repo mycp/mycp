@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+ 	<version>
+ 		<Major>1</Major>
+ 		<Minor>1</Minor>
+ 	</version>
+	
+	<!--
+	path: '' default log to [CWSS_PATH]/log/[APPLOGFILE.log]
+	file: '' default 'appname.log'
+	maxsize(MB): default '1'MB, max sizes '20.00' MB
+	backfile: (0/1)default '1', backfilename=[logfile]+".back"
+	loglevel: 
+ default '20' = 4+16 = INFO+ERROR, 255 log all,
+	DL_TRACE		1
+	DL_DEBUG 		2
+	DL_INFO 		4
+	DL_WARNING 	8
+	DL_ERROR 		16
+	DL_ALERT 		32
+	
+	datetimeformat: (0/1); default '1', 自动添加时间日期信息
+	onelineformat: (0/1); default '1', 自动格式化每条日志信息为一行格式
+	logtosystem: (0/1); default 0 
+	-->
+	<log>
+		<path></path>
+		<file></file>
+		<maxsize>1</maxsize>
+		<backfile>1</backfile>
+		<loglevel>20</loglevel>
+		<datetimeformat>1</datetimeformat>
+		<onelineformat>1</onelineformat>
+		<logtosystem>1</logtosystem>
+		<locale>chs</locale>
+	</log>
+	
+<!--
+ 	<parameter>
+ 		<name>DB_HOST</name>
+ 		<type>pt.string</type>
+ 		<value>ES</value>
+ 	</parameter>
+-->
+
+</root>

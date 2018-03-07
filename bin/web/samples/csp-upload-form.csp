@@ -1,0 +1,16 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h2>Upload File Samples</h2>
+
+	<form action="http://127.0.0.1:82/csp-uploadfile.csp" method="POST" enctype="multipart/form-data">
+		<table>
+			<tr><td>File:</td><td><input type="file" name="file" size="50" style="width:auto" id="filefield" /></td><tr>
+			<tr><td>File:</td><td><input type="file" name="file" size="50" style="width:auto" id="filefield" /></td><tr>
+			<tr><td><input type="submit" value="Submit" /></td><tr>
+		</table>
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h1>StringService Samples</h1>
+	
+<h1>md5</h1>
+
+<?csp
+$var_md5 = app_call(A$string, "md5", "abc");
+echo $var_md5;
+echo '<BR>';
+
+app_call(A$string, "upper", $var_md5);
+echo 'upper=';
+echo $var_md5;
+echo '<BR>';
+
+$var_lower = app_call(A$string, "lower", $var_md5);
+echo 'lower=';
+echo $var_lower;
+echo '<BR>';
+
+?>
+
+
+<h1>base64</h1>
+
+<?csp
+$var_base64 = app_call(A$string, "base64_enc", "abc");
+echo $var_base64;
+echo '=';
+$var_base64_dec = app_call(A$string, "base64_dec", $var_base64);
+echo $var_base64_dec;
+echo '<BR>';
+
+?>
+
+</body>
+</html>

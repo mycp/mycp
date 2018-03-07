@@ -1,0 +1,30 @@
+
+
+	Star MYCP Server:
+	=================
+win32:
+CGCP.exe
+
+linux:
+ # ./CGCP
+
+	Test MYCP Server:
+	=================
+win32:
+DLLTestClient.exe
+see client.JPG
+
+linux:
+ # ./DLLTestClient
+ 
+	Web Client TEST:
+	================
+Open ie or Firefox or etc browser, input "http://127.0.0.1:9090"
+see bin/doc/csp1.JPG
+
+
+ ==========================================================
+ Email			: akee.yang@gmail.com
+ Home Page	: https://git.oschina.net/akee/mycp
+ ==========================================================
+ 

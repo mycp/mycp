@@ -1,0 +1,39 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ([2.63])
+AC_INIT(HttpServer, 1.9.0, akee.yang@gmail.com)
+AM_INIT_AUTOMAKE(HttpServer, 1.9.0)
+
+# Checks for programs.
+AC_PROG_CXX
+AC_PROG_AWK
+AC_PROG_CC
+AC_PROG_CPP
+AC_PROG_INSTALL
+AC_PROG_LN_S
+AC_PROG_MAKE_SET
+AC_PROG_RANLIB
+AC_PROG_LIBTOOL
+
+# Checks for libraries.
+# FIXME: Replace `main' with a function in `-lcrypto':
+AC_CHECK_LIB([crypto], [main])
+# FIXME: Replace `main' with a function in `-lssl':
+AC_CHECK_LIB([ssl], [main])
+
+# Checks for header files.
+AC_CHECK_HEADERS([string.h])
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_HEADER_STDBOOL
+AC_C_INLINE
+AC_TYPE_SIZE_T
+
+# Checks for library functions.
+AC_FUNC_FSEEKO
+AC_CHECK_FUNCS([clock_gettime gethostbyname memset select socket strstr])
+
+AC_CONFIG_FILES(HttpServer/Makefile
+                 Makefile)
+AC_OUTPUT

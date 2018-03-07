@@ -1,0 +1,41 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h2>Form Samples</h2>
+
+	<form action="/csp-form.csp" method="POST">
+		First name: 
+		<input type="text" name="firstname" value="<%=P$firstname%>" />
+		<br />
+		Last name: 
+		<input type="text" name="lastname" value="<%=P$lastname%>" />
+		<input type="submit" value="Submit" />
+	</form>
+
+	P$firstname = <%=P$firstname%><br>
+	P$lastname = <%=P$lastname%><br>
+	
+	<form>
+		<input type="radio" name="gender" value="male" /> Male
+		<br/>
+		<input type="radio" name="gender" value="female" /> Female
+		<input type="submit" value="Submit" />
+	</form>
+	
+	P$gender = <%=P$gender%><br>
+	
+	<form>
+		<input type="checkbox" name="bike" />
+		I have a bike
+		<br />
+		<input type="checkbox" name="car" />
+		I have a car
+		<input type="submit" value="Submit" />
+	</form>
+	
+	P$bike = <%=P$bike%><br>
+	P$car = <%=P$car%><br>
+
+</body>
+</html>

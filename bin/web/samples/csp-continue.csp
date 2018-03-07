@@ -1,0 +1,40 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h1>csp:continue Samples</h1>
+
+<h2>foreach & continue Samples</h2>
+	
+	csp:foreach S$Heads variable.<br>
+	_$index == 2, continue foreach.<br>
+	===========================<br>
+	<csp:foreach id="S$Heads" />
+	
+		<csp:continue id="_$index" value="2" />
+		
+		<%=_$index%>: <%=_$value%><br>
+	<csp:end>
+	
+<h2>while & continue Samples</h2>
+	
+	<csp:define id="$var1" type="int" value="0" />
+	define $var1 = <%=$var1%><br>
+
+	while $var1 < 20.<br>
+	_$index == 2, continue while.<br>
+	===========================<br>
+	<csp:while:less id="$var1" value="20" />
+	
+		$var1 increase;<br>
+		<csp:increase id="$var1" />
+
+		<csp:continue id="_$index" value="2" />
+
+		$var1 = <%=$var1%> < 20;<br>
+	<csp:end>
+	break ==================<br>
+	$var1 = <%=$var1%><br>
+
+</body>
+</html>

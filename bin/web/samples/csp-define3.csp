@@ -1,0 +1,22 @@
+<?csp
+
+$var_map = map();
+$var_map['name'] = 'yhz';
+$var_map['age'] = 32;
+
+echo $var_map['name'];
+
+
+?>
+
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h1>csp:define Samples3</h1>
+
+	$var_map['age'] = <%=$var_map['age']%><br>
+
+	
+</body>
+</html>

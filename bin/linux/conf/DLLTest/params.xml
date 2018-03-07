@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+ 	<version>
+ 		<Major>1</Major>
+ 		<Minor>1</Minor>
+ 	</version>
+
+	<log>
+		<path></path>
+		<file></file>
+		<maxsize>1</maxsize>
+		<backfile>1</backfile>
+		<logtoserver>1</logtoserver>
+		<loglevel>20</loglevel>
+		<datetimeformat>1</datetimeformat>
+		<onelineformat>1</onelineformat>
+		<logtosystem>0</logtosystem>
+		<locale>chs</locale>
+	</log>
+
+<!--
+ 	<parameter>
+ 		<name>DB_HOST</name>
+ 		<type>pt.string</type>
+ 		<value>ES</value>
+ 	</parameter>
+-->
+
+</root>

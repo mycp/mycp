@@ -1,0 +1,50 @@
+
+CREATE DATABASE bocdb;
+USE bocdb;
+CREATE TABLE conversations_t
+(
+	msgtime		TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	contype		TINYINT DEFAULT 0,
+	fromaccount	VARCHAR(32),
+	fromconid	INT UNSIGNED
+);
+CREATE TABLE accountconversations_t
+(
+	fromaccount	VARCHAR(32) NOT NULL,
+	sayaccount	VARCHAR(32) NOT NULL,
+	msgtype		TINYINT DEFAULT 1,
+	subtype		TINYINT DEFAULT 1,
+	newflag		BOOLEAN DEFAULT true,
+	message		VARCHAR(6000) NOT NULL,
+	msgsize		INT UNSIGNED DEFAULT 0,
+	width		SMALLINT UNSIGNED DEFAULT 0,
+	height		SMALLINT UNSIGNED DEFAULT 0,
+	msgtime		TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE accountsconversations_t
+(
+	conid		INT UNSIGNED PRIMARY KEY,
+	datetime	TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE conversationaccounts_t
+(
+	conid		INT UNSIGNED,
+	memberaccount	VARCHAR(32) NOT NULL
+);
+
+CREATE TABLE conversationmsg_t
+(
+	conid		INT UNSIGNED,
+	sayaccount	VARCHAR(32) NOT NULL,
+	msgtype		TINYINT DEFAULT 1,
+	subtype		TINYINT DEFAULT 2,
+	newflag		BOOLEAN DEFAULT true,
+	message		VARCHAR(6000) NOT NULL,
+	msgsize		INT UNSIGNED,
+	width		SMALLINT UNSIGNED DEFAULT 0,
+	height		SMALLINT UNSIGNED DEFAULT 0,
+	msgtime		TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+);
+

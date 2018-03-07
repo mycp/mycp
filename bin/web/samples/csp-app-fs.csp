@@ -1,0 +1,55 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h1>FileSystem Samples</h1>
+	
+<h1>exists</h1>
+
+<?csp
+
+$var_fileexists = app_call(A$fs, "exists", "C:/WINDOWS");
+echo $var_fileexists;
+echo '<BR>';
+
+?>
+
+	$var_fileexists = <%=$var_fileexists%><BR>
+	
+	<csp:app:call id="A$fs" name="exists" in="C:/WINDOWS" out="$callout" />
+	"C:/WINDOWS" exists : <%=$callout%><br>
+	
+	<csp:app:call id="A$fs" name="exists" in="C:/myWINDOWS" out="$callout" />
+	"C:/myWINDOWS abc" exists : <%=$callout%><br>
+
+<h1>size</h1>
+
+	<csp:app:call id="A$fs" name="size" in="C:/BOOT.INI" out="$callout" />
+	"C:/BOOT.INI" size : <%=$callout%><br>
+
+<h1>copyto</h1>
+
+	<csp:define id="$param" value="D:/1.bmp" type="vector" />
+	<csp:+= id="$param" value="D:/1-copyto.bmp" />
+	<csp:app:call id="A$fs" name="copyto" in="$param" />
+	"D:/1.bmp" copyto "D:/1-copyto.bmp"<br>
+
+<h1>delete</h1>
+
+	<csp:app:call id="A$fs" name="delete" in="D:/1.bmp" />
+	delete "D:/1.bmp"<br>
+
+<h1>delete_all</h1>
+
+	<csp:app:call id="A$fs" name="delete_all" in="D:/mydir" />
+	delete_all "D:/mydir"<br>
+
+<h1>rename</h1>
+
+	<csp:define id="$param" value="D:/2.bmp" type="vector" />
+	<csp:+= id="$param" value="D:/2-rename.bmp" />
+	<csp:app:call id="A$fs" name="rename" in="$param" />
+	"D:/2.bmp" rename "D:/2-rename.bmp"<br>
+
+</body>
+</html>

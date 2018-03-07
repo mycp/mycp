@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<hosts>
+
+	<virtualhost>
+		<host>*</host>
+		<servername></servername>
+		<documentroot>../../../web/samples</documentroot>
+		<index>index.csp</index>
+	</virtualhost>
+	
+	<virtualhost>
+		<host>*:81</host>
+		<servername></servername>
+		<documentroot>../../../web/samples</documentroot>
+		<index>index.csp</index>
+	</virtualhost>
+
+</hosts>

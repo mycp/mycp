@@ -1,0 +1,15 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h2>csp:foreach Samples</h2>
+	
+	csp:foreach S$Heads variable.<br>
+	===========================<br>
+	<csp:foreach id="S$Heads" />
+		<%=_$index%>: <%=_$value%><br>
+	<csp:end>
+
+</body>
+</html>
+

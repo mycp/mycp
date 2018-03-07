@@ -1,0 +1,20 @@
+
+
+		test1:
+		======
+
+ BODB:EXEC [sql_file];
+ 
+ samples:
+ BODB:EXEC bodb_sample.sql;
+
+
+		test2:
+		======
+
+ BODB:[SQL];
+ 
+ samples:
+  BODB: CREATE DATABASE;
+  BODB: ...
+

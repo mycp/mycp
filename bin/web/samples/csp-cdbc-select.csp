@@ -1,0 +1,42 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+					
+<h1>C/C++ Data Base Connectivity: CDBC Samples</h1>
+<h1>SELECT DataSource</h1>
+
+<?csp
+$var_sql = 'select * from userinfo_t';
+$cdbccookie = cdbc_select(D$biwoo, $var_sql);
+?>
+
+	sql = <%=$var_sql%><br>
+	
+	SELECT Return = <%=_$result%><br>
+	Result Cookie = <%=$cdbccookie%><br>
+	<csp:if:greaterEqual id="$cdbccookie" value="0" />
+<?csp
+$var_result = cdbc_move_first(D$biwoo, $cdbccookie);
+//$var_result = cdbc_move_index(D$biwoo, $cdbccookie, 0);
+?>
+
+		<csp:while:exist id="$var_result" />
+			<csp:foreach id="$var_result" />
+				<%=_$value%>
+			<csp:end>
+			<br>
+			<?csp
+			//$var_result = cdbc_move_next(D$mysql_test, $cdbccookie);
+			//$var_result = cdbc_move_previous(D$mysql_test, $cdbccookie);
+			$var_result = cdbc_move_next(D$biwoo, $cdbccookie);
+			?>
+
+		<csp:end>
+		
+	<csp:end>
+<?csp
+cdbc_reset(D$biwoo, $cdbccookie);
+?>
+
+</body>
+</html>

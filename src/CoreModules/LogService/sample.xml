@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+	<!--
+	loglevel: 
+  default '20' = 4+16 = INFO+ERROR, 255 log all,
+	LOG_TRACE			1
+	LOG_DEBUG 		2
+	LOG_INFO 			4
+	LOG_WARNING 	8
+	LOG_ERROR 		16
+	LOG_ALERT 		32
+
+	tostderr: (0/1); default 1, log to std::cerr.
+	tofile: (0/1); default 1, log to file.
+	tosystem: (0/1); (reserve) default 0, log to syslog(linux) or eventlog(windows).
+	tocallback: (0/1); (reserve) default 0, log to callback handler.
+	tologger: (0/1); (reserve) default 0, log to LogService.
+
+	path: '' default [LOGSERVICE_CONFPATH]/[STRING_PARAMETER]
+	file: '' default [STRING_PARAMETER].log
+	maxsize: MB, default 1MB
+	backupnumber: default 1, backfilename=[file]+[index], 0 no backup
+	locale: 
+	
+	dateformat: (0/1); default 1, Automatic add "YYYY-mm-DD" information.
+	timeformat: (0/1); default 1, Automatic add "HH:MM:SS.MIS" information.
+	onelineformat: (0/1); default 1, One-Line format.
+	levelstring: 0/1; default, Add [$(LEVEL)] string.
+	-->
+
+	<loglevel>20</loglevel>
+
+	<!-- log to -->
+	<tostderr>1</tostderr>
+	<tofile>1</tofile>
+	<tosystem>0</tosystem>
+	<tocallback>0</tocallback>
+	<tologger>0</tologger>
+
+	<!-- tofile setting-->
+	<path></path>
+	<file></file>
+	<maxsize>1</maxsize>
+	<backupnumber>1</backup>
+	<locale>chs</locale>
+
+	<!-- Format -->	
+	<dateformat>1</dateformat>
+	<timeformat>1</timeformat>
+	<onelineformat>1</onelineformat>
+	<levelstring>1</levelstring>
+
+</root>

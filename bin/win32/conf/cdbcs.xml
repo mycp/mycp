@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<cdbcs>
+
+ 	<cdbc>
+ 		<name>cdbc_test</name>
+ 		<database>test</database>
+ 		<host>localhost</host>
+ 		<account>system</account>
+ 		<secure></secure>
+ 		<connection></connection>
+ 	</cdbc>
+ 	
+ 	<cdbc>
+ 		<name>cdbc_biwoo</name>
+ 		<database>biwoo</database>
+ 		<host></host>
+ 		<account>system</account>
+ 		<secure></secure>
+ 		<connection></connection>
+ 	</cdbc>
+
+ 	<cdbc>
+ 		<name>cdbc_httpserver</name>
+ 		<database>httpserver</database>
+ 		<host></host>
+ 		<account>system</account>
+ 		<secure></secure>
+ 		<connection></connection>
+ 	</cdbc>
+
+	<datasource>
+		<name>ds_mysql_test</name>
+		<cdbcservice>MysqlService</cdbcservice>
+		<cdbc>cdbc_test</cdbc>
+	</datasource>
+
+	<datasource>
+		<name>ds_biwoo</name>
+		<cdbcservice>BodbService</cdbcservice>
+		<cdbc>cdbc_biwoo</cdbc>
+	</datasource>
+
+	<datasource>
+		<name>ds_httpserver</name>
+		<cdbcservice>BodbService</cdbcservice>
+		<cdbc>cdbc_httpserver</cdbc>
+	</datasource>
+
+</cdbcs>

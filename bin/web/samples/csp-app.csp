@@ -1,0 +1,35 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h1>cspApp Samples</h1>
+	
+<h1>Define APP Variable</h1>
+
+	define $var_app app "cspApp"<br>
+	<csp:define type="app" id="$var_app" name="cspApp" />
+	
+<h1>Call APP Function</h1>
+	call $var_app "info" function.<br>
+	<csp:app:call id="$var_app" name="info" />
+	call result: <%=_$result%><br>
+	<br>
+	<b>See MYCP console print info.</b><br>
+	cspApp SourceCode see Samples/cspApp/cspApp.cpp<br>
+	
+<h1>APP Get/Set Function</h1>
+
+	set $var_app p1 = 1111111<br>
+	<csp:app:set id="$var_app" name="p1" in="1111111" />
+	
+	get $var_app p1 to $var_p2<br>
+	<csp:app:get id="$var_app" name="p1" out="$var_p2" />
+	
+	$var_p2 = <%=$var_p2%><br>
+	
+<h1>Final APP</h1>
+	<csp:reset id="$var_app" />
+	$var_app reset ok<br>
+
+</body>
+</html>

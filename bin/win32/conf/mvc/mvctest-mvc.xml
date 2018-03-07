@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+
+<propertys>
+	<prefix>mvctest</prefix>
+</propertys>
+	
+<url-validates>
+
+	<validate>
+		<request-url></request-url>
+		<validate-app></validate-app>
+		<validate-function></validate-function>
+		<disable></disable>
+		
+		<fail-forward-url></fail-forward-url>
+			
+	</validate>
+		
+</url-validates>
+
+<validate-executes>
+
+	<execute>
+		<!-- doGET = /servlet/mvctest -->
+		<request-url>doGET</request-url>
+		<disable></disable>
+		<normal-forward-url>index.csp</normal-forward-url>
+	</execute>
+	
+	<execute>
+		<!-- dohellomvc = /servlet/mvc/hellomvc -->
+		<request-url>dohellomvc</request-url>
+		<execute-app>cspServlet</execute-app>
+		<execute-function>HelloMVC</execute-function>
+		<disable></disable>
+		<normal-forward-url>hellomvc.csp</normal-forward-url>
+	</execute>
+	
+	<execute>
+		<request-url>doselect</request-url>
+		<execute-app>cspServlet</execute-app>
+		<execute-function>HelloMVC</execute-function>
+		<disable></disable>
+		<normal-forward-url>csp-cdbc-select.csp</normal-forward-url>
+		
+		<controler>
+			<result-code>abc</result-code>
+			<forward-url>csp-cdbc-select.csp</forward-url>
+		</controler>
+	</execute>
+
+<!--
+	<execute>
+		<request-url>/servlet/mvc2</request-url>
+		<execute-app>testapp</execute-app>
+		<disable></disable>
+		
+		<normal-forward-url>/index.csp</normal-forward-url>
+		
+		<controler>
+			<result-code>1</result-code>
+			<forward-url>2</forward-url>	
+		</controler>
+		<controler>
+			<result-code>3</result-code>
+			<location-url>4</location-url>	
+		</controler>
+				
+	</execute>
+	-->
+	
+</validate-executes>

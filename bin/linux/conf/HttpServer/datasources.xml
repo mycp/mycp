@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<datasources>
+
+	<datasource>
+		<ds-id>mysql_test</app-id>
+		<ds-cdbc>ds_mysql_test</ds-cdbc>
+		<disable>0</disable>
+	</datasource>
+
+	<datasource>
+		<ds-id>biwoo</app-id>
+		<ds-cdbc>ds_biwoo</ds-cdbc>
+		<disable>0</disable>
+	</datasource>
+	
+</datasources>

@@ -1,0 +1,14 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h1>csp:authenticate Samples</h1>
+
+	Authorization Account = <%=S$AuthAccount%><br>
+	Authorization Secure = <%=S$AuthSecure%><br>
+	<csp:if:empty id="S$AuthAccount" />
+		<csp:authenticate>
+	<csp:end>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+
+<h2>page:forward Samples</h2>
+	
+	<%--
+	<page:forward url="/servlet/cspServlet" />
+	<page:forward url="/servlet/cspServlet?a=b" />
+	--%>
+
+  <?csp
+  //forward("/index.csp");
+  ?>
+
+	<page:forward url="/index.csp" />
+
+</body>
+</html>
+

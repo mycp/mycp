@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libRTP", "libRTP.vcproj", "{5EA8E13F-1FDB-4E05-B488-3DE56801B110}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libSIP", "libSIP.vcproj", "{3E55DBBE-D32B-43B4-8125-64BA921B7F9B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5EA8E13F-1FDB-4E05-B488-3DE56801B110}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5EA8E13F-1FDB-4E05-B488-3DE56801B110}.Debug|Win32.Build.0 = Debug|Win32
+		{5EA8E13F-1FDB-4E05-B488-3DE56801B110}.Release|Win32.ActiveCfg = Release|Win32
+		{5EA8E13F-1FDB-4E05-B488-3DE56801B110}.Release|Win32.Build.0 = Release|Win32
+		{3E55DBBE-D32B-43B4-8125-64BA921B7F9B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3E55DBBE-D32B-43B4-8125-64BA921B7F9B}.Debug|Win32.Build.0 = Debug|Win32
+		{3E55DBBE-D32B-43B4-8125-64BA921B7F9B}.Release|Win32.ActiveCfg = Release|Win32
+		{3E55DBBE-D32B-43B4-8125-64BA921B7F9B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

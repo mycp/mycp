@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app>
+
+  <servlet>
+  	<servlet-request>mvctest</servlet-request>
+  	<servlet-app>mvc</servlet-app>
+  	<disable>0</disable>
+  </servlet>
+  <fastcgi>
+  	<servlet-request>mvctest</servlet-request>
+  	<servlet-app>mvc</servlet-app>
+  	<disable>0</disable>
+  </fastcgi>
+  
+  
+</web-app>

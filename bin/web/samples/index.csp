@@ -1,0 +1,182 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+	<csp:define id="$hi" value="Welcome to " />
+	<csp:define id="$var" value="CSP" />
+
+<h1><%=$hi%><%=$var%>!!!</h1>
+<h1><%=$hi%><csp:write id="$var" />!!!</h1>
+
+<a href="http://code.google.com/p/mycp/" target="_blank">MYCP Home Page</a>
+<a href="http://code.google.com/p/mycp/wiki/CSP_1_1" target="_blank">CSP 1.1</a>
+
+	<table border="0">
+	<caption>CSP Samples</caption>
+	<tr>
+		<th align="left">Base Samples</th>
+		<th align="right">Sample File</th>
+	</tr>
+	<tr>
+		<td>CSP output samples.</td>
+		<td align="right"><a href="/csp-output.csp" target="_blank">csp-output.csp</a></td>
+	</tr>
+	<tr>
+		<td>Define variable samples.</td>
+		<td align="right"><a href="/csp-define.csp" target="_blank">csp-define.csp</a></td>
+	</tr>
+	<tr>
+		<td>Define variable samples2.</td>
+		<td align="right"><a href="/csp-define2.csp" target="_blank">csp-define2.csp</a></td>
+	</tr>
+	<tr>
+		<td>Define variable samples3.</td>
+		<td align="right"><a href="/csp-define3.csp" target="_blank">csp-define3.csp</a></td>
+	</tr>
+	<tr>
+		<td>vector Variable type Samples</td>
+		<td align="right"><a href="/csp-vector.csp" target="_blank">csp-vector.csp</a></td>
+	</tr>
+	<tr>
+		<td>Get HTTP header parameter samples.</td>
+		<td align="right"><a href="/csp-header.csp" target="_blank">csp-header.csp</a></td>
+	</tr>
+	<tr>
+		<td>Get request parameter samples.</td>
+		<td align="right"><a href="/csp-param.csp" target="_blank">csp-param.csp</a></td>
+	</tr>
+	<tr>
+		<td>CSP System Variants.</td>
+		<td align="right"><a href="/csp-system-var.csp" target="_blank">csp-system-var.csp</a></td>
+	</tr>
+
+	<tr>
+		<th align="left">Logic Samples</th>
+		<th align="right">Sample File</th>
+	</tr>
+	<tr>
+		<td>operator Samples(+ - * / ...)</td>
+		<td align="right"><a href="/csp-operator.csp" target="_blank">csp-operator.csp</a></td>
+	</tr>
+	<tr>
+		<td>if Compare Samples</td>
+		<td align="right"><a href="/csp-if.csp" target="_blank">csp-if.csp</a></td>
+	</tr>
+	<tr>
+		<td>while Samples</td>
+		<td align="right"><a href="/csp-while.csp" target="_blank">csp-while.csp</a></td>
+	</tr>
+	<tr>
+		<td>if & while Samples</td>
+		<td align="right"><a href="/csp-if-while.csp" target="_blank">csp-if-while.csp</a></td>
+	</tr>
+	<tr>
+		<td>foreach Samples</td>
+		<td align="right"><a href="/csp-foreach.csp" target="_blank">csp-foreach.csp</a></td>
+	</tr>
+	<tr>
+		<td>foreach & if Samples</td>
+		<td align="right"><a href="/csp-foreach-if.csp" target="_blank">csp-foreach-if.csp</a></td>
+	</tr>
+	<tr>
+		<td>continue Samples</td>
+		<td align="right"><a href="/csp-continue.csp" target="_blank">csp-continue.csp</a></td>
+	</tr>	
+	<tr>
+		<td>break Samples</td>
+		<td align="right"><a href="/csp-break.csp" target="_blank">csp-break.csp</a></td>
+	</tr>	
+	
+	<tr>
+		<th align="left">Page Samples</th>
+		<th align="right">Sample File</th>
+	</tr>
+	<tr>
+		<td>page forward Samples</td>
+		<td align="right"><a href="/csp-forward.csp" target="_blank">csp-forward.csp</a></td>
+	</tr>
+	<tr>
+		<td>page location Samples</td>
+		<td align="right"><a href="/csp-location.csp" target="_blank">csp-location.csp</a></td>
+	</tr>
+	<tr>
+		<td>page include Samples</td>
+		<td align="right"><a href="/csp-include.csp" target="_blank">csp-include.csp</a></td>
+	</tr>
+		
+	<tr>
+		<th align="left">CDBC Samples</th>
+		<th align="right">Sample File</th>
+	</tr>
+	<tr>
+		<td>CDBC SELECT Samples</td>
+		<td align="right"><a href="/csp-cdbc-select.csp" target="_blank">csp-cdbc-select.csp</a></td>
+	</tr>
+	<tr>
+		<td>CDBC INSERT Samples</td>
+		<td align="right"><a href="/csp-cdbc-insert.csp" target="_blank">csp-cdbc-insert.csp</a></td>
+	</tr>
+	<tr>
+		<td>CDBC UPDATE Samples</td>
+		<td align="right"><a href="/csp-cdbc-update.csp" target="_blank">csp-cdbc-update.csp</a></td>
+	</tr>
+	<tr>
+		<td>CDBC DELETE Samples</td>
+		<td align="right"><a href="/csp-cdbc-delete.csp" target="_blank">csp-cdbc-delete.csp</a></td>
+	</tr>
+
+	<tr>
+		<th align="left">C++ Servlet Samples</th>
+		<th align="right">Sample File</th>
+	</tr>
+	<tr>
+		<td>Default Servlet Samples</td>
+		<td align="right"><a href="/servlet.cspServlet" target="_blank">cspServlet</a></td>
+	</tr>
+	<tr>
+		<td>Servlet Property Samples</td>
+		<td align="right"><a href="/servlet.cspServlet?a=a&b=b" target="_blank">cspServlet</a></td>
+	</tr>
+	<tr>
+		<td>HelloWorld API Servlet Samples</td>
+		<td align="right"><a href="/servlet.cspServlet.HelloWorld" target="_blank">cspServlet</a></td>
+	</tr>
+	
+	<tr>
+		<th align="left">C++ APP Samples</th>
+		<th align="right">Sample File</th>
+	</tr>
+	<tr>
+		<td>APP Samples</td>
+		<td align="right"><a href="/csp-apps.csp" target="_blank">csp-apps.csp</a></td>
+	</tr>
+
+	<tr>
+		<th align="left">Other Samples</th>
+		<th align="right">Sample File</th>
+	</tr>
+	<tr>
+		<td>Authenticate Samples</td>
+		<td align="right"><a href="/csp-authenticate.csp" target="_blank">csp-authenticate.csp</a></td>
+	</tr>
+	<tr>
+		<td>Form Samples</td>
+		<td align="right"><a href="/csp-form.csp" target="_blank">csp-form.csp</a></td>
+	</tr>
+	<tr>
+		<td>Image Samples</td>
+		<td align="right"><a href="/csp-image.csp" target="_blank">csp-image.csp</a></td>
+	</tr>
+	<tr>
+		<td>Upload File Samples</td>
+		<td align="right"><a href="/csp-upload-form.csp" target="_blank">csp-upload-form.csp</a></td>
+	</tr>
+	<tr>
+		<td>Others Samples</td>
+		<td align="right"><a href="/csp-others.csp" target="_blank">csp-others.csp</a></td>
+	</tr>
+
+	</table>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h1>C/C++ Data Base Connectivity: CDBC Samples</h1>
+<h1>INSERT DataSource</h1>
+
+<?csp
+//$var_sql = 'insert into table1(name,description) values('abc', 'insert from csp')';
+//$var_result = cdbc_exec(D$mysql_test, $var_sql);
+
+$var_sql = 'INSERT INTO userinfo_t(account) VALUES('newaccount')';
+$var_result = cdbc_exec(D$biwoo, $var_sql);
+?>
+
+	sql = <%=$var_sql%><br>
+	$var_result = <%=$var_result%><br>
+	<%--
+	<csp:cdbc:exec id="D$biwoo" sql="$var_sql" />
+	INSERT Return = <%=_$result%><br>
+	--%>
+</body>
+</html>

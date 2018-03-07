@@ -1,0 +1,3 @@
+#!/bin/bash
+./configure CPPFLAGS="-I/mysql-connector-c-6.1.6-src/include" LDFLAGS="-L/mysql-connector-c-6.1.6-src/libmysql"
+#./configure CPPFLAGS="-I/usr/local/mysql/include" LDFLAGS="-L/usr/local/mysql/lib"

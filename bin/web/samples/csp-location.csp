@@ -1,0 +1,22 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h2>page:loction Samples</h2>
+	
+<?csp
+// location("/index.csp");
+?>
+	
+	<page:location url="http://www.google.com" />
+
+	<%--
+	<page:define id="$url" url="http://www.google.com" />
+	<page:location url="$url" />
+	
+	<page:location url="/index.csp" />
+	--%>
+
+</body>
+</html>
+

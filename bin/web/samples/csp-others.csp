@@ -1,0 +1,51 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h1>csp:empty Samples</h1>
+	
+	define $var1<br>
+	<csp:define id="$var1" />
+
+	<csp:empty id="$var2" out="$empty" />
+	$var2 empty = <%=$empty%><br>
+	<csp:empty id="$var1" out="$empty" />
+	$var1 empty = <%=$empty%><br>
+	==<br>
+	define vector type $var3<br>
+	<csp:define id="$var3" type="vector" />
+	<csp:empty id="$var3" out="$empty" />
+	$var3 empty = <%=$empty%><br>
+	
+<h1>csp:sizeof Samples</h1>
+
+	define $var4<br>
+	<csp:define id="$var4" type="float" />
+	<csp:sizeof id="$var4" />
+	$var4 size = <%=_$size%><br>
+	==<br>
+	define vector type $var5<br>
+	<csp:define id="$var5" type="vector" />
+	
+	$var5 add "text1"<br>
+	$var5 add "text2"<br>
+	<csp:+= id="$var5" value="text1" />
+	<csp:+= id="$var5" value="text1" />
+	<csp:sizeof id="$var5" />
+	$var5 size = <%=_$size%><br>
+	
+<h1>csp:typeof Samples</h1>
+	
+	<csp:typeof id="$var1" out="$type" />
+	$var1 type = <%=$type%><br>
+	<csp:typeof id="$var2" out="$type" />
+	$var2 type = <%=$type%><br>
+	<csp:typeof id="$var3" out="$type" />
+	$var3 type = <%=$type%><br>
+	<csp:typeof id="$var4" out="$type" />
+	$var4 type = <%=$type%><br>
+	<csp:typeof id="$var5" out="$type" />
+	$var5 type = <%=$type%><br>
+
+</body>
+</html>

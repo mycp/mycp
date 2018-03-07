@@ -1,0 +1,15 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<?csp include("csp-include1.csp"); ?>
+
+<h2>Include Samples</h2>
+
+	include begin=====<br>
+	<page:include url="csp-include1.csp" />
+	<page:include url="csp-include2.html" />
+	include end=======<br>
+	
+</body>
+</html>

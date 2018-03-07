@@ -1,0 +1,51 @@
+<?csp
+
+
+$var_vector = vector();
+$var_vector += 'abc';
+$var_vector += '123';
+$var_vector += 'ABC';
+$var_vector[0] = 'nnnmmm';
+$var_index1	= $var_vector[1];
+
+echo $var_vector[2];
+
+$var_int	= 2;
+$var_int	+= 200;
+$var_int	-= 10;
+$var_int++;
+$var_int--;
+
+$var1 = 'abc';
+$var2 = 100.123;
+$var3 = 120;
+$var3_big = 123456789012;
+$var4 = $var1;
+$var5 = S$Heads;
+
+
+?>
+
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+<h1>csp:define Samples2</h1>
+
+	$var_int = <%=$var_int%><br>
+
+	$var_vector = <%=$var_vector%><br>
+	$var_vector[0] = <%=$var_vector[0]%><br>
+	$var_vector[1] = <%=$var_vector[1]%><br>
+	$var_vector[2] = <%=$var_vector[2]%><br>
+	$var_index1 = <%=$var_index1%><br>
+	
+	$var1 = <%=$var1%><br>
+	$var2 = <%=$var2%><br>
+	$var3 = <%=$var3%><br>
+	$var3_big = <%=$var3_big%><br>
+	$var4 = <%=$var4%><br>
+	$var5 = <%=$var5%><br>
+	
+</body>
+</html>

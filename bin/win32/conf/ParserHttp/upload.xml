@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<upload>
+
+	<!-- enable-upload: 0/1; Default 0 disable -->
+	<enable-upload>1</enable-upload>
+	
+	<!-- temp-path: Default "uploads", Must exist dir. -->
+	<temp-path>uploads</temp-path>
+	
+	<!-- max-upload-count: 0 not limit; Default 1 -->
+	<max-file-count>2</max-file-count>
+	
+	<!-- max-upload-size: KB; 0 not limit; Default 10240KB = 10MB -->
+	<max-file-size>1024</max-file-size>
+
+	<!-- max-upload-size: MB; 0 not limit; Default 0 -->
+	<max-upload-size>0</max-upload-size>
+	
+	<!-- enable-all-content-type: 0/1; Default 0 -->
+	<enable-all-content-type>1</enable-all-content-type>
+	
+	<enable-content-type>
+		
+		<content-type>application/msword</content-type>
+		<content-type>application/pdf</content-type>
+		
+	</enable-content-type>
+	
+	<disable-content-type>
+		
+		<!--
+		<content-type>application/octet-stream</content-type>
+		-->
+		
+	</disable-content-type>
+
+</upload>

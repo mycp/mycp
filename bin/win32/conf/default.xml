@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+	<cgcp>
+		<name>CGCP0</name>
+		<address>192.168.19.77</address>
+		<code>c0</code>
+		<rank>0</rank>
+	</cgcp>
+	<time>
+		<waitsleep>3</waitsleep>
+	</time>
+  <!-- linux may be 'UTF-8' -->
+	<encoding>GBK</encoding>
+
+</root>

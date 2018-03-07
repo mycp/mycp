@@ -1,0 +1,40 @@
+<html>
+<head><title>CSP Samples</title></head>
+<body>
+
+	define $var1 = "Hello!"<br>
+	define $var2 = "Welcome!"<br>
+	<csp:define id="$var1" value="Hello!" />
+	<csp:define id="$var2" value="Welcome!" />
+
+<h1>output1 Samples</h1>
+	
+	output1: <%=$var1%><br>
+	
+<h1>output2 Samples</h1>
+
+	output2: 
+	<csp:write id="$var2" />
+	<br>
+
+<h1>output3 Samples</h1>
+
+	output3: <%=$var1%><csp:write id="$var2" />
+	<br>
+
+<h1>output4 from APP Property</h1>
+
+	define $var_logapp app "LogService"<br>
+	<csp:define type="app" id="$var_logapp" name="LogService" value="logtest" />
+	
+	app:set $var_logapp property "p1" = "100"<br>
+	<csp:app:set id="$var_logapp" name="p1" property="100" />
+	<br>
+	
+	output4:
+	<csp:write name="$var_logapp" property="p1" />
+	<br>
+
+
+</body>
+</html>
