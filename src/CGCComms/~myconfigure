@@ -1,4 +1,0 @@
-#! /bin/sh
-./configure CPPFLAGS="-I/usr/local/include/jrtplib3 -I/usr/local/include/jthread"
-
-
