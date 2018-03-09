@@ -38,7 +38,6 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 #include <CGCBase/httpapp.h>
 using namespace mycp;
 
-//extern "C" HTTP_STATUSCODE CGC_API doGET(const cgcHttpRequest::pointer & request, cgcHttpResponse::pointer response)
 extern "C" HTTP_STATUSCODE CGC_API doGET(const cgcHttpRequest::pointer & request, const cgcHttpResponse::pointer& response)
 {
 	cgcSession::pointer session = request->getSession();
@@ -88,7 +87,7 @@ extern "C" HTTP_STATUSCODE CGC_API doGET(const cgcHttpRequest::pointer & request
 	return STATUS_CODE_200;
 }
 
-extern "C" HTTP_STATUSCODE CGC_API doHelloWorld(const cgcHttpRequest::pointer & request, cgcHttpResponse::pointer response)
+extern "C" HTTP_STATUSCODE CGC_API doHelloWorld(const cgcHttpRequest::pointer & request, const cgcHttpResponse::pointer& response)
 {
 	response->println("<HTML>");
 	response->println("<TITLE>MYCP Web Server</TITLE>");
@@ -100,7 +99,7 @@ extern "C" HTTP_STATUSCODE CGC_API doHelloWorld(const cgcHttpRequest::pointer & 
 }
 
 
-extern "C" HTTP_STATUSCODE CGC_API doHelloMVC(const cgcHttpRequest::pointer & request, cgcHttpResponse::pointer response)
+extern "C" HTTP_STATUSCODE CGC_API doHelloMVC(const cgcHttpRequest::pointer & request, const cgcHttpResponse::pointer& response)
 {
 	response->println("<b>doHelloMVC Function here.</b><br>");
 

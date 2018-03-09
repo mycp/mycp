@@ -26,6 +26,11 @@
 	  </module>
 	  
 	  <module>
+	  	<file>RestfulTest</file>
+	  	<name>RestfulTest</name>
+	  	<allowall>1</allowall>
+	  </module>
+	  <module>
 	  	<file>cspServlet</file>
 	  	<name>cspServlet</name>
 	  	<allowall>1</allowall>

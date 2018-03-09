@@ -4,6 +4,7 @@ cp -f /usr/local/bin/CGCP .
 cp -f /usr/local/bin/DLLTestClient .
 cp -f /usr/local/lib/libcspApp.so modules/
 cp -f /usr/local/lib/libcspServlet.so modules/
+cp -f /usr/local/lib/libRestfulTest.so modules/
 cp -f /usr/local/lib/libDLLTest.so modules/
 #cp -f /usr/local/lib/libCommRtpServer.so modules/
 cp -f /usr/local/lib/libCommTcpServer.so modules/

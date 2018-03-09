@@ -138,7 +138,7 @@ extern "C" void CGC_API CGC_ResetService(cgcServiceInterface::pointer inService)
 	inService->finalService();
 }
 
-extern "C" HTTP_STATUSCODE CGC_API doServiceTest(const cgcHttpRequest::pointer & request, cgcHttpResponse::pointer response)
+extern "C" HTTP_STATUSCODE CGC_API doServiceTest(const cgcHttpRequest::pointer & request, const cgcHttpResponse::pointer& response)
 {
 	response->println("<b>doServiceTest Function here.</b><br>");
 	return STATUS_CODE_200;

@@ -10,6 +10,13 @@
 	  	authaccount: 0,1
 	  -->
 	  <module>
+			<file>SotpClientService</file>
+			<name>SotpClientService</name>
+			<protocol>8</protocol>
+			<disable>0</disable>
+	  </module>
+	  
+	  <module>
 	  	<file>DLLTest</file>
 	  	<name>DLLTest</name>
 	  	<allowall>1</allowall>
@@ -18,6 +25,11 @@
 	  	<disable>0</disable>
 	  </module>
 	  
+	  <module>
+	  	<file>RestfulTest</file>
+	  	<name>RestfulTest</name>
+	  	<allowall>1</allowall>
+	  </module>
 	  <module>
 	  	<file>cspServlet</file>
 	  	<name>cspServlet</name>
@@ -74,7 +86,7 @@
 	  </module>
 	  <!-- ******** RTP -->
 	  <module>
-	  	<file>RtpService</file>
+	  	<file>RtpService90</file>
 	  	<name>RtpService</name>
 	  	<disable>1</disable>
 	  </module>

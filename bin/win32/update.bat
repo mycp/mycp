@@ -22,6 +22,7 @@ copy /B /Y ..\..\src\Projects\build\HttpServer.dll modules\
 #copy /B /Y ..\..\src\Projects\build\MVCServer.dll modules\
 
 copy /B /Y ..\..\samples\build\cspServlet.dll modules\
+copy /B /Y ..\..\samples\build\RestfulTest.dll modules\
 copy /B /Y ..\..\samples\build\cspApp.dll modules\
 
 copy /B /Y ..\..\samples\build\DLLTestClient.exe .

@@ -1,1 +1,1 @@
-SUBDIRS = cspApp cspServlet DLLTest DLLTestClient OpenCommunication
+SUBDIRS = cspApp cspServlet RestfulTest DLLTest DLLTestClient OpenCommunication

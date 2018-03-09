@@ -35,6 +35,7 @@ AC_OUTPUT( \
 	Makefile \
 	cspApp/Makefile \
 	cspServlet/Makefile \
+	RestfulTest/Makefile \
 	DLLTest/Makefile \
 	DLLTestClient/Makefile \
 	OpenCommunication/Makefile

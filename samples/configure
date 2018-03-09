@@ -16008,7 +16008,7 @@ done
 
 
 
-ac_config_files="$ac_config_files Makefile cspApp/Makefile cspServlet/Makefile DLLTest/Makefile DLLTestClient/Makefile OpenCommunication/Makefile"
+ac_config_files="$ac_config_files Makefile cspApp/Makefile cspServlet/Makefile RestfulTest/Makefile DLLTest/Makefile DLLTestClient/Makefile OpenCommunication/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -17022,6 +17022,7 @@ do
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "cspApp/Makefile") CONFIG_FILES="$CONFIG_FILES cspApp/Makefile" ;;
     "cspServlet/Makefile") CONFIG_FILES="$CONFIG_FILES cspServlet/Makefile" ;;
+    "RestfulTest/Makefile") CONFIG_FILES="$CONFIG_FILES RestfulTest/Makefile" ;;
     "DLLTest/Makefile") CONFIG_FILES="$CONFIG_FILES DLLTest/Makefile" ;;
     "DLLTestClient/Makefile") CONFIG_FILES="$CONFIG_FILES DLLTestClient/Makefile" ;;
     "OpenCommunication/Makefile") CONFIG_FILES="$CONFIG_FILES OpenCommunication/Makefile" ;;

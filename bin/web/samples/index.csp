@@ -126,6 +126,23 @@
 	</tr>
 
 	<tr>
+		<th align="left">C++ Resuful Samples</th>
+		<th align="right">Sample File</th>
+	</tr>
+	<tr>
+		<td>Default Restful GET</td>
+		<td align="right"><a href="/rest.v01.RestfulTest?key=value" target="_blank">RestfulTest</a></td>
+	</tr>
+	<tr>
+		<td>Restful format1</td>
+		<td align="right"><a href="/rest.v02.RestfulTest.func1" target="_blank">RestfulTest</a></td>
+	</tr>
+	<tr>
+		<td>Restful format2</td>
+		<td align="right"><a href="/rest/v03/RestfulTest/func1" target="_blank">RestfulTest</a></td>
+	</tr>
+	
+	<tr>
 		<th align="left">C++ Servlet Samples</th>
 		<th align="right">Sample File</th>
 	</tr>
