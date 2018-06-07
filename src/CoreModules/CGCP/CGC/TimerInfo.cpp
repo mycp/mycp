@@ -42,6 +42,9 @@ TimerInfo::TimerInfo(unsigned int nIDEvent, unsigned int nElapse, const cgcOnTim
 
 TimerInfo::~TimerInfo(void)
 {
+	KillTimer();
+	m_timerHandler.reset();
+
 	//if (m_timerThread.get()!=NULL) {
 	//	if (m_bOneShot) {
 	//		m_timerThread->detach();
@@ -236,11 +239,11 @@ void TimerInfo::doRunTimer(void)
 	// OnTimer
 	if (m_timerHandler.get() != NULL)
 	{
-		//boost::mutex::scoped_lock * lock = NULL;
+		boost::mutex::scoped_lock * lock = NULL;
 		try
 		{
-			//if (m_timerHandler->IsThreadSafe())
-			//	lock = new boost::mutex::scoped_lock(m_timerHandler->GetMutex());
+			if (m_timerHandler->IsThreadSafe())
+				lock = new boost::mutex::scoped_lock(m_timerHandler->GetMutex());
 			if (!m_bOneShot)
 				ftime(&m_tLastRunTime);
 			m_timerHandler->OnTimeout(m_nIDEvent, m_pvParam);
@@ -255,8 +258,8 @@ void TimerInfo::doRunTimer(void)
 		{
 			printf("******* timeout exception.\n");
 		}
-		//if (lock != NULL)
-		//	delete lock;
+		if (lock != NULL)
+			delete lock;
 	}
 	if (m_bOneShot)
 	{

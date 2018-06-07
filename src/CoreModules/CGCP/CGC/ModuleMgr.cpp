@@ -213,6 +213,7 @@ unsigned int CModuleImpl::SetTimer(unsigned int nIDEvent, unsigned int nElapse, 
 #endif
 	if (nThreadStackSize<=0)
 		nThreadStackSize = m_nDefaultThreadStackSize;
+	//nThreadStackSize = 0;	/// for test
 	const unsigned int ret = m_timerTable.SetTimer(nIDEvent, nElapse, handler, bOneShot, nThreadStackSize, pvParam);
 #ifndef WIN32
 	//log(LOG_INFO,"SetTimer IDEvent=%d, Elapse=%d, handler=0x%x, OneShot=%d, pvParam=%d, return = 0x%x", (int)nIDEvent, (int)nElapse, (int)handler.get(), (int)(bOneShot?1:0), (int)pvParam, (int)ret);
@@ -222,12 +223,12 @@ unsigned int CModuleImpl::SetTimer(unsigned int nIDEvent, unsigned int nElapse, 
 
 void CModuleImpl::KillTimer(unsigned int nIDEvent)
 {
-	return m_timerTable.KillTimer(nIDEvent);
+	m_timerTable.KillTimer(nIDEvent);
 }
 
 void CModuleImpl::KillAllTimer(void)
 {
-	return m_timerTable.KillAll();
+	m_timerTable.KillAll();
 }
 
 cgcAttributes::pointer CModuleImpl::getAttributes(bool create)

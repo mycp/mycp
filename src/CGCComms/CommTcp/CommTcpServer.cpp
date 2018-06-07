@@ -1067,7 +1067,10 @@ protected:
 			else {
 				m_nFindEventDataCount = 0;
 				m_nNullEventDataCount++;
-				if (m_nCurrentThread>MIN_EVENT_THREAD && ((m_nCurrentThread>20&&(int)nSize<(m_nCurrentThread/8)&&m_nNullEventDataCount>30) || ((int)nSize<(m_nCurrentThread/3)&&m_nNullEventDataCount>500) || m_nNullEventDataCount>600))	// 300*10ms=3S
+				if (m_nCurrentThread>MIN_EVENT_THREAD &&
+					((m_nCurrentThread>20&&(int)nSize<(m_nCurrentThread/8)&&m_nNullEventDataCount>30) ||
+					((int)nSize<(m_nCurrentThread/3)&&m_nNullEventDataCount>500) ||
+					m_nNullEventDataCount>600))	// 300*10ms=3S
 				{
 					m_nNullEventDataCount = 0;
 					const unsigned int nKillTimerId = (this->m_nIndex*MAX_EVENT_THREAD)+m_nCurrentThread;
