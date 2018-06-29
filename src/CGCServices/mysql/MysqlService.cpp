@@ -1410,6 +1410,11 @@ CTimeHandler::pointer theTimerHandler;
 extern "C" bool CGC_API CGC_Module_Init2(MODULE_INIT_TYPE nInitType)
 //extern "C" bool CGC_API CGC_Module_Init(void)
 {
+	if (theAppAttributes.get() != NULL) {
+		CGC_LOG((mycp::LOG_ERROR, "CGC_Module_Init2 rerun error, InitType=%d.\n", nInitType));
+		return true;
+	}
+
 	theApplication2 = CGC_APPLICATION2_CAST(theApplication);
 	assert (theApplication2.get() != NULL);
 
@@ -1417,7 +1422,11 @@ extern "C" bool CGC_API CGC_Module_Init2(MODULE_INIT_TYPE nInitType)
 	assert (theAppAttributes.get() != NULL);
 
 	theTimerHandler = CTimeHandler::create();
+#if (USES_TIMER_HANDLER_POINTER==1)
+	theApplication->SetTimer(TIMER_CHECK_ONE_SECOND, 1000, theTimerHandler.get());	// 1秒检查一次
+#else
 	theApplication->SetTimer(TIMER_CHECK_ONE_SECOND, 1000, theTimerHandler);	// 1秒检查一次
+#endif
 
 	theAppConfPath = theApplication->getAppConfPath();
 	return true;

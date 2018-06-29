@@ -296,7 +296,11 @@ private:
 	virtual long getMinorVersion(void) const;
 
 	// timer
+#if (USES_TIMER_HANDLER_POINTER==1)
+	virtual unsigned int SetTimer(unsigned int nIDEvent, unsigned int nElapse, cgcOnTimerHandler* handler, bool bOneShot, const void * pvParam, int nThreadStackSize);
+#else
 	virtual unsigned int SetTimer(unsigned int nIDEvent, unsigned int nElapse, cgcOnTimerHandler::pointer handler, bool bOneShot, const void * pvParam, int nThreadStackSize);
+#endif
 	virtual void KillTimer(unsigned int nIDEvent);
 	virtual void KillAllTimer(void);
 

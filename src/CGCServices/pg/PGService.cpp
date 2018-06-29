@@ -246,6 +246,11 @@ const tstring escape_out[] = {"'","\\"};
 ////const std::string escape_in[] = {"&lsquo;","&pge0;"};
 ////const std::string escape_out[] = {"'","\\"};
 
+#define USES_LOG_CHECK_POOL_INFO 0
+#if (USES_LOG_CHECK_POOL_INFO==1)
+const int const_check_pool_info_timerid = 1000;
+#endif
+
 class CPgCdbc
 	: public cgcCDBCService
 	, public cgcOnTimerHandler
@@ -254,20 +259,63 @@ class CPgCdbc
 public:
 	typedef boost::shared_ptr<CPgCdbc> pointer;
 
+#if (USES_LOG_CHECK_POOL_INFO==1)
+	int m_nCurrentCheckId;
+	CLockMap<unsigned int, time_t> m_pCheckMap;
+#endif
+
 	CPgCdbc(int nIndex)
 		: m_nIndex(nIndex), m_isopen(false)
 		, m_tLastTime(0)
 		, m_nDbPort(0)
-	{}
+	{
+#if (USES_LOG_CHECK_POOL_INFO==1)
+		m_nCurrentCheckId = 0;
+#endif
+	}
 	virtual ~CPgCdbc(void)
 	{
 		finalService();
 	}
+#if (USES_LOG_CHECK_POOL_INFO==1)
+	unsigned int setCheckInfo(void) {
+		unsigned int checkId = ++m_nCurrentCheckId;
+		m_pCheckMap.insert(checkId, time(0));
+		return checkId;
+	}
+	void delCheckInfo(unsigned int checkId) {
+		m_pCheckMap.remove(checkId);
+	}
+	void logCheckInfo(void) {
+
+		const time_t tNow = time(0);
+		BoostWriteLock wtlock(m_pCheckMap.mutex());
+		CLockMap<unsigned int, time_t>::iterator pIter = m_pCheckMap.begin();
+		for (; pIter!=m_pCheckMap.end(); pIter++) {
+			const time_t nTime = pIter->second;
+			if ((tNow-nTime) >= 3*60) {
+				CGC_LOG((mycp::LOG_WARNING, "%d timeout %d\n", (int)pIter->first, (int)(tNow-nTime)));
+			}
+		}
+
+	}
+
+#endif
+
 	virtual bool initService(cgcValueInfo::pointer parameter)
 	{
 		if (isServiceInited()) return true;
 		m_bServiceInited = true;
-		theApplication->SetTimer(m_nIndex+1, 2000, shared_from_this());
+#if (USES_TIMER_HANDLER_POINTER==1)
+		theApplication->SetTimer(m_nIndex+1, 5000, this);
+#else
+		theApplication->SetTimer(m_nIndex+1, 5000, shared_from_this());
+#endif
+
+#if (USES_LOG_CHECK_POOL_INFO==1)
+		theApplication->SetTimer(const_check_pool_info_timerid+m_nIndex, 10000, shared_from_this());
+#endif
+
 		return isServiceInited();
 	}
 	virtual void finalService(void)
@@ -319,15 +367,28 @@ private:
 	{
 		try
 		{
-			BoostWriteLock wtlock(m_mutex);
-			if (isopen())
-			{
-				// 主要用于整理数据库连接池；
-				//printf("*********** OnTimeout...\n");
-				Sink *sink = sink_pool_get();
-				if (sink!=NULL)
-					sink_pool_put(sink);
+			if (nIDEvent==m_nIndex+1) {
+				BoostWriteLock wtlock(m_mutex);
+				if (isopen()) {
+					// 主要用于整理数据库连接池；
+					//printf("*********** OnTimeout...\n");
+#if (USES_LOG_CHECK_POOL_INFO==1)
+					const unsigned int checkId = setCheckInfo();
+#endif
+					Sink *sink = sink_pool_get(1);
+#if (USES_LOG_CHECK_POOL_INFO==1)
+					delCheckInfo(checkId);
+#endif
+					if (sink!=NULL)
+						sink_pool_put(sink);
+				}
 			}
+#if (USES_LOG_CHECK_POOL_INFO==1)
+			else if (nIDEvent == m_nIndex+const_check_pool_info_timerid) {
+				logCheckInfo();
+			}
+#endif
+
 		}catch(std::exception&)
 		{
 		}catch(...)
@@ -488,8 +549,15 @@ private:
 		{
 			//printf("*********** execute(%s)...\n",exeSql);
 			m_tLastTime = time(0);
-			if (nTransaction==0)
-				sink = sink_pool_get();
+			if (nTransaction==0) {
+#if (USES_LOG_CHECK_POOL_INFO==1)
+				const unsigned int checkId = setCheckInfo();
+#endif
+				sink = sink_pool_get(0);
+#if (USES_LOG_CHECK_POOL_INFO==1)
+				delCheckInfo(checkId);
+#endif
+			}
 			if (sink==NULL)
 				return -1;
 
@@ -573,7 +641,14 @@ private:
 		{
 			//printf("*********** select(%s)...\n",selectSql);
 			m_tLastTime = time(0);
-			sink = sink_pool_get();
+#if (USES_LOG_CHECK_POOL_INFO==1)
+			const unsigned int checkId = setCheckInfo();
+#endif
+			sink = sink_pool_get(0);
+#if (USES_LOG_CHECK_POOL_INFO==1)
+			delCheckInfo(checkId);
+#endif
+
 			if (sink==NULL)
 				return -1;
 
@@ -634,7 +709,13 @@ private:
 		{
 			//printf("*********** select2(%s)...\n",selectSql);
 			m_tLastTime = time(0);
-			sink = sink_pool_get();
+#if (USES_LOG_CHECK_POOL_INFO==1)
+			const unsigned int checkId = setCheckInfo();
+#endif
+			sink = sink_pool_get(0);
+#if (USES_LOG_CHECK_POOL_INFO==1)
+			delCheckInfo(checkId);
+#endif
 			if (sink==NULL)
 				return -1;
 
@@ -756,7 +837,13 @@ private:
 		Sink *sink = NULL;
 		try
 		{
-			sink = sink_pool_get();
+#if (USES_LOG_CHECK_POOL_INFO==1)
+			const unsigned int checkId = setCheckInfo();
+#endif
+			sink = sink_pool_get(0);
+#if (USES_LOG_CHECK_POOL_INFO==1)
+			delCheckInfo(checkId);
+#endif
 			if (sink==NULL)
 				return 0;
 
@@ -900,6 +987,11 @@ CTimeHandler::pointer theTimerHandler;
 extern "C" bool CGC_API CGC_Module_Init2(MODULE_INIT_TYPE nInitType)
 //extern "C" bool CGC_API CGC_Module_Init(void)
 {
+	if (theAppAttributes.get() != NULL) {
+		CGC_LOG((mycp::LOG_ERROR, "CGC_Module_Init2 rerun error, InitType=%d.\n", nInitType));
+		return true;
+	}
+
 	theApplication2 = CGC_APPLICATION2_CAST(theApplication);
 	assert (theApplication2.get() != NULL);
 
@@ -907,7 +999,11 @@ extern "C" bool CGC_API CGC_Module_Init2(MODULE_INIT_TYPE nInitType)
 	assert (theAppAttributes.get() != NULL);
 
 	theTimerHandler = CTimeHandler::create();
+#if (USES_TIMER_HANDLER_POINTER==1)
+	theApplication->SetTimer(TIMER_CHECK_ONE_SECOND, 1000, theTimerHandler.get());	// 1秒检查一次
+#else
 	theApplication->SetTimer(TIMER_CHECK_ONE_SECOND, 1000, theTimerHandler);	// 1秒检查一次
+#endif
 
 	theAppConfPath = theApplication->getAppConfPath();
 	return true;

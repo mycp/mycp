@@ -154,6 +154,40 @@ unsigned long GetSystemBootTime(void)
 }
 #endif
 
+#ifndef WIN32
+inline int FindPidByName(const char* lpszName)
+{
+	int nPid = 0;
+	char lpszCmd[128];
+	sprintf(lpszCmd,"ps -ef|grep -v 'grep'|grep '%s' | awk '{print $2}'",lpszName);
+	//sprintf(lpszCmd,"ps -ef|grep '%s' | awk '{print $2}'",lpszName);
+	FILE * f = popen(lpszCmd, "r");
+	if (f==NULL)
+		return -1;
+	memset(lpszCmd,0,sizeof(lpszCmd));
+	int index = 0;
+	while (fgets(lpszCmd,128,f)!=NULL)
+	{
+		const int ret = atoi(lpszCmd);
+		if (ret>0)
+		{
+			pclose(f);
+			nPid = ret;
+			//printf("**** 11 pid=%d,%s\n",nPid,lpszCmd);
+			return nPid;
+		}
+		if ( (index++)>100 ) {
+			pclose(f);
+			return 0;
+		}
+	}
+	pclose(f);
+	nPid = atoi(lpszCmd);
+	//printf("**** 22 pid=%d,%s\n",nPid,lpszCmd);
+	return nPid;
+}
+#endif
+
 #if defined(WIN32) && !defined(__MINGW_GCC)
 #include "SSNTService.h"
 int _tmain(int argc, _TCHAR* argv[])
@@ -222,6 +256,7 @@ int main(int argc, char* argv[])
 	char lpszBuffer[260];
 	if (bProtect)
 	{
+		bool bWriteLog = false;
 		const time_t tStartTime = time(0);
 		int nErrorCount = 0;
 		while (true)
@@ -230,7 +265,9 @@ int main(int argc, char* argv[])
 			Sleep(1000);
 #else
 			sleep(1);
+			/// 
 #endif
+
 			const time_t tCurrentTime = time(0);
 			if (tStartTime+20>tCurrentTime)
 				continue;
@@ -249,8 +286,19 @@ int main(int argc, char* argv[])
 				fread(lpszBuffer,1,sizeof(lpszBuffer),pfile);
 				fclose(pfile);
 				const time_t tRunTime = cgc_atoi64(lpszBuffer);
-				if (tRunTime>0 && (tCurrentTime-tRunTime)>=8)
-				{
+				if (tRunTime>0 && (tCurrentTime-tRunTime)>=12) {	/// 8
+#ifdef WIN32
+					const int pid = 1;
+#else
+					sprintf(lpszBuffer,"%s -S",sProgram.c_str());
+					const int pid = FindPidByName(lpszBuffer);
+					/// 只打印一次
+					if (pid > 0 && bWriteLog) {
+						continue;
+					}
+#endif
+
+					bWriteLog = true;
 					tstring sProtectLogFile(sModulePath);
 					sProtectLogFile.append("/CGCP.protect.log");
 					FILE * pProtectLog = fopen(sProtectLogFile.c_str(),"a");
@@ -258,7 +306,8 @@ int main(int argc, char* argv[])
 					{
 						const struct tm *newtime = localtime(&tRunTime);
 						char lpszDateDir[64];
-						sprintf(lpszDateDir,"%04d-%02d-%02d %02d:%02d:%02d\n",newtime->tm_year+1900,newtime->tm_mon+1,newtime->tm_mday,newtime->tm_hour,newtime->tm_min,newtime->tm_sec);
+						sprintf(lpszDateDir,"%04d-%02d-%02d %02d:%02d:%02d %d pid=%d\n",
+							newtime->tm_year+1900,newtime->tm_mon+1,newtime->tm_mday,newtime->tm_hour,newtime->tm_min,newtime->tm_sec,(int)(tCurrentTime-tRunTime), pid);
 						fwrite(lpszDateDir,1,strlen(lpszDateDir),pProtectLog);
 						fclose(pProtectLog);
 					}
@@ -270,10 +319,16 @@ int main(int argc, char* argv[])
 					else
 						ShellExecute(NULL,"open",sProgram.c_str(),"",sModulePath.c_str(),SW_SHOW);
 #else
+					if (pid > 0) {
+						continue;
+					}
 					sprintf(lpszBuffer,"\"%s\" -S &",sProgram.c_str());
 					system(lpszBuffer);
 #endif
 					break;
+				}
+				else {
+					bWriteLog = false;
 				}
 			}
 		}

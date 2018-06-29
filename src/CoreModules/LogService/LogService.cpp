@@ -565,14 +565,21 @@ const int ATTRIBUTE_NAME = 1;
 unsigned int theCurrentIdEvent = 0;
 
 
-extern "C" bool CGC_API CGC_Module_Init(void)
+extern "C" bool CGC_API CGC_Module_Init2(MODULE_INIT_TYPE nInitType)
+//extern "C" bool CGC_API CGC_Module_Init(void)
 {
+	if (theAppAttributes.get() != NULL) {
+		CGC_LOG((mycp::LOG_ERROR, "CGC_Module_Init2 rerun error, InitType=%d.\n", nInitType));
+		return true;
+	}
+
 	theAppAttributes = theApplication->getAttributes(true);
 	assert (theAppAttributes.get() != NULL);
 	return true;
 }
 
-extern "C" void CGC_API CGC_Module_Free(void)
+extern "C" void CGC_API CGC_Module_Free2(MODULE_FREE_TYPE nFreeType)
+//extern "C" void CGC_API CGC_Module_Free(void)
 {
 	theApplication->KillAllTimer();
 
@@ -606,7 +613,11 @@ extern "C" void CGC_API CGC_GetService(cgcServiceInterface::pointer & outService
 	logService->initService();
 
 	outService = logService;
+#if (USES_TIMER_HANDLER_POINTER==1)
+	theApplication->SetTimer(++theCurrentIdEvent, 60*1000, logService.get());
+#else
 	theApplication->SetTimer(++theCurrentIdEvent, 60*1000, logService);
+#endif
 
 	cgcAttributes::pointer attributes = theApplication->getAttributes();
 	assert (attributes.get() != NULL);

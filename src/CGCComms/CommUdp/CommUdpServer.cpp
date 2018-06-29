@@ -277,7 +277,11 @@ public:
 		m_nCurrentThread = MIN_EVENT_THREAD;
 		for (int i=1; i<=m_nCurrentThread; i++)
 		{
+#if (USES_TIMER_HANDLER_POINTER==1)
+			theApplication->SetTimer((this->m_nIndex*MAX_EVENT_THREAD)+i, 10, (cgcOnTimerHandler*)this, false, 0, theThreadStackSize);	// 10ms
+#else
 			theApplication->SetTimer((this->m_nIndex*MAX_EVENT_THREAD)+i, 10, shared_from_this(), false, 0, theThreadStackSize);	// 10ms
+#endif
 		}
 
 		//m_capacity = m_capacity < 1 ? 1 : m_capacity;
@@ -380,8 +384,12 @@ private:
 				{
 					m_nFindEventDataCount = 0;
 					const unsigned int nNewTimerId = (this->m_nIndex*MAX_EVENT_THREAD)+(++m_nCurrentThread);
-					printf("**** UDPServer:NewTimerId=%d size=%d ****\n",nNewTimerId,nSize);
+					CGC_LOG((LOG_INFO, _T("**** UDPServer:NewTimerId=%d size=%d ****\n"),nNewTimerId,nSize));
+#if (USES_TIMER_HANDLER_POINTER==1)
+					theApplication->SetTimer(nNewTimerId, 10, (cgcOnTimerHandler*)this, false, 0, theThreadStackSize);	// 10ms
+#else
 					theApplication->SetTimer(nNewTimerId, 10, shared_from_this(), false, 0, theThreadStackSize);	// 10ms
+#endif
 				}
 			}else
 			{
@@ -394,7 +402,7 @@ private:
 				{
 					m_nNullEventDataCount = 0;
 					const unsigned int nKillTimerId = (this->m_nIndex*MAX_EVENT_THREAD)+m_nCurrentThread;
-					printf("**** UDPServer:KillTimerId=%d ****\n",nKillTimerId);
+					CGC_LOG((LOG_INFO, _T("**** UDPServer:KillTimerId=%d ****\n"),nKillTimerId));
 					theApplication->KillTimer(nKillTimerId);
 					m_nCurrentThread--;
 				}
@@ -507,6 +515,10 @@ private:
 extern "C" bool CGC_API CGC_Module_Init2(MODULE_INIT_TYPE nInitType)
 //extern "C" bool CGC_API CGC_Module_Init(void)
 {
+	if (theAppAttributes.get() != NULL) {
+		CGC_LOG((mycp::LOG_ERROR, "CGC_Module_Init2 rerun error, InitType=%d.\n", nInitType));
+		return true;
+	}
 #ifdef WIN32
 	WSADATA wsaData;
 	int err = WSAStartup( MAKEWORD( 2, 2 ), &wsaData );

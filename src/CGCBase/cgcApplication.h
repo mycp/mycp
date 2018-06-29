@@ -36,6 +36,8 @@
 
 namespace mycp {
 
+#define USES_TIMER_HANDLER_POINTER	0
+
 class cgcOnTimerHandler
 	: public cgcLock
 {
@@ -80,7 +82,11 @@ public:
 	virtual void log2(LogLevel level, const wchar_t* sData) = 0;
 
 	// The SetTimer method sets a timer on the clock.
+#if (USES_TIMER_HANDLER_POINTER==1)
+	virtual unsigned int SetTimer(unsigned int nIDEvent, unsigned int nElapse, cgcOnTimerHandler* handler, bool bOneShot = false, const void * pvParam = NULL, int nThreadStackSize=0) = 0;
+#else
 	virtual unsigned int SetTimer(unsigned int nIDEvent, unsigned int nElapse, cgcOnTimerHandler::pointer handler, bool bOneShot = false, const void * pvParam = NULL, int nThreadStackSize=0) = 0;
+#endif
 	// The KillTimer method destroys the specified timer.
 	virtual void KillTimer(unsigned int nIDEvent) = 0;
 	// The KillAllTimer method destroys all timers.

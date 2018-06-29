@@ -207,10 +207,10 @@ CMysqlSink* CMysqlPool::SinkGet(int & pOutErrorCode)
 				}
 
 				rdlock.unlock();
-				if (m_nSinkSize>m_nSinkMin && i<=(m_nSinkMin-2))	// 只使用了最小值后面二条
+				if (m_nSinkSize>m_nSinkMin && (i<=(m_nSinkMin-1) || i<=m_nSinkMax/2))	// 只使用了最小值后面二条
 				{
 					theminnumbercount++;
-					if ((i<(m_nSinkMin-2) && theminnumbercount>=30) ||	// 连接30个，只用到最小连接数，减少一个数据库连接
+					if ((i<=(m_nSinkMin-1) && theminnumbercount>=30) ||	// 连接30个，只用到最小连接数，减少一个数据库连接
 						theminnumbercount>=100)								// 连续100个正常数据库连接低于最低连接数，减少一个数据库连接；
 					{
 						if (SinkDel())

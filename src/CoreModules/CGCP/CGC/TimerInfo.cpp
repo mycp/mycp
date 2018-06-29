@@ -29,7 +29,11 @@
 
 //
 // TimerInfo class 
+#if (USES_TIMER_HANDLER_POINTER==1)
+TimerInfo::TimerInfo(unsigned int nIDEvent, unsigned int nElapse, cgcOnTimerHandler * handler, bool bOneShot, int nThreadStackSize, const void * pvParam)
+#else
 TimerInfo::TimerInfo(unsigned int nIDEvent, unsigned int nElapse, const cgcOnTimerHandler::pointer& handler, bool bOneShot, int nThreadStackSize, const void * pvParam)
+#endif
 : m_nIDEvent(nIDEvent), m_nElapse(nElapse)
 , m_timerHandler(handler), m_bOneShot(bOneShot)
 , m_nThreadStackSize(nThreadStackSize)
@@ -43,7 +47,11 @@ TimerInfo::TimerInfo(unsigned int nIDEvent, unsigned int nElapse, const cgcOnTim
 TimerInfo::~TimerInfo(void)
 {
 	KillTimer();
+#if (USES_TIMER_HANDLER_POINTER==1)
+	m_timerHandler = 0;
+#else
 	m_timerHandler.reset();
+#endif
 
 	//if (m_timerThread.get()!=NULL) {
 	//	if (m_bOneShot) {
@@ -237,7 +245,11 @@ void TimerInfo::doRunTimer(void)
 	}
 
 	// OnTimer
+#if (USES_TIMER_HANDLER_POINTER==1)
+	if (m_timerHandler != NULL)
+#else
 	if (m_timerHandler.get() != NULL)
+#endif
 	{
 		boost::mutex::scoped_lock * lock = NULL;
 		try
@@ -286,8 +298,13 @@ void TimerInfo::doRunTimer(void)
 
 void TimerInfo::doTimerExit(void)
 {
-	if (m_timerHandler.get() != NULL)
+#if (USES_TIMER_HANDLER_POINTER==1)
+	if (m_timerHandler != NULL) {
+#else
+	if (m_timerHandler.get() != NULL) {
+#endif
 		m_timerHandler->OnTimerExit(m_nIDEvent, m_pvParam);
+	}
 }
 
 
@@ -304,9 +321,17 @@ TimerTable::~TimerTable(void)
 }
 
 
+#if (USES_TIMER_HANDLER_POINTER==1)
+unsigned int TimerTable::SetTimer(unsigned int nIDEvent, unsigned int nElapse, cgcOnTimerHandler * handler, bool bOneShot, int nThreadStackSize, const void * pvParam)
+#else
 unsigned int TimerTable::SetTimer(unsigned int nIDEvent, unsigned int nElapse, const cgcOnTimerHandler::pointer& handler, bool bOneShot, int nThreadStackSize, const void * pvParam)
+#endif
 {
+#if (USES_TIMER_HANDLER_POINTER==1)
+	if (nIDEvent <= 0 || nElapse <= 0 || handler == NULL) return 0;
+#else
 	if (nIDEvent <= 0 || nElapse <= 0 || handler.get() == NULL) return 0;
+#endif
 
 #ifdef USES_ONE_SHOT_NEWVERSION
 	if (bOneShot)

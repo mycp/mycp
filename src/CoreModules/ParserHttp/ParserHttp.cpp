@@ -54,8 +54,14 @@ using namespace mycp;
 cgcServiceInterface::pointer theFileSystemService;
 tstring theXmlFile;
 
-extern "C" bool CGC_API CGC_Module_Init(void)
+extern "C" bool CGC_API CGC_Module_Init2(MODULE_INIT_TYPE nInitType)
+//extern "C" bool CGC_API CGC_Module_Init(void)
 {
+	if (theFileSystemService.get() != NULL) {
+		CGC_LOG((mycp::LOG_ERROR, "CGC_Module_Init2 rerun error, InitType=%d.\n", nInitType));
+		return true;
+	}
+
 	theXmlFile = theApplication->getAppConfPath();
 	theXmlFile.append(_T("/upload.xml"));
 	theFileSystemService = theServiceManager->getService("FileSystemService");
@@ -75,7 +81,8 @@ extern "C" bool CGC_API CGC_Module_Init(void)
 	return true;
 }
 
-extern "C" void CGC_API CGC_Module_Free(void)
+extern "C" void CGC_API CGC_Module_Free2(MODULE_FREE_TYPE nFreeType)
+//extern "C" void CGC_API CGC_Module_Free(void)
 {
 	theFileSystemService.reset();
 	//theUpload.clear();

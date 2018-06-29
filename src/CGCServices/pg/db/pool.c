@@ -241,7 +241,8 @@ Sink * sink_pool_add(int * pOutCanRetry)
 	return sink;
 }
 
-Sink*  sink_pool_get(void)
+/// fromtype: 0=default; 1=from check
+Sink*  sink_pool_get(int fromType)
 {
 	Sink *sink = 0;
 	int i =0;
@@ -256,8 +257,7 @@ Sink*  sink_pool_get(void)
 	while(thecleanup==0) 
 	{
 		//sink = sinks[random() % sink_number];
-		for (i =0; i< sink_number; ++i)
-		{
+		for (i =0; i< sink_number; ++i) {
 			sink = sinks[i];
 
 			sink_lock(sink);
@@ -277,15 +277,13 @@ Sink*  sink_pool_get(void)
 			sink_unlock(sink);
 			//break;
 			// add by hd
-			if (sink_number>sink_minnumber && i<=(sink_minnumber-2))	// 只使用了最小值后面二条
-			{
+			if (sink_number>sink_minnumber && (i<=(sink_minnumber-1) || i<=sink_maxnumber/2)) {	// 只使用了最小值后面二条
 				theminnumbercount++;
-				if ((i<(sink_minnumber-2) && theminnumbercount>=30) ||	// 连接30个，只用到最小连接数，减少一个数据库连接
+				if ((i<=(sink_minnumber-1) && theminnumbercount>=30) ||	// 连接30个，只用到最小连接数，减少一个数据库连接
 					theminnumbercount>=100)								// 连续100个正常数据库连接低于最低连接数，减少一个数据库连接；
 				{
 					LOCK (&theAddDelLock);
-					if (sink_pool_del()!=0)
-					{
+					if (sink_pool_del()!=0) {
 						theminnumbercount = 0;	// add by hd,2014-8-2
 #ifdef USES_PRINT_DEBUG
 						printf("*********** sink_pool_del OK size:%d\n",sink_number);
@@ -293,14 +291,18 @@ Sink*  sink_pool_get(void)
 					}
 					UNLOCK (&theAddDelLock);
 				}
-			}else
-			{
+			}
+			else {
 				theminnumbercount = 0;
 			}
 #ifdef USES_PRINT_DEBUG
 			printf("*********** return sink=0x%x\n", (int)sink);
 #endif
 			return sink;
+		}
+
+		if (fromType == 1) {
+			return NULL;
 		}
 
 		// add by hd

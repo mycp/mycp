@@ -43,7 +43,11 @@ private:
 	unsigned int m_nIDEvent;
 	unsigned int m_nElapse;
 	//boost::mutex m_mutex;
+#if (USES_TIMER_HANDLER_POINTER==1)
+	cgcOnTimerHandler * m_timerHandler;
+#else
 	cgcOnTimerHandler::pointer m_timerHandler;
+#endif
 	bool m_bOneShot;
 	int m_nThreadStackSize;
 	const void * m_pvParam;
@@ -53,7 +57,11 @@ private:
 	struct timeb m_tLastRunTime;
 
 public:
+#if (USES_TIMER_HANDLER_POINTER==1)
+	TimerInfo(unsigned int nIDEvent, unsigned int nElapse, cgcOnTimerHandler * handler, bool bOneShot, int nThreadStatckSize, const void * pvParam);
+#else
 	TimerInfo(unsigned int nIDEvent, unsigned int nElapse, const cgcOnTimerHandler::pointer& handler, bool bOneShot, int nThreadStatckSize, const void * pvParam);
+#endif
 	virtual ~TimerInfo(void);
 
 public:
@@ -65,7 +73,11 @@ public:
 	unsigned int getIDEvent(void) const {return m_nIDEvent;}
 	void setElapse(unsigned int newv) {m_nElapse = newv;}
 	unsigned int getElapse(void) const {return m_nElapse;}
+#if (USES_TIMER_HANDLER_POINTER==1)
+	void setTimerHandler(cgcOnTimerHandler * newv) {m_timerHandler = newv;}
+#else
 	void setTimerHandler(const cgcOnTimerHandler::pointer& newv) {m_timerHandler = newv;}
+#endif
 	void setOneShot(bool newv) {m_bOneShot = newv;}
 	bool getOneShot(void) const {return m_bOneShot;}
 	void setParam(const void * newv) {m_pvParam = newv;}
@@ -93,7 +105,11 @@ public:
 	virtual ~TimerTable(void);
 
 public:
+#if (USES_TIMER_HANDLER_POINTER==1)
+	unsigned int SetTimer(unsigned int nIDEvent, unsigned int nElapse, cgcOnTimerHandler * handler, bool bOneShot, int nThreadStackSize, const void * pvParam);
+#else
 	unsigned int SetTimer(unsigned int nIDEvent, unsigned int nElapse, const cgcOnTimerHandler::pointer& handler, bool bOneShot, int nThreadStackSize, const void * pvParam);
+#endif
 	void KillTimer(unsigned int nIDEvent);
 
 	void KillAll(void);

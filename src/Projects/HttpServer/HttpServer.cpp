@@ -1279,6 +1279,11 @@ CLockMap<tstring,CContentTypeInfo::pointer> theContentTypeInfoList;
 extern "C" bool CGC_API CGC_Module_Init2(MODULE_INIT_TYPE nInitType)
 //extern "C" bool CGC_API CGC_Module_Init(void)
 {
+	if (theAppAttributes.get() != NULL) {
+		CGC_LOG((mycp::LOG_ERROR, "CGC_Module_Init2 rerun error, InitType=%d.\n", nInitType));
+		return true;
+	}
+
 	theFileSystemService = theServiceManager->getService("FileSystemService");
 	if (theFileSystemService.get() == NULL)
 	{
@@ -1538,7 +1543,11 @@ extern "C" bool CGC_API CGC_Module_Init2(MODULE_INIT_TYPE nInitType)
 
 	theAppAttributes = theApplication->getAttributes(true);
 	theTimerHandler = CHttpTimeHandler::create();
+#if (USES_TIMER_HANDLER_POINTER==1)
+	theApplication->SetTimer(TIMERID_1_SECOND, 1*1000, theTimerHandler.get());	// 1秒检查一次
+#else
 	theApplication->SetTimer(TIMERID_1_SECOND, 1*1000, theTimerHandler);	// 1秒检查一次
+#endif
 
 	return true;
 }

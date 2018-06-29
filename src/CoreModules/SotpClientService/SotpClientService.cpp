@@ -97,14 +97,24 @@ public:
 };
 CSotpClientService::pointer theSotpClientService;
 
-extern "C" bool CGC_API CGC_Module_Init(void)
+extern "C" bool CGC_API CGC_Module_Init2(MODULE_INIT_TYPE nInitType)
+//extern "C" bool CGC_API CGC_Module_Init(void)
 {
+	if (theSotpClientService.get() != NULL) {
+		CGC_LOG((mycp::LOG_ERROR, "CGC_Module_Init2 rerun error, InitType=%d.\n", nInitType));
+		return true;
+	}
 	theSotpClientService = CSotpClientService::pointer(new CSotpClientService());
+#if (USES_TIMER_HANDLER_POINTER==1)
+	theApplication->SetTimer(TIMERID_10_SECOND, 10*1000, theSotpClientService.get());	// 10秒检查一次
+#else
 	theApplication->SetTimer(TIMERID_10_SECOND, 10*1000, theSotpClientService);	// 10秒检查一次
+#endif
 	return true;
 }
 
-extern "C" void CGC_API CGC_Module_Free(void)
+extern "C" void CGC_API CGC_Module_Free2(MODULE_FREE_TYPE nFreeType)
+//extern "C" void CGC_API CGC_Module_Free(void)
 {
 	theApplication->KillAllTimer();
 	theModuleSotpClientList.clear();
