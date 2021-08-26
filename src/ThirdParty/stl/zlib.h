@@ -8,13 +8,13 @@
 #endif // useconds_t
 
 #include <zlib.h>
-#ifdef _MSC_VER	//WIN32
-#ifdef _DEBUG
-#pragma comment(lib,"zlibstatd.lib")
-#else
-#pragma comment(lib,"zlibstat.lib")
-#endif
-#endif // WIN32
+//#ifdef _MSC_VER	//WIN32
+//#ifdef _DEBUG
+//#pragma comment(lib,"zlibstatd.lib")
+//#else
+//#pragma comment(lib,"zlibstat.lib")
+//#endif
+//#endif // WIN32
 
 
 #ifndef max

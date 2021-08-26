@@ -33,7 +33,7 @@ namespace mycp {
 class CAppInfo
 {
 public:
-	typedef boost::shared_ptr<CAppInfo> pointer;
+	typedef std::shared_ptr<CAppInfo> pointer;
 
 	const tstring & getAppId(void) const {return m_appid;}
 	const tstring & getAppName(void) const {return m_appname;}
@@ -57,7 +57,7 @@ private:
 class XmlParseApps
 {
 public:
-	typedef boost::shared_ptr<XmlParseApps> pointer;
+	typedef std::shared_ptr<XmlParseApps> pointer;
 
 	XmlParseApps(void)
 	{}

@@ -29,7 +29,7 @@ namespace mycp {
 class cgcResponse
 {
 public:
-	typedef boost::shared_ptr<cgcResponse> pointer;
+	typedef std::shared_ptr<cgcResponse> pointer;
 
 	virtual unsigned long getRemoteId(void) const = 0;
 	virtual void invalidate(void) = 0;

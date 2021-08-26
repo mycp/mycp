@@ -60,7 +60,7 @@ class CSotpClientService
 	: public cgcOnTimerHandler
 {
 public:
-	typedef boost::shared_ptr<CSotpClientService> pointer;
+	typedef std::shared_ptr<CSotpClientService> pointer;
 	virtual void OnTimeout(unsigned int nIDEvent, const void * pvParam)
 	{
 		if (TIMERID_10_SECOND==nIDEvent)

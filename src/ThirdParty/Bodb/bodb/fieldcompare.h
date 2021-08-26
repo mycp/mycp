@@ -44,7 +44,7 @@ namespace bo
 			, FCT_UNKNOWN		= 0xf
 		};
 
-		typedef boost::shared_ptr<CFieldCompare> pointer;
+		typedef std::shared_ptr<CFieldCompare> pointer;
 		//static CFieldCompare::pointer create(void)
 		//{
 		//	return CFieldCompare::pointer(new CFieldCompare());

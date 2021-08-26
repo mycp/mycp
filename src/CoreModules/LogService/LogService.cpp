@@ -68,7 +68,7 @@ class CLogService
 	, public cgcOnTimerHandler
 {
 public:
-	typedef boost::shared_ptr<CLogService> pointer;
+	typedef std::shared_ptr<CLogService> pointer;
 	static CLogService::pointer create(const tstring& name, const tstring& xmlfile)
 	{
 		return CLogService::pointer(new CLogService(name, xmlfile));
@@ -241,7 +241,7 @@ public:
 		if (!isServiceInited()) return;
 		cgcServiceInterface::finalService();
 
-		boost::shared_ptr<boost::thread> threadLogTemp = m_threadLog;
+		std::shared_ptr<boost::thread> threadLogTemp = m_threadLog;
 		m_threadLog.reset();
 		if (threadLogTemp.get()!=NULL)
 		{
@@ -306,7 +306,7 @@ protected:
 		{
 			boost::thread_attributes attrs;
 			attrs.set_stack_size(CGC_THREAD_STACK_MIN);
-			m_threadLog = boost::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&CLogService::do_logservice, this)));
+			m_threadLog = std::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&CLogService::do_logservice, this)));
 		}
 
 		if (bFirstLog && !m_stream.is_open())
@@ -551,7 +551,7 @@ public:
 private:
 	tstring m_name;
 	tstring m_xmlfile;
-	boost::shared_ptr<boost::thread> m_threadLog;
+	std::shared_ptr<boost::thread> m_threadLog;
 	int m_currentBackup;
 	XmlParseLogSetting m_setting;
 

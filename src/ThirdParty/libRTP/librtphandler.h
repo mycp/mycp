@@ -10,7 +10,7 @@ class OnRtpHandler;
 class LIBRTP_CLASS DoRtpHandler
 {
 public:
-	typedef boost::shared_ptr<DoRtpHandler> pointer;
+	typedef std::shared_ptr<DoRtpHandler> pointer;
 
 	virtual void doSetRtpHandler(OnRtpHandler * handler, void * param=0) = 0;
 	virtual const OnRtpHandler *  doGetRtpHandler(void) const = 0;

@@ -54,7 +54,7 @@ class CConfigurationService
 	: public cgcConfiguration
 {
 public:
-	typedef boost::shared_ptr<CConfigurationService> pointer;
+	typedef std::shared_ptr<CConfigurationService> pointer;
 
 	static CConfigurationService::pointer create(const tstring& filename, cgcConfiguration::ConfigurationType type)
 	{

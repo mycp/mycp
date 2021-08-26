@@ -32,7 +32,7 @@ class CUploadFiles
 	: public cgcObject
 {
 public:
-	typedef boost::shared_ptr<CUploadFiles> pointer;
+	typedef std::shared_ptr<CUploadFiles> pointer;
 
 	std::vector<cgcUploadFile::pointer> m_files;
 

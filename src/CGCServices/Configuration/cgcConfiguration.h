@@ -29,7 +29,7 @@ class cgcConfiguration
 	: public cgcServiceInterface
 {
 public:
-	typedef boost::shared_ptr<cgcConfiguration> pointer;
+	typedef std::shared_ptr<cgcConfiguration> pointer;
 
 	enum ConfigurationType
 	{
@@ -57,7 +57,7 @@ public:
 
 };
 
-#define CGC_CONFIGURATIONSERVICE_DEF(s) boost::static_pointer_cast<cgcConfiguration, cgcServiceInterface>(s)
+#define CGC_CONFIGURATIONSERVICE_DEF(s) std::static_pointer_cast<cgcConfiguration, cgcServiceInterface>(s)
 
 } // namespace mycp
 

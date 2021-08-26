@@ -16,15 +16,15 @@ namespace asio {
 class TcpAcceptor
 {
 private:
-	tcp::acceptor * m_acceptor;
+	tcp::acceptor * m_acceptor = nullptr;
 	TcpConnection_Handler::pointer m_handler;
 #ifdef USES_OPENSSL
-	boost::asio::ssl::context* m_sslctx;
+	boost::asio::ssl::context* m_sslctx = nullptr;
 #endif
 	size_t m_nReadSleep;
-
+	boost::asio::io_service* io_service_ = nullptr;
 public:
-	typedef boost::shared_ptr<TcpAcceptor> pointer;
+	typedef std::shared_ptr<TcpAcceptor> pointer;
 	static TcpAcceptor::pointer create(void) {return TcpAcceptor::pointer(new TcpAcceptor());}
 #ifdef USES_OPENSSL
 	void set_ssl_ctx(boost::asio::ssl::context* ctx) {m_sslctx=ctx;}
@@ -36,8 +36,10 @@ public:
 		try
 		{
 			m_handler = handler;
-			if (m_acceptor == NULL)
+			if (m_acceptor == nullptr) {
+				io_service_ = &ioservice;
 				m_acceptor = new tcp::acceptor(ioservice, tcp::endpoint(tcp::v4(), tcpPort));
+			}
 			boost::system::error_code ec;
 			m_acceptor->set_option(boost::asio::socket_base::reuse_address(true),ec);
 			//m_acceptor->set_option(boost::asio::socket_base::enable_connection_aborted(true));
@@ -79,9 +81,9 @@ private:
 			if (m_acceptor != NULL) {
 				//printf("start_accept...\n");
 #ifdef USES_OPENSSL
-				TcpConnectionPointer new_connection = TcpConnection::create(m_acceptor->get_io_service(), m_handler,m_sslctx);
+				TcpConnectionPointer new_connection = TcpConnection::create(*io_service_, m_handler,m_sslctx);
 #else
-				TcpConnectionPointer new_connection = TcpConnection::create(m_acceptor->get_io_service(), m_handler);
+				TcpConnectionPointer new_connection = TcpConnection::create(*io_service_, m_handler);
 #endif
 				if (m_sslctx==NULL) {
 					m_acceptor->async_accept(*new_connection->socket()->get_socket(),

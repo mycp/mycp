@@ -36,7 +36,7 @@ class cgcSystem
 	//: public cgcAttributes
 {
 public:
-	typedef boost::shared_ptr<cgcSystem> pointer;
+	typedef std::shared_ptr<cgcSystem> pointer;
 
 	// Setting in [CGCP_PATH]/conf/params.xml file.
 	virtual cgcParameterMap::pointer getInitParameters(void) const = 0;

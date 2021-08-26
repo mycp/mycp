@@ -51,7 +51,7 @@ typedef enum
 class CMycpHttpServer
 {
 public:
-	typedef boost::shared_ptr<CMycpHttpServer> pointer;
+	typedef std::shared_ptr<CMycpHttpServer> pointer;
 
 private:
 	cgcAttributes::pointer m_pageParameters;	// page propertys

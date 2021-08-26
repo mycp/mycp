@@ -23,7 +23,7 @@
 class CExecuteInfo
 {
 public:
-	typedef boost::shared_ptr<CExecuteInfo> pointer;
+	typedef std::shared_ptr<CExecuteInfo> pointer;
 
 	CLockMap<tstring, tstring> m_controlerForwardUrls;	// FaileCode - ForwardURL
 	CLockMap<tstring, tstring> m_controlerLocationUrls;	// FaileCode - LocationURL

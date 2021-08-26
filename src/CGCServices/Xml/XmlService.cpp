@@ -57,7 +57,7 @@ class CXmlService
 	: public cgcServiceInterface
 {
 public:
-	typedef boost::shared_ptr<CXmlService> pointer;
+	typedef std::shared_ptr<CXmlService> pointer;
 
 	static CXmlService::pointer create(void)
 	{

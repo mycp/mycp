@@ -43,7 +43,7 @@ namespace bo
 
 		};
 
-		typedef boost::shared_ptr<CDatabaseInfo> pointer;
+		typedef std::shared_ptr<CDatabaseInfo> pointer;
 		static CDatabaseInfo::pointer create(const tstring & name, DatabaseType type = DT_Normal, const tstring & note = _T(""));
 
 		bool createTable(const CTableInfo::pointer& tableInfo);

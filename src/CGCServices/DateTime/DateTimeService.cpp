@@ -50,7 +50,7 @@ class CDateTimeService
 	: public cgcServiceInterface
 {
 public:
-	typedef boost::shared_ptr<CDateTimeService> pointer;
+	typedef std::shared_ptr<CDateTimeService> pointer;
 
 	static CDateTimeService::pointer create(void)
 	{

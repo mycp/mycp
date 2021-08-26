@@ -49,7 +49,7 @@ class CNamespaceService
 	: public cgcNamespace
 {
 public:
-	typedef boost::shared_ptr<CNamespaceService> pointer;
+	typedef std::shared_ptr<CNamespaceService> pointer;
 
 	static CNamespaceService::pointer create(CBodbHandler::pointer bodb, const tstring& space)
 	{

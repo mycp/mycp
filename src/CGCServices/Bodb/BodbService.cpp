@@ -49,7 +49,7 @@ using namespace bo;
 class CCDBCResultSet
 {
 public:
-	typedef boost::shared_ptr<CCDBCResultSet> pointer;
+	typedef std::shared_ptr<CCDBCResultSet> pointer;
 
 	mycp::bigint size(void) const
 	{
@@ -185,7 +185,7 @@ class CBodbCdbc
 	: public cgcCDBCService
 {
 public:
-	typedef boost::shared_ptr<CBodbCdbc> pointer;
+	typedef std::shared_ptr<CBodbCdbc> pointer;
 
 	CBodbCdbc(const tstring& path)
 		: /*m_currentCookie(0), */m_tLastTime(0), m_apppath(path)

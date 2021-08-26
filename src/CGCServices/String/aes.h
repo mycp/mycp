@@ -4,10 +4,10 @@
 #include <openssl/evp.h>  
 #include <openssl/aes.h>  
 #include <openssl/rand.h>  
-#ifdef WIN32
-#pragma comment(lib, "libeay32.lib")  
-#pragma comment(lib, "ssleay32.lib")  
-#endif
+//#ifdef WIN32
+//#pragma comment(lib, "libeay32.lib")  
+//#pragma comment(lib, "ssleay32.lib")  
+//#endif
 
 // ****ECBģʽ
 inline int aes_ecb_encrypt_full(const unsigned char *userKey,int klen,const unsigned char* in,int ilen,unsigned char* out)

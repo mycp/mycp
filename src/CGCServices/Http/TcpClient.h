@@ -21,11 +21,11 @@ namespace httpservice {
 //////////////////////////////////////////////
 // TcpClient_Handler
 class TcpClient;
-typedef boost::shared_ptr<TcpClient> TcpClientPointer;
+typedef std::shared_ptr<TcpClient> TcpClientPointer;
 class TcpClient_Handler
 {
 public:
-	typedef boost::shared_ptr<TcpClient_Handler> pointer;
+	typedef std::shared_ptr<TcpClient_Handler> pointer;
 
 	virtual void OnConnected(const TcpClientPointer& tcpClient) = 0;
 	virtual void OnConnectError(const TcpClientPointer& tcpClient, const boost::system::error_code & error) = 0;
@@ -38,10 +38,10 @@ const TcpClient_Handler::pointer NullTcpClientHandler;
 ///////////////////////////////////////////////
 // TcpClient class
 class TcpClient
-	: public boost::enable_shared_from_this<TcpClient>
+	: public std::enable_shared_from_this<TcpClient>
 {
 public:
-	typedef boost::shared_ptr<TcpClient> pointer;
+	typedef std::shared_ptr<TcpClient> pointer;
 	static TcpClient::pointer create(const TcpClient_Handler::pointer& handler)
 	{
 		return TcpClient::pointer(new TcpClient(handler));
@@ -87,7 +87,7 @@ public:
 		{
 			boost::thread_attributes attrs;
 			attrs.set_stack_size(1024*nThreadStackSize);	// 200K
-			m_proc_data = boost::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&TcpClient::proc_Data, this)));
+			m_proc_data = std::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&TcpClient::proc_Data, this)));
 			//m_proc_data = new boost::thread(boost::bind(&TcpClient::do_proc_data, this));
 		}
 
@@ -400,7 +400,7 @@ private:
 	boost::mutex m_mutex;
 	bool m_bClosed;
 	TcpClient_Handler::pointer m_handler;
-	boost::shared_ptr<boost::thread> m_proc_data;
+	std::shared_ptr<boost::thread> m_proc_data;
 	CLockList<mycp::asio::ReceiveBuffer::pointer> m_datas;
 	CLockList<mycp::asio::ReceiveBuffer::pointer> m_unused;
 	size_t m_unusedsize;

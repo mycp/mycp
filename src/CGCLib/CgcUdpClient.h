@@ -29,10 +29,10 @@ namespace mycp {
 class CGCLIB_CLASS CgcUdpClient
 	: public CgcBaseClient
 	, public mycp::asio::UdpSocket_Handler
-	//, public boost::enable_shared_from_this<CgcUdpClient>
+	//, public std::enable_shared_from_this<CgcUdpClient>
 {
 public:
-	typedef boost::shared_ptr<CgcUdpClient> pointer;
+	typedef std::shared_ptr<CgcUdpClient> pointer;
 
 	static CgcUdpClient::pointer create(void)
 	{

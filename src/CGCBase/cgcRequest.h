@@ -29,7 +29,7 @@ namespace mycp {
 class cgcRequest
 {
 public:
-	typedef boost::shared_ptr<cgcRequest> pointer;
+	typedef std::shared_ptr<cgcRequest> pointer;
 
 	virtual void setProperty(const tstring & propertyName, const tstring & propertyValue, bool clear = true) = 0;
 	virtual void setProperty(const tstring & propertyName, int propertyValue, bool clear = true) = 0;

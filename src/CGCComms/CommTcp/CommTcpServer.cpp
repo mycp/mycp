@@ -41,8 +41,8 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 	}
 	return TRUE;
 }
-#pragma comment(lib, "libeay32.lib")  
-#pragma comment(lib, "ssleay32.lib") 
+//#pragma comment(lib, "libeay32.lib")  
+//#pragma comment(lib, "ssleay32.lib") 
 #else
 #include <ifaddrs.h>
 #include <netinet/in.h> 
@@ -544,10 +544,10 @@ bool FileIsExist(const char* pFile)
 //short theLocalIpTestCount = 0;
 class CTcpTestConnect
 	: public mycp::asio::TcpClient_Handler
-	, public boost::enable_shared_from_this<CTcpTestConnect>
+	, public std::enable_shared_from_this<CTcpTestConnect>
 {
 public:
-	typedef boost::shared_ptr<CTcpTestConnect> pointer;
+	typedef std::shared_ptr<CTcpTestConnect> pointer;
 	static CTcpTestConnect::pointer create(void)
 	{
 		return CTcpTestConnect::pointer(new CTcpTestConnect());
@@ -664,7 +664,7 @@ private:
 class CRemoteWaitData
 {
 public:
-	typedef boost::shared_ptr<CRemoteWaitData> pointer;
+	typedef std::shared_ptr<CRemoteWaitData> pointer;
 	static CRemoteWaitData::pointer create(void)
 	{
 		return CRemoteWaitData::pointer(new CRemoteWaitData());
@@ -688,10 +688,10 @@ class CTcpServer
 	, public cgcOnTimerHandler
 	, public cgcCommunication
 	, public CRemoteHandler
-	, public boost::enable_shared_from_this<CTcpServer>
+	, public std::enable_shared_from_this<CTcpServer>
 {
 public:
-	typedef boost::shared_ptr<CTcpServer> pointer;
+	typedef std::shared_ptr<CTcpServer> pointer;
 	static CTcpServer::pointer create(int nIndex)
 	{
 		return CTcpServer::pointer(new CTcpServer(nIndex));
@@ -834,7 +834,8 @@ public:
 		{
 			mycp::asio::TcpClient::Test_To_SSL_library_init();
 			namespace ssl = boost::asio::ssl;
-			m_sslctx = new ssl::context(m_ioservice->ioservice(),ssl::context::sslv23);
+			m_sslctx = new ssl::context(ssl::context::sslv23);
+			//m_sslctx = new ssl::context(m_ioservice->ioservice(),ssl::context::sslv23);
 			m_sslctx->set_options(ssl::context::default_workarounds|ssl::context::verify_none);	// verify_none
 			boost::system::error_code error;
 			m_sslctx->set_verify_mode(ssl::verify_none,error);	// verify_none old:ok
@@ -1292,8 +1293,8 @@ protected:
 				{
 					mycp::asio::TcpClient::Test_To_SSL_library_init();
 					namespace ssl = boost::asio::ssl;
-					//m_sslctx = new ssl::context(ssl::context::sslv23);
-					m_sslctx = new ssl::context(m_ioservice->ioservice(),ssl::context::sslv23);
+					m_sslctx = new ssl::context(ssl::context::sslv23);
+					//m_sslctx = new ssl::context(m_ioservice->ioservice(),ssl::context::sslv23);
 					m_sslctx->set_options(ssl::context::default_workarounds|ssl::context::verify_none);
 					boost::system::error_code error;
 					m_sslctx->set_verify_mode(ssl::verify_none,error);
@@ -1340,7 +1341,7 @@ protected:
 	class CCloseConnectionInfo
 	{
 	public:
-		typedef boost::shared_ptr<CCloseConnectionInfo> pointer;
+		typedef std::shared_ptr<CCloseConnectionInfo> pointer;
 		static CCloseConnectionInfo::pointer create(const mycp::asio::TcpConnectionPointer& pConnection, int nWaitSecond = 5, bool bCloseSocket=false)
 		{
 			return CCloseConnectionInfo::pointer(new CCloseConnectionInfo(pConnection, nWaitSecond, bCloseSocket));

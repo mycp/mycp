@@ -37,7 +37,7 @@ typedef std::pair<tstring, tstring> StringMapPair;
 class CGCCLASS_CLASS ModuleItem
 {
 public:
-	typedef boost::shared_ptr<ModuleItem> pointer;
+	typedef std::shared_ptr<ModuleItem> pointer;
 
 	static ModuleItem::pointer create(void);
 	static ModuleItem::pointer create(int type, const tstring & name, const tstring & module);

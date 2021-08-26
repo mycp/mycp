@@ -49,7 +49,7 @@ namespace bo
 			, MIF_UNKNOWN		= 0xf
 		};
 
-		typedef boost::shared_ptr<CModifyInfo> pointer;
+		typedef std::shared_ptr<CModifyInfo> pointer;
 		static CModifyInfo::pointer create(void)
 		{
 			return CModifyInfo::pointer(new CModifyInfo());

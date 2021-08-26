@@ -31,7 +31,7 @@ class cgcSotpResponse
 	: public cgcResponse
 {
 public:
-	typedef boost::shared_ptr<cgcSotpResponse> pointer;
+	typedef std::shared_ptr<cgcSotpResponse> pointer;
 
 	virtual void setAttachName(const tstring & name) = 0;
 	virtual void setAttachInfo(mycp::bigint total, mycp::bigint index) = 0;
@@ -60,11 +60,11 @@ const cgcSotpResponse::pointer cgcNullSotpResponse;
 #define CGC_RES_LOCK() response->lockResponse()
 #define CGC_RES_RESPONSE(C, S) response->sendResponse(C, S)
 
-#define CGC_SOTPRESPONSE_CAST(r) boost::shared_ptr<cgcSotpResponse>(boost::static_pointer_cast<cgcSotpResponse, cgcResponse>(r))
+#define CGC_SOTPRESPONSE_CAST(r) std::shared_ptr<cgcSotpResponse>(std::static_pointer_cast<cgcSotpResponse, cgcResponse>(r))
 
-//boost::shared_ptr<cgcSotpResponse> CGC_SOTPRESPONSE_CAST(boost::shared_ptr<cgcResponse> const & r)
+//std::shared_ptr<cgcSotpResponse> CGC_SOTPRESPONSE_CAST(std::shared_ptr<cgcResponse> const & r)
 //{
-//	return boost::static_pointer_cast<cgcSotpResponse, cgcResponse>(r);
+//	return std::static_pointer_cast<cgcSotpResponse, cgcResponse>(r);
 //}
 
 } // namespace mycp

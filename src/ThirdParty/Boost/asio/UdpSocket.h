@@ -19,7 +19,7 @@ class UdpSocket;
 class UdpSocket_Handler
 {
 public:
-	typedef boost::shared_ptr<UdpSocket_Handler> pointer;
+	typedef std::shared_ptr<UdpSocket_Handler> pointer;
 	virtual void OnReceiveData(const UdpSocket& UdpSocket, const UdpEndPoint::pointer& endpoint) = 0;
 };
 const UdpSocket_Handler::pointer NullUdpSocketHandler;
@@ -29,7 +29,7 @@ const UdpSocket_Handler::pointer NullUdpSocketHandler;
 class UdpSocket
 {
 public:
-	typedef boost::shared_ptr<UdpSocket> pointer;
+	typedef std::shared_ptr<UdpSocket> pointer;
 	static UdpSocket::pointer create(size_t nBufferSize=8*1024) {return UdpSocket::pointer(new UdpSocket(nBufferSize));}
 
 	void setMaxBufferSize(size_t v = 8*1024)
@@ -83,7 +83,7 @@ public:
 		{
 			boost::thread_attributes attrs;
 			attrs.set_stack_size(1024*nThreadStackSize);	// 100K
-			m_proc_data = boost::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&UdpSocket::do_proc_data, this)));
+			m_proc_data = std::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&UdpSocket::do_proc_data, this)));
 			//m_proc_data = new boost::thread(boost::bind(&UdpSocket::do_proc_data, this));
 		}
 		start_receive();
@@ -244,7 +244,7 @@ private:
 	UdpSocket_Handler::pointer m_handler;
 	udp::socket * m_socket;
 	udp::endpoint m_endpointlocal;
-	boost::shared_ptr<boost::thread> m_proc_data;
+	std::shared_ptr<boost::thread> m_proc_data;
 	CLockList<UdpEndPoint::pointer> m_endpoints;
 	size_t m_maxbuffersize;
 	size_t m_nInitPoolSize;

@@ -35,14 +35,14 @@ class cgcSip
 	: public cgcServiceInterface
 {
 public:
-	typedef boost::shared_ptr<cgcSip> pointer;
+	typedef std::shared_ptr<cgcSip> pointer;
 
 	virtual DoSipHandler::pointer initSip(const CSipParameter & sipp, OnSipHandler * handler) = 0;
 	virtual void quitSip(DoSipHandler::pointer sipHandler) = 0;
 
 };
 
-#define CGC_SIPSERVICE_DEF(sip) boost::static_pointer_cast<cgcSip, cgcServiceInterface>(sip)
+#define CGC_SIPSERVICE_DEF(sip) std::static_pointer_cast<cgcSip, cgcServiceInterface>(sip)
 
 } // cgc namespace
 

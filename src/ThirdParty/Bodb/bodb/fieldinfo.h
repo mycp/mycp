@@ -44,7 +44,7 @@ namespace bo
 	class CFieldInfo
 	{
 	public:
-		typedef boost::shared_ptr<CFieldInfo> pointer;
+		typedef std::shared_ptr<CFieldInfo> pointer;
 		static CFieldInfo::pointer create(void);
 		static CFieldInfo::pointer create(const tstring & name, FieldType type, uinteger size1 = 0, const tstring & note = _T(""));
 		//static usmallint getMaxFieldInfoSize(void);

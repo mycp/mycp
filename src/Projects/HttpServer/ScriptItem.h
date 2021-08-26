@@ -33,7 +33,7 @@ const int MAX_VALUE_STRING_SIZE = 256;
 class CScriptItem
 {
 public:
-	typedef boost::shared_ptr<CScriptItem> pointer;
+	typedef std::shared_ptr<CScriptItem> pointer;
 	enum ItemType
 	{
 		CSP_Unknown								// δ֪

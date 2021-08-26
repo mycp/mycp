@@ -37,10 +37,10 @@
 
 class CRtpProxy
 	: public DoRtpHandler
-	, public boost::enable_shared_from_this<CRtpProxy>
+	, public std::enable_shared_from_this<CRtpProxy>
 {
 public:
-	typedef boost::shared_ptr<CRtpProxy> pointer;
+	typedef std::shared_ptr<CRtpProxy> pointer;
 
 	static CRtpProxy::pointer create(void)
 	{

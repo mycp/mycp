@@ -49,7 +49,7 @@ int CgcUdpClient::startClient(const tstring & sCgcServerAddr, unsigned int bindP
 		if (m_udpClient.get()==NULL)
 			m_udpClient = mycp::asio::UdpSocket::create();
 
-		CgcUdpClient::pointer clientHandler = boost::static_pointer_cast<CgcUdpClient, CgcBaseClient>(boost::enable_shared_from_this<CgcBaseClient>::shared_from_this());
+		CgcUdpClient::pointer clientHandler = std::static_pointer_cast<CgcUdpClient, CgcBaseClient>(std::enable_shared_from_this<CgcBaseClient>::shared_from_this());
 
 		m_udpClient->start(m_ipService->ioservice(), bindPort, clientHandler, nThreadStackSize, m_nIoSendBufferSize, m_nIoReceiveBufferSize);
 		m_udpClient->socket()->connect(m_endpointRemote);

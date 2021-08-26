@@ -37,7 +37,7 @@ public:
 
 class CSotpResponseImpl
 	: public cgcSotpResponse
-	, public boost::enable_shared_from_this<CSotpResponseImpl>
+	, public std::enable_shared_from_this<CSotpResponseImpl>
 {
 private:
 	cgcRemote::pointer m_cgcRemote;

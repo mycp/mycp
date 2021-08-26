@@ -30,7 +30,7 @@ using boost::property_tree::ptree;
 //class CSyncInfo
 //{
 //public:
-//	typedef boost::shared_ptr<CSyncInfo> pointer;
+//	typedef std::shared_ptr<CSyncInfo> pointer;
 //	static CSyncInfo::pointer create(bool bEnableSync)
 //	{
 //		return CSyncInfo::pointer(new CSyncInfo(bEnableSync));

@@ -17,10 +17,10 @@ const size_t Max_UdpSocket_ReceiveSize	= 32*1024;
 ////////////////////////
 // UdpEndPoint class
 class UdpEndPoint
-	: public boost::enable_shared_from_this<UdpEndPoint>
+	: public std::enable_shared_from_this<UdpEndPoint>
 {
 public:
-	typedef boost::shared_ptr<UdpEndPoint> pointer;
+	typedef std::shared_ptr<UdpEndPoint> pointer;
 	static pointer create(size_t capacity = Max_UdpSocket_ReceiveSize)
 	{
 		return pointer(new UdpEndPoint(capacity));

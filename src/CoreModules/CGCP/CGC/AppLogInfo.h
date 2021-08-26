@@ -27,7 +27,7 @@
 class AppLogInfo
 {
 public:
-	typedef boost::shared_ptr<AppLogInfo> pointer;
+	typedef std::shared_ptr<AppLogInfo> pointer;
 
 	static AppLogInfo::pointer create(DebugLevel dl, const tstring & msg)
 	{

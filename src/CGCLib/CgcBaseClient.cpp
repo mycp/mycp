@@ -389,7 +389,7 @@ void CgcBaseClient::StartCIDTimeout(void)
 	{
 		boost::thread_attributes attrs;
 		attrs.set_stack_size(20480);	// 20K
-		m_threadCIDTimeout = boost::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&CgcBaseClient::do_proc_cid_timeout, this)));
+		m_threadCIDTimeout = std::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&CgcBaseClient::do_proc_cid_timeout, this)));
 	}
 }
 //void CgcBaseClient::StartRecvThreads(unsigned short nRecvThreads)
@@ -427,8 +427,8 @@ void CgcBaseClient::StartActiveThread(unsigned short nActiveWaitSeconds,unsigned
 	{
 		boost::thread_attributes attrs;
 		attrs.set_stack_size(10240);	// 10K
-		m_threadActiveSes = boost::shared_ptr<boost::thread>(new boost::thread(boost::bind(&CgcBaseClient::do_proc_activesession, this)));
-		//m_threadActiveSes = boost::shared_ptr<boost::thread>(new boost::thread(boost::bind(do_proc_activesession, shared_from_this())));
+		m_threadActiveSes = std::shared_ptr<boost::thread>(new boost::thread(boost::bind(&CgcBaseClient::do_proc_activesession, this)));
+		//m_threadActiveSes = std::shared_ptr<boost::thread>(new boost::thread(boost::bind(do_proc_activesession, shared_from_this())));
 	}
 }
 

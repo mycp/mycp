@@ -33,14 +33,14 @@ class cgcRtp
 	: public cgcServiceInterface
 {
 public:
-	typedef boost::shared_ptr<cgcRtp> pointer;
+	typedef std::shared_ptr<cgcRtp> pointer;
 
 	virtual DoRtpHandler::pointer startRtp(unsigned short rtpPort) = 0;
 	virtual void stopRtp(DoRtpHandler::pointer handler) = 0;
 
 };
 
-#define CGC_RTPSERVICE_DEF(rtp) boost::static_pointer_cast<cgcRtp, cgcServiceInterface>(rtp)
+#define CGC_RTPSERVICE_DEF(rtp) std::static_pointer_cast<cgcRtp, cgcServiceInterface>(rtp)
 
 } // cgc namespace
 

@@ -91,7 +91,7 @@ class cgcSmartString
 	//: public cgcObject
 {
 public:
-	typedef boost::shared_ptr<cgcSmartString> pointer;
+	typedef std::shared_ptr<cgcSmartString> pointer;
 	//typedef typename std::string::size_type size_type;
 	//typedef typename std::string::npos npos;
 

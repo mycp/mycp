@@ -37,7 +37,7 @@
 namespace mycp {
 
 class cgcValueInfo;
-typedef boost::shared_ptr<cgcValueInfo> cgcValueInfoPointer;
+typedef std::shared_ptr<cgcValueInfo> cgcValueInfoPointer;
 
 const tstring									cgcEmptyTString	= "";
 const std::vector<cgcValueInfoPointer>			cgcEmptyValueInfoList;
@@ -47,7 +47,7 @@ class cgcValueInfo
 	: public cgcObject
 {
 public:
-	typedef boost::shared_ptr<cgcValueInfo> pointer;
+	typedef std::shared_ptr<cgcValueInfo> pointer;
 	enum ValueType
 	{
 		TYPE_INT

@@ -35,7 +35,7 @@ namespace bo
 	class CBuffer
 	{
 	public:
-		typedef boost::shared_ptr<CBuffer> pointer;
+		typedef std::shared_ptr<CBuffer> pointer;
 		static CBuffer::pointer create(void)
 		{
 			return CBuffer::pointer(new CBuffer());
@@ -81,7 +81,7 @@ namespace bo
 		: public FIELDVARIANT
 	{
 	public:
-		typedef boost::shared_ptr<CFieldVariant> pointer;
+		typedef std::shared_ptr<CFieldVariant> pointer;
 		static CFieldVariant::pointer create(FieldType vartype)
 		{
 			return CFieldVariant::pointer(new CFieldVariant(vartype));

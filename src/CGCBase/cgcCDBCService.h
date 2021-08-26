@@ -30,7 +30,7 @@ class cgcCDBCService
 	: public cgcServiceInterface
 {
 public:
-	typedef boost::shared_ptr<cgcCDBCService> pointer;
+	typedef std::shared_ptr<cgcCDBCService> pointer;
 
 	virtual void escape_string_in(tstring & str) = 0;
 	virtual void escape_string_out(tstring & str) = 0;
@@ -91,7 +91,7 @@ private:
 
 const cgcCDBCService::pointer cgcNullCDBCService;
 
-#define CGC_CDBCSERVICE_DEF(s) boost::static_pointer_cast<cgcCDBCService, cgcServiceInterface>(s)
+#define CGC_CDBCSERVICE_DEF(s) std::static_pointer_cast<cgcCDBCService, cgcServiceInterface>(s)
 
 } // namespace mycp
 

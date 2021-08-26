@@ -31,7 +31,7 @@ namespace bo
 	class CBodbHandler
 	{
 	public:
-		typedef boost::shared_ptr<CBodbHandler> pointer;
+		typedef std::shared_ptr<CBodbHandler> pointer;
 
 		virtual bool start(void) = 0;
 		virtual bool isstarted(void) const = 0;

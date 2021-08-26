@@ -1,0 +1,16 @@
+cmake_minimum_required (VERSION 2.8)
+
+# 包含子项目。
+#add_subdirectory ("ado")
+add_subdirectory ("Bodb")
+add_subdirectory ("Configuration")
+add_subdirectory ("DateTime")
+add_subdirectory ("FileSystem")
+add_subdirectory ("Http")
+add_subdirectory ("Namespace")
+#add_subdirectory ("pg")
+#add_subdirectory ("Rtp")
+#add_subdirectory ("Sip")
+#add_subdirectory ("sqlite")
+add_subdirectory ("String")
+add_subdirectory ("Xml")

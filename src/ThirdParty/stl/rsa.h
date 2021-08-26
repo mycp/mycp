@@ -6,15 +6,15 @@
 #include<openssl/err.h>  
 #include <openssl/bio.h>  
 #include <string>  
-#ifdef _MSC_VER	//WIN32
-#ifdef _DLL
-#pragma comment(lib, "libeay32.lib")
-#pragma comment(lib, "ssleay32.lib")
-#else
-#pragma comment(lib, "libeay32s.lib")
-#pragma comment(lib, "ssleay32s.lib")
-#endif
-#endif
+//#ifdef _MSC_VER	//WIN32
+//#ifdef _DLL
+//#pragma comment(lib, "libeay32.lib")
+//#pragma comment(lib, "ssleay32.lib")
+//#else
+//#pragma comment(lib, "libeay32s.lib")
+//#pragma comment(lib, "ssleay32s.lib")
+//#endif
+//#endif
 
 #define	RSA_BITS 2048
 

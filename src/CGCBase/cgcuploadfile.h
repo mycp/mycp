@@ -28,7 +28,7 @@ namespace mycp {
 class cgcUploadFile
 {
 public:
-	typedef boost::shared_ptr<cgcUploadFile> pointer;
+	typedef std::shared_ptr<cgcUploadFile> pointer;
 
 	void setName(const tstring& v) {m_name = v;}
 	const tstring& getName(void) const {return m_name;}

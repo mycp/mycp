@@ -33,7 +33,7 @@ namespace mycp {
 class CDSInfo
 {
 public:
-	typedef boost::shared_ptr<CDSInfo> pointer;
+	typedef std::shared_ptr<CDSInfo> pointer;
 
 	const tstring & getDSId(void) const {return m_dsid;}
 	const tstring & getDSCdbc(void) const {return m_dscdbc;}
@@ -51,7 +51,7 @@ private:
 class XmlParseDSs
 {
 public:
-	typedef boost::shared_ptr<XmlParseDSs> pointer;
+	typedef std::shared_ptr<XmlParseDSs> pointer;
 
 	XmlParseDSs(void)
 	{}

@@ -48,7 +48,7 @@ class CRtpService
 	: public cgcRtp
 {
 public:
-	typedef boost::shared_ptr<CRtpService> pointer;
+	typedef std::shared_ptr<CRtpService> pointer;
 
 	static CRtpService::pointer create(void)
 	{

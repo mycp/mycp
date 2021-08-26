@@ -32,7 +32,7 @@ namespace bo
 		: public CBodbHandler
 	{
 	public:
-		typedef boost::shared_ptr<CDbService> pointer;
+		typedef std::shared_ptr<CDbService> pointer;
 		static CDbService::pointer create(void)
 		{
 			return CDbService::pointer(new CDbService());

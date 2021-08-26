@@ -16,7 +16,7 @@ namespace bo
 			, D2HIT_UNKNOWN	= 0xf
 		};
 
-		typedef boost::shared_ptr<CData2HeadInfo> pointer;
+		typedef std::shared_ptr<CData2HeadInfo> pointer;
 		static CData2HeadInfo::pointer create(Data2HeadInfoType type, unsigned int objectid)
 		{
 			return CData2HeadInfo::pointer(new CData2HeadInfo(type, objectid));

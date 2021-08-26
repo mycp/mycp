@@ -35,7 +35,7 @@ namespace bo
 	class CRecordLine
 	{
 	public:
-		typedef boost::shared_ptr<CRecordLine> pointer;
+		typedef std::shared_ptr<CRecordLine> pointer;
 		static CRecordLine::pointer create(const CTableInfo::pointer& tableInfo);
 		static CRecordLine::pointer create(uinteger id, const CTableInfo::pointer& tableInfo);
 

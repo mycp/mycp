@@ -42,7 +42,7 @@ class cgcOnTimerHandler
 	: public cgcLock
 {
 public:
-	typedef boost::shared_ptr<cgcOnTimerHandler> pointer;
+	typedef std::shared_ptr<cgcOnTimerHandler> pointer;
 
 	virtual bool IsThreadSafe(void) const {return false;}
 
@@ -56,7 +56,7 @@ class cgcApplication
 	//: public cgcAttributes
 {
 public:
-	typedef boost::shared_ptr<cgcApplication> pointer;
+	typedef std::shared_ptr<cgcApplication> pointer;
 
 	// Setting in [CGCP_PATH]/conf/[APPNAME]/params.xml file.
 	virtual bool isInited(void) const =0;

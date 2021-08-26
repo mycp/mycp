@@ -56,7 +56,7 @@ class CFileSystemService
 	: public cgcServiceInterface
 {
 public:
-	typedef boost::shared_ptr<CFileSystemService> pointer;
+	typedef std::shared_ptr<CFileSystemService> pointer;
 
 	static CFileSystemService::pointer create(void)
 	{

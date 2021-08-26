@@ -624,9 +624,9 @@ void CModuleImpl::StartSyncThread(void)
 #ifdef USES_THREAD_STACK_SIZE
 		boost::thread_attributes attrs;
 		attrs.set_stack_size(CGC_THREAD_STACK_MIN);
-		m_pSyncThread = boost::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&CModuleImpl::procSyncThread, this)));
+		m_pSyncThread = std::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&CModuleImpl::procSyncThread, this)));
 #else
-		m_pSyncThread = boost::shared_ptr<boost::thread>(new boost::thread(boost::bind(&CModuleImpl::procSyncThread, this)));
+		m_pSyncThread = std::shared_ptr<boost::thread>(new boost::thread(boost::bind(&CModuleImpl::procSyncThread, this)));
 #endif
 		log2(LOG_INFO, "StartSyncThread ok\n");
 	}

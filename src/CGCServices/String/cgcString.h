@@ -31,7 +31,7 @@ class cgcString
 	: public cgcServiceInterface
 {
 public:
-	typedef boost::shared_ptr<cgcString> pointer;
+	typedef std::shared_ptr<cgcString> pointer;
 
 	virtual tstring W2Char(const wchar_t * strSource) const = 0;
 	virtual std::wstring Char2W(const char * strSource) const = 0;
@@ -53,7 +53,7 @@ public:
 
 };
 
-#define CGC_STRINGSERVICE_DEF(s) boost::static_pointer_cast<cgcString, cgcServiceInterface>(s)
+#define CGC_STRINGSERVICE_DEF(s) std::static_pointer_cast<cgcString, cgcServiceInterface>(s)
 
 } // namespace mycp
 

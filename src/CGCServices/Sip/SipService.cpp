@@ -47,7 +47,7 @@ class CSipService
 	: public cgcSip
 {
 public:
-	typedef boost::shared_ptr<CSipService> pointer;
+	typedef std::shared_ptr<CSipService> pointer;
 
 	static CSipService::pointer create(void)
 	{

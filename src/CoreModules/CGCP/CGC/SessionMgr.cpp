@@ -734,16 +734,16 @@ void CSessionImpl::newPrevDataThread(void)
 #ifdef USES_THREAD_STACK_SIZE
 		boost::thread_attributes attrs;
 		attrs.set_stack_size(CGC_THREAD_STACK_MIN);
-		m_pProcPrevData = boost::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&CSessionImpl::do_prevdata, this)));
+		m_pProcPrevData = std::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&CSessionImpl::do_prevdata, this)));
 #else
-		m_pProcPrevData = boost::shared_ptr<boost::thread>(new boost::thread(boost::bind(&CSessionImpl::do_prevdata, this)));
+		m_pProcPrevData = std::shared_ptr<boost::thread>(new boost::thread(boost::bind(&CSessionImpl::do_prevdata, this)));
 #endif
 	}
 }
 
 void CSessionImpl::delPrevDatathread(bool bJoin)
 {
-	boost::shared_ptr<boost::thread>	pProcPrevDataTemp = m_pProcPrevData;
+	std::shared_ptr<boost::thread>	pProcPrevDataTemp = m_pProcPrevData;
 	m_pProcPrevData.reset();
 	if (pProcPrevDataTemp.get()!=NULL)
 	{

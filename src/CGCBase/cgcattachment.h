@@ -46,7 +46,7 @@ protected:
 private:
 	unsigned int m_bufferSize;
 public:
-	typedef boost::shared_ptr<cgcAttachment> pointer;
+	typedef std::shared_ptr<cgcAttachment> pointer;
 	static cgcAttachment::pointer create(void)
 	{
 		return cgcAttachment::pointer(new cgcAttachment());

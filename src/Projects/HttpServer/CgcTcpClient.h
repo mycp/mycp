@@ -43,7 +43,7 @@ namespace httpserver {
 class TcpClient_Callback
 {
 public:
-	typedef boost::shared_ptr<TcpClient_Callback> pointer;
+	typedef std::shared_ptr<TcpClient_Callback> pointer;
 	virtual void OnReceiveData(const mycp::asio::ReceiveBuffer::pointer& data, int nUserData) = 0;
 	virtual void OnConnected(int nUserData){}
 	virtual void OnDisconnect(int nUserData){}
@@ -52,10 +52,10 @@ public:
 class CgcTcpClient
 	: public TcpClient_Handler
 	, public mycp::asio::IoService_Handler
-	, public boost::enable_shared_from_this<CgcTcpClient>
+	, public std::enable_shared_from_this<CgcTcpClient>
 {
 public:
-	typedef boost::shared_ptr<CgcTcpClient> pointer;
+	typedef std::shared_ptr<CgcTcpClient> pointer;
 
 	static CgcTcpClient::pointer create(TcpClient_Callback* pCallback, int nUserData)
 	{
@@ -156,8 +156,8 @@ public:
 			if (m_ipService.get() == 0)
 				m_ipService = mycp::asio::IoService::create();
 
-			TcpClient_Handler::pointer clientHandler = boost::enable_shared_from_this<CgcTcpClient>::shared_from_this();
-			//CgcTcpClient::pointer clientHandler = boost::static_pointer_cast<CgcTcpClient, CgcBaseClient>(boost::enable_shared_from_this<CgcBaseClient>::shared_from_this());
+			TcpClient_Handler::pointer clientHandler = std::enable_shared_from_this<CgcTcpClient>::shared_from_this();
+			//CgcTcpClient::pointer clientHandler = std::static_pointer_cast<CgcTcpClient, CgcBaseClient>(std::enable_shared_from_this<CgcBaseClient>::shared_from_this());
 
 			m_tcpClient = TcpClient::create(clientHandler);
 

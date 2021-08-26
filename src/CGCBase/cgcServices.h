@@ -28,13 +28,13 @@
 namespace mycp {
 
 class cgcCDBCService;
-typedef boost::shared_ptr<cgcCDBCService> cgcCDBCServicePointer;
+typedef std::shared_ptr<cgcCDBCService> cgcCDBCServicePointer;
 
 // cgcServiceManager
 class cgcServiceManager
 {
 public:
-	typedef boost::shared_ptr<cgcServiceManager> pointer;
+	typedef std::shared_ptr<cgcServiceManager> pointer;
 
 	virtual cgcCDBCInfo::pointer getCDBDInfo(const tstring& datasource) const = 0;
 	virtual cgcCDBCServicePointer getCDBDService(const tstring& datasource) = 0;

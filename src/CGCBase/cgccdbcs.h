@@ -30,7 +30,7 @@ class cgcCDBCInfo
 	: public cgcObject
 {
 public:
-	typedef boost::shared_ptr<cgcCDBCInfo> pointer;
+	typedef std::shared_ptr<cgcCDBCInfo> pointer;
 
 	void setName(const tstring& v) {m_name = v;}
 	const tstring& getName(void) const {return m_name;}
@@ -97,7 +97,7 @@ class cgcDataSourceInfo
 	: public cgcObject
 {
 public:
-	typedef boost::shared_ptr<cgcDataSourceInfo> pointer;
+	typedef std::shared_ptr<cgcDataSourceInfo> pointer;
 
 	const tstring& getName(void) const {return m_name;}
 	const tstring& getCDBCService(void) const {return m_cdbcService;}

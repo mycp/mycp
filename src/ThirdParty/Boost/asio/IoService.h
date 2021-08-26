@@ -26,7 +26,7 @@ namespace asio {
 class IoService_Handler
 {
 public:
-	typedef boost::shared_ptr<IoService_Handler> pointer;
+	typedef std::shared_ptr<IoService_Handler> pointer;
 	virtual void OnIoServiceException(void)=0;
 };
 const IoService_Handler::pointer ConstNullIoService_Handler;
@@ -36,8 +36,8 @@ const IoService_Handler::pointer ConstNullIoService_Handler;
 class IoService
 {
 public:
-	typedef boost::shared_ptr<IoService> pointer;
-	typedef boost::shared_ptr<boost::asio::io_service> io_service_ptr; 
+	typedef std::shared_ptr<IoService> pointer;
+	typedef std::shared_ptr<boost::asio::io_service> io_service_ptr; 
 	static IoService::pointer create(void) {return IoService::pointer(new IoService());}
 
 	void start(IoService_Handler::pointer handler=ConstNullIoService_Handler, int nThreadStackSize=200)
@@ -48,7 +48,7 @@ public:
 		{
 			boost::thread_attributes attrs;
 			attrs.set_stack_size(1024*nThreadStackSize);	// 200K
-			m_pProcEventLoop = boost::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&IoService::do_event_loop, this)));
+			m_pProcEventLoop = std::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&IoService::do_event_loop, this)));
 			//m_pProcEventLoop = new boost::thread(boost::bind(&IoService::do_event_loop, this));
 		}
 	}
@@ -186,7 +186,7 @@ public:
 private:
 	bool m_bKilled;
 	io_service_ptr m_ioservice;
-	boost::shared_ptr<boost::thread> m_pProcEventLoop;
+	std::shared_ptr<boost::thread> m_pProcEventLoop;
 	IoService_Handler::pointer m_pHandler;
 };
 

@@ -157,13 +157,13 @@ void TimerInfo::RunTimer(void)
 				attrs.set_stack_size(max(m_nThreadStackSize*1024,CGC_THREAD_STACK_MIN));
 				//attrs.set_stack_size(CGC_THREAD_STACK_MAX);
 				//attrs.set_stack_size(CGC_THREAD_STACK_MIN);
-				m_timerThread = boost::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&TimerInfo::do_timer, this)));
+				m_timerThread = std::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&TimerInfo::do_timer, this)));
 			}
 			else {
-				m_timerThread = boost::shared_ptr<boost::thread>(new boost::thread(boost::bind(&TimerInfo::do_timer, this)));
+				m_timerThread = std::shared_ptr<boost::thread>(new boost::thread(boost::bind(&TimerInfo::do_timer, this)));
 			}
 #else
-			m_timerThread = boost::shared_ptr<boost::thread>(new boost::thread(boost::bind(&TimerInfo::do_timer, this)));
+			m_timerThread = std::shared_ptr<boost::thread>(new boost::thread(boost::bind(&TimerInfo::do_timer, this)));
 #endif
 			if (getOneShot())
 			{
@@ -194,7 +194,7 @@ void TimerInfo::KillTimer(void)
 	if (m_bOneShot) return;	// add by hd 2016-08-27
 	//boost::mutex::scoped_lock lockTimer(m_mutex);
 	//m_timerHandler.reset();
-	boost::shared_ptr<boost::thread> timerThreadTemp = m_timerThread;
+	std::shared_ptr<boost::thread> timerThreadTemp = m_timerThread;
 	m_timerThread.reset();
 	if (timerThreadTemp.get()!=NULL)
 	{

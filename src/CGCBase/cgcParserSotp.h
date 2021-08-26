@@ -32,7 +32,7 @@ class cgcParserSotp
 	: public cgcParserBase
 {
 public:
-	typedef boost::shared_ptr<cgcParserSotp> pointer;
+	typedef std::shared_ptr<cgcParserSotp> pointer;
 
 	// protocol
 	virtual SOTP_PROTO_VERSION getSotpVersion(void) const = 0;
@@ -128,7 +128,7 @@ public:
 
 const cgcParserSotp::pointer cgcNullParserSotpService;
 
-#define CGC_PARSERSOTPSERVICE_DEF(s) boost::static_pointer_cast<cgcParserSotp, cgcServiceInterface>(s)
+#define CGC_PARSERSOTPSERVICE_DEF(s) std::static_pointer_cast<cgcParserSotp, cgcServiceInterface>(s)
 
 } // namespace mycp
 

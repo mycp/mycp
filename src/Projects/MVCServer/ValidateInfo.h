@@ -23,7 +23,7 @@
 class CValidateInfo
 {
 public:
-	typedef boost::shared_ptr<CValidateInfo> pointer;
+	typedef std::shared_ptr<CValidateInfo> pointer;
 
 	const tstring& getRequestUrl(void) const {return m_requestUrl;}
 	const tstring& getValidateApp(void) const {return m_validateApp;}

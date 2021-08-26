@@ -45,17 +45,17 @@ namespace httpservice {
 class TcpClient_Callback
 {
 public:
-	typedef boost::shared_ptr<TcpClient_Callback> pointer;
+	typedef std::shared_ptr<TcpClient_Callback> pointer;
 	virtual void OnReceiveData(const mycp::asio::ReceiveBuffer::pointer& data) = 0;
 };
 
 class CgcTcpClient
 	: public TcpClient_Handler
 	, public mycp::asio::IoService_Handler
-	, public boost::enable_shared_from_this<CgcTcpClient>
+	, public std::enable_shared_from_this<CgcTcpClient>
 {
 public:
-	typedef boost::shared_ptr<CgcTcpClient> pointer;
+	typedef std::shared_ptr<CgcTcpClient> pointer;
 
 	static CgcTcpClient::pointer create(TcpClient_Callback* pCallback)
 	{

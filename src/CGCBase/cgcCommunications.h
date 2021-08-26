@@ -30,7 +30,7 @@ namespace mycp {
 class cgcRemote
 {
 public:
-	typedef boost::shared_ptr<cgcRemote> pointer;
+	typedef std::shared_ptr<cgcRemote> pointer;
 
 	virtual int getProtocol(void) const = 0;
 	virtual int getServerPort(void) const = 0;
@@ -54,7 +54,7 @@ const cgcRemote::pointer NullcgcRemote;
 class cgcCommHandler
 {
 public:
-	typedef boost::shared_ptr<cgcCommHandler> pointer;
+	typedef std::shared_ptr<cgcCommHandler> pointer;
 
 	virtual int onRemoteAccept(const cgcRemote::pointer& pcgcRemote) = 0;
 	virtual int onRecvData(const cgcRemote::pointer& pcgcRemote, const unsigned char * recvData, size_t recvLen) = 0;
@@ -65,7 +65,7 @@ class cgcCommunication
 	: public cgcServiceInterface
 {
 public:
-	typedef boost::shared_ptr<cgcCommunication> pointer;
+	typedef std::shared_ptr<cgcCommunication> pointer;
 
 	virtual void setCommHandler(cgcCommHandler::pointer handler) {m_commHandler = handler;}
 	virtual cgcCommHandler::pointer getCommHandler(void) const {return m_commHandler;}
@@ -81,7 +81,7 @@ protected:
 
 const cgcCommunication::pointer cgcNullCommunication;
 
-#define CGC_COMMSERVICE_DEF(s) boost::static_pointer_cast<cgcCommunication, cgcServiceInterface>(s)
+#define CGC_COMMSERVICE_DEF(s) std::static_pointer_cast<cgcCommunication, cgcServiceInterface>(s)
 
 } // namespace mycp
 

@@ -51,7 +51,7 @@ class CAppService
 	: public cgcServiceInterface
 {
 public:
-	typedef boost::shared_ptr<CAppService> pointer;
+	typedef std::shared_ptr<CAppService> pointer;
 
 	static CAppService::pointer create(void)
 	{
