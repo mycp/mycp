@@ -69,7 +69,7 @@ struct tagSotpRtpDataHead
 class CSotpRtpFrame
 {
 public:
-	typedef boost::shared_ptr<CSotpRtpFrame> pointer;
+	typedef std::shared_ptr<CSotpRtpFrame> pointer;
 	static CSotpRtpFrame::pointer create(void)
 	{
 		return CSotpRtpFrame::pointer(new CSotpRtpFrame());

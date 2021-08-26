@@ -39,7 +39,7 @@ namespace bo
 		: public CDbService
 	{
 	public:
-		typedef boost::shared_ptr<CBodb> pointer;
+		typedef std::shared_ptr<CBodb> pointer;
 		static CBodb::pointer create(void)
 		{
 			return CBodb::pointer(new CBodb());

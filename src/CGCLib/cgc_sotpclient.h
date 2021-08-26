@@ -16,7 +16,7 @@ class CCGCSotpClient
 	, public CgcClientHandler
 {
 public:
-	typedef boost::shared_ptr<CCGCSotpClient> pointer;
+	typedef std::shared_ptr<CCGCSotpClient> pointer;
 	static CCGCSotpClient::pointer create(void)
 	{
 		return CCGCSotpClient::pointer(new CCGCSotpClient());

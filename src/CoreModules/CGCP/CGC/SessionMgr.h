@@ -38,7 +38,7 @@
 class CHoldResponseInfo
 {
 public:
-	typedef boost::shared_ptr<CHoldResponseInfo> pointer;
+	typedef std::shared_ptr<CHoldResponseInfo> pointer;
 	static CHoldResponseInfo::pointer create(const cgcResponse::pointer& pHoldResponse,int nHoldSecond) {
 		return CHoldResponseInfo::pointer(new CHoldResponseInfo(pHoldResponse,nHoldSecond));}
 	CHoldResponseInfo(const cgcResponse::pointer& pHoldResponse,int nHoldSecond)
@@ -59,7 +59,7 @@ public:
 class CSessionModuleInfo
 {
 public:
-	typedef boost::shared_ptr<CSessionModuleInfo> pointer;
+	typedef std::shared_ptr<CSessionModuleInfo> pointer;
 	static CSessionModuleInfo::pointer create(const ModuleItem::pointer& pModuleItem,const cgcRemote::pointer& pRemote) {
 		return CSessionModuleInfo::pointer(new CSessionModuleInfo(pModuleItem,pRemote));}
 	CSessionModuleInfo(const ModuleItem::pointer& pModuleItem,const cgcRemote::pointer& pRemote)
@@ -100,7 +100,7 @@ private:
 #ifndef USES_DISABLE_PREV_DATA
 	std::string m_sPrevData;
 	// Used for processing XML format error, timeout for remote data is returned.
-	boost::shared_ptr<boost::thread> m_pProcPrevData;
+	std::shared_ptr<boost::thread> m_pProcPrevData;
 	time_t m_tNewProcPrevThread;
 	time_t m_tPrevDataTime;
 #endif

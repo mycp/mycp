@@ -7,7 +7,7 @@
 class CBuffer
 {
 public:
-	typedef boost::shared_ptr<CBuffer> pointer;
+	typedef std::shared_ptr<CBuffer> pointer;
 	static CBuffer::pointer create(void){
 		return CBuffer::pointer(new CBuffer(0, 0));
 	}

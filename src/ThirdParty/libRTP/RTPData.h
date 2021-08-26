@@ -9,7 +9,7 @@
 class LIBRTP_CLASS CRTPData
 {
 public:
-	typedef boost::shared_ptr<CRTPData> pointer;
+	typedef std::shared_ptr<CRTPData> pointer;
 
 	static CRTPData::pointer create(void)
 	{

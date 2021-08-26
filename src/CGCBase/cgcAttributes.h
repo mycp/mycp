@@ -29,7 +29,7 @@ namespace mycp {
 class cgcKeyValue
 {
 public:
-	typedef boost::shared_ptr<cgcKeyValue> pointer;
+	typedef std::shared_ptr<cgcKeyValue> pointer;
 
 	void setKey(const tstring& key) {m_key = key;}
 	const tstring& getKey(void) const {return m_key;}
@@ -50,7 +50,7 @@ const cgcKeyValue::pointer cgcNullKeyValue;
 class cgcAttributes
 {
 public:
-	typedef boost::shared_ptr<cgcAttributes> pointer;
+	typedef std::shared_ptr<cgcAttributes> pointer;
 
 	virtual void setProperty(const tstring& key, const cgcValueInfo::pointer& value, bool clear = true) = 0;
 	virtual void setProperty(int key, const cgcValueInfo::pointer& value, bool clear = true) = 0;

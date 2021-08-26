@@ -11,7 +11,7 @@ namespace bo
 	class CData2OffsetInfo
 	{
 	public:
-		typedef boost::shared_ptr<CData2OffsetInfo> pointer;
+		typedef std::shared_ptr<CData2OffsetInfo> pointer;
 		static CData2OffsetInfo::pointer create(CPageHeadInfo::pointer pageHeadInfo, unsigned short offset, unsigned short index)
 		{
 			return CData2OffsetInfo::pointer(new CData2OffsetInfo(pageHeadInfo, offset, index));

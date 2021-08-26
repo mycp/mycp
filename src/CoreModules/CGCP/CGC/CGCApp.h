@@ -65,7 +65,7 @@ namespace mycp {
 class CMySessionInfo
 {
 public:
-	typedef boost::shared_ptr<CMySessionInfo> pointer;
+	typedef std::shared_ptr<CMySessionInfo> pointer;
 	static CMySessionInfo::pointer create(const tstring & sMySessionId,const tstring& sUserAgent)
 	{
 		return CMySessionInfo::pointer(new CMySessionInfo(sMySessionId,sUserAgent));
@@ -93,7 +93,7 @@ private:
 class CNotKeepAliveRemote
 {
 public:
-	typedef boost::shared_ptr<CNotKeepAliveRemote> pointer;
+	typedef std::shared_ptr<CNotKeepAliveRemote> pointer;
 	static CNotKeepAliveRemote::pointer create(const cgcRemote::pointer& pcgcRemote)
 	{
 		return CNotKeepAliveRemote::pointer(new CNotKeepAliveRemote(pcgcRemote));
@@ -125,10 +125,10 @@ class CGCApp
 	//, public TcpClient_Callback	// for tcp
 	, public CParserSotpHandler
 	, public CParserHttpHandler
-	, public boost::enable_shared_from_this<CGCApp>
+	, public std::enable_shared_from_this<CGCApp>
 {
 public:
-	typedef boost::shared_ptr<CGCApp> pointer;
+	typedef std::shared_ptr<CGCApp> pointer;
 
 	static CGCApp::pointer create(const tstring & sPath)
 	{
@@ -299,9 +299,9 @@ private:
 	//CHttpSessionMgr m_mgrHttpSession;
 
 	tstring m_sModulePath;
-	boost::shared_ptr<boost::thread> m_pProcSessionTimeout;
-	boost::shared_ptr<boost::thread> m_pProcDataResend;
-	boost::shared_ptr<boost::thread> m_pProcAutoUpdate;
+	std::shared_ptr<boost::thread> m_pProcSessionTimeout;
+	std::shared_ptr<boost::thread> m_pProcDataResend;
+	std::shared_ptr<boost::thread> m_pProcAutoUpdate;
 	//CLockMap<short, cgcSeqInfo::pointer> m_mapSeqInfo;
 
 	bool m_bService;

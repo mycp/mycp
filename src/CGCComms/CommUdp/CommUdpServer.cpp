@@ -197,10 +197,10 @@ class CUdpServer
 	, public cgcOnTimerHandler
 	, public cgcCommunication
 	, public CRemoteHandler
-	, public boost::enable_shared_from_this<CUdpServer>
+	, public std::enable_shared_from_this<CUdpServer>
 {
 public:
-	typedef boost::shared_ptr<CUdpServer> pointer;
+	typedef std::shared_ptr<CUdpServer> pointer;
 	static CUdpServer::pointer create(int nIndex)
 	{
 		return CUdpServer::pointer(new CUdpServer(nIndex));

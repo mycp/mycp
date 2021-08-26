@@ -75,8 +75,8 @@ int CgcTcpClient::startClient(const tstring & sCgcServerAddr, unsigned int bindP
 	if (m_ipService.get() == 0)
 		m_ipService = mycp::asio::IoService::create();
 
-	//TcpClient_Handler::pointer clientHandler = boost::enable_shared_from_this<CgcTcpClient>::shared_from_this();
-	CgcTcpClient::pointer clientHandler = boost::static_pointer_cast<CgcTcpClient, CgcBaseClient>(boost::enable_shared_from_this<CgcBaseClient>::shared_from_this());
+	//TcpClient_Handler::pointer clientHandler = std::enable_shared_from_this<CgcTcpClient>::shared_from_this();
+	CgcTcpClient::pointer clientHandler = std::static_pointer_cast<CgcTcpClient, CgcBaseClient>(std::enable_shared_from_this<CgcBaseClient>::shared_from_this());
 	m_tcpClient = mycp::asio::TcpClient::create(clientHandler);
 	//m_tcpClient->socket()->set_option(boost::asio::socket_base::send_buffer_size(64*1024));		// 8192
 

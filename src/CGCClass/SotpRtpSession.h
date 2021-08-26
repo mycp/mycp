@@ -30,7 +30,7 @@ namespace mycp {
 class CSotpRtpSession
 {
 public:
-	typedef boost::shared_ptr<CSotpRtpSession> pointer;
+	typedef std::shared_ptr<CSotpRtpSession> pointer;
 	static CSotpRtpSession::pointer create(bool bServerMode)
 	{
 		return CSotpRtpSession::pointer(new CSotpRtpSession(bServerMode));

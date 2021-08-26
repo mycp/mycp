@@ -34,7 +34,7 @@ class cgcCookieInfo
 	: public cgcObject
 {
 public:
-	typedef boost::shared_ptr<cgcCookieInfo> pointer;
+	typedef std::shared_ptr<cgcCookieInfo> pointer;
 	static cgcCookieInfo::pointer create(void) {return cgcCookieInfo::pointer(new cgcCookieInfo());}
 	static cgcCookieInfo::pointer create(const tstring& sName,const tstring& sValue,const tstring& sPath="/",time_t tExpiresTime=0)
 	{return cgcCookieInfo::pointer(new cgcCookieInfo(sName,sValue,sPath,tExpiresTime));}

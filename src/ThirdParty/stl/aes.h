@@ -5,8 +5,8 @@
 #include <openssl/aes.h>  
 #include <openssl/rand.h>  
 #ifdef _MSC_VER	//WIN32
-#pragma comment(lib, "libeay32.lib")  
-#pragma comment(lib, "ssleay32.lib")  
+//#pragma comment(lib, "libeay32.lib")  
+//#pragma comment(lib, "ssleay32.lib")  
 #endif
 
 // ****ECB模式

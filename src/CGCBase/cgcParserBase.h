@@ -37,7 +37,7 @@ class cgcParserBase
 	: public cgcServiceInterface
 {
 public:
-	typedef boost::shared_ptr<cgcParserBase> pointer;
+	typedef std::shared_ptr<cgcParserBase> pointer;
 
 	virtual void setParseCallback(cgcParserCallback* pCallback) = 0;
 

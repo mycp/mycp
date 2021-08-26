@@ -77,7 +77,7 @@ static BOOL CALLBACK EnumWindowsCloseWindow(HWND hwnd,LPARAM lParam)
 void KillCGCP(void)
 {
 	const DWORD nCurrentProcessId = GetCurrentProcessId();
-	const std::string strExeName(theModulePath);
+	const std::string strExeName(theModulePath.c_str());
 
 	TCHAR szPath[MAX_PATH];
 	Sleep(1000);

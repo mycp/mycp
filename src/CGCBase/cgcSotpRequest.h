@@ -31,7 +31,7 @@ class cgcSotpRequest
 	: public cgcRequest
 {
 public:
-	typedef boost::shared_ptr<cgcSotpRequest> pointer;
+	typedef std::shared_ptr<cgcSotpRequest> pointer;
 
 	virtual bool isHasAttachInfo(void) const =0;
 	virtual cgcAttachment::pointer getAttachment(void) const =0;

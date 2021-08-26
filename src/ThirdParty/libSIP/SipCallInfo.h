@@ -8,7 +8,7 @@
 class SipCallInfo
 {
 public:
-	typedef boost::shared_ptr<SipCallInfo> pointer;
+	typedef std::shared_ptr<SipCallInfo> pointer;
 
 	static SipCallInfo::pointer create(int tranId, int callId, int dialogId)
 	{

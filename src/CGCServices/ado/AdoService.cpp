@@ -55,7 +55,7 @@ using namespace mycp;
 class CCDBCResultSet
 {
 public:
-	typedef boost::shared_ptr<CCDBCResultSet> pointer;
+	typedef std::shared_ptr<CCDBCResultSet> pointer;
 
 	int size(void) const
 	{
@@ -188,7 +188,7 @@ class CAdoCdbc
 	: public cgcCDBCService
 {
 public:
-	typedef boost::shared_ptr<CAdoCdbc> pointer;
+	typedef std::shared_ptr<CAdoCdbc> pointer;
 
 	CAdoCdbc(void)
 		: m_isopen(false)

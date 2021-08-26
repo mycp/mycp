@@ -53,7 +53,7 @@ namespace bo
 	class CDatabase
 	{
 	public:
-		typedef boost::shared_ptr<CDatabase> pointer;
+		typedef std::shared_ptr<CDatabase> pointer;
 		static CDatabase::pointer create(const CDatabaseInfo::pointer& dbinfo);
 
 		void setpath(const tstring & path);

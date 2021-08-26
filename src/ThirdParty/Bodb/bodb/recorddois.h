@@ -30,7 +30,7 @@ namespace bo
 	class CRecordDOIs
 	{
 	public:
-		typedef boost::shared_ptr<CRecordDOIs> pointer;
+		typedef std::shared_ptr<CRecordDOIs> pointer;
 		static CRecordDOIs::pointer create(unsigned int recordid)
 		{
 			return CRecordDOIs::pointer(new CRecordDOIs(recordid));

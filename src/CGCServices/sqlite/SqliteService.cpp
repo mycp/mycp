@@ -66,7 +66,7 @@ class CCDBCResultSet
 	//: public cgcObject
 {
 public:
-	typedef boost::shared_ptr<CCDBCResultSet> pointer;
+	typedef std::shared_ptr<CCDBCResultSet> pointer;
 
 	CCDBCResultSet::pointer copyNew(void) const
 	{
@@ -322,7 +322,7 @@ class CSqliteCdbc
 	: public cgcCDBCService
 {
 public:
-	typedef boost::shared_ptr<CSqliteCdbc> pointer;
+	typedef std::shared_ptr<CSqliteCdbc> pointer;
 
 	CSqliteCdbc(const tstring& path)
 		: m_pSqlite(NULL), m_tLastTime(0), m_sAppConfPath(path)
@@ -1016,7 +1016,7 @@ class CTimeHandler
 	: public cgcOnTimerHandler
 {
 public:
-	typedef boost::shared_ptr<CTimeHandler> pointer;
+	typedef std::shared_ptr<CTimeHandler> pointer;
 	static CTimeHandler::pointer create(void)
 	{
 		return CTimeHandler::pointer(new CTimeHandler());

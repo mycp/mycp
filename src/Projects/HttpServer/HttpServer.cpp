@@ -18,8 +18,8 @@
 #define USES_OPENSSL
 #ifdef USES_OPENSSL
 #ifdef WIN32
-#pragma comment(lib, "libeay32.lib")  
-#pragma comment(lib, "ssleay32.lib") 
+//#pragma comment(lib, "libeay32.lib")  
+//#pragma comment(lib, "ssleay32.lib") 
 #endif // WIN32
 #endif // USES_OPENSSL
 //#include <ThirdParty/Boost/asio/CgcTcpClient.h>
@@ -139,7 +139,7 @@ cgcParameterMap::pointer theAppInitParameters;
 class CResInfo : public cgcObject
 {
 public:
-	typedef boost::shared_ptr<CResInfo> pointer;
+	typedef std::shared_ptr<CResInfo> pointer;
 	static CResInfo::pointer create(const std::string& sFileName, const std::string& sMimeType)
 	{
 		return CResInfo::pointer(new CResInfo(sFileName,sMimeType));
@@ -215,7 +215,7 @@ enum REQUEST_INFO_STATE
 class CRequestPassInfo
 {
 public:
-	typedef boost::shared_ptr<CRequestPassInfo> pointer;
+	typedef std::shared_ptr<CRequestPassInfo> pointer;
 	static CRequestPassInfo::pointer create(int nRequestId, const std::string& sFastcgiPass)
 	{
 		return CRequestPassInfo::pointer(new CRequestPassInfo(nRequestId, sFastcgiPass));
@@ -362,7 +362,7 @@ enum SCRIPT_FILE_TYPE
 class CFastcgiRequestInfo
 {
 public:
-	typedef boost::shared_ptr<CFastcgiRequestInfo> pointer;
+	typedef std::shared_ptr<CFastcgiRequestInfo> pointer;
 	static CFastcgiRequestInfo::pointer create(const CRequestPassInfo::pointer& pRequestPassInfo, const cgcHttpResponse::pointer& response)
 	{
 		return CFastcgiRequestInfo::pointer(new CFastcgiRequestInfo(pRequestPassInfo, response));
@@ -466,7 +466,7 @@ class CHttpTimeHandler
 	, public mycp::httpserver::TcpClient_Callback	// for tcp
 {
 public:
-	typedef boost::shared_ptr<CHttpTimeHandler> pointer;
+	typedef std::shared_ptr<CHttpTimeHandler> pointer;
 	static CHttpTimeHandler::pointer create(void)
 	{
 		return CHttpTimeHandler::pointer(new CHttpTimeHandler());
@@ -1192,7 +1192,7 @@ static unsigned char* FCGI_BuildParamsBody(int nRequestId, const char *name,int 
 class CContentTypeInfo
 {
 public:
-	typedef boost::shared_ptr<CContentTypeInfo> pointer;
+	typedef std::shared_ptr<CContentTypeInfo> pointer;
 	static CContentTypeInfo::pointer create(const tstring& sContentType, bool bDownload, bool bImageOrBinary=false, SCRIPT_FILE_TYPE nScriptFileType = SCRIPT_FILE_TYPE_UNKNOWN)
 	{
 		return CContentTypeInfo::pointer(new CContentTypeInfo(sContentType, bDownload, bImageOrBinary, nScriptFileType));

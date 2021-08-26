@@ -31,7 +31,7 @@ namespace mycp {
 class cgcSeqInfo
 {
 public:
-	typedef boost::shared_ptr<cgcSeqInfo> pointer;
+	typedef std::shared_ptr<cgcSeqInfo> pointer;
 	static cgcSeqInfo::pointer create(void)
 	{
 		return cgcSeqInfo::pointer(new cgcSeqInfo());

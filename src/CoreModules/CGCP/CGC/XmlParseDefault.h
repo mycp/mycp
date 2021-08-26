@@ -103,7 +103,7 @@ private:
 class CPortApp
 {
 public:
-	typedef boost::shared_ptr<CPortApp> pointer;
+	typedef std::shared_ptr<CPortApp> pointer;
 
 	void setPort(int v) {m_port = v;}
 	int getPort(void) const {return m_port;}

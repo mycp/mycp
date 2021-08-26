@@ -66,7 +66,7 @@ mycp::cgcApplication2::pointer theApplication2;
 class CCDBCResultSet
 {
 public:
-	typedef boost::shared_ptr<CCDBCResultSet> pointer;
+	typedef std::shared_ptr<CCDBCResultSet> pointer;
 
 	CCDBCResultSet::pointer copyNew(void) const
 	{
@@ -290,7 +290,7 @@ class CMysqlCdbc
 	: public cgcCDBCService
 {
 public:
-	typedef boost::shared_ptr<CMysqlCdbc> pointer;
+	typedef std::shared_ptr<CMysqlCdbc> pointer;
 
 	CMysqlCdbc(const tstring& path)
 		//: m_driver(NULL), m_con(NULL)
@@ -1383,7 +1383,7 @@ class CTimeHandler
 	: public cgcOnTimerHandler
 {
 public:
-	typedef boost::shared_ptr<CTimeHandler> pointer;
+	typedef std::shared_ptr<CTimeHandler> pointer;
 	static CTimeHandler::pointer create(void)
 	{
 		return CTimeHandler::pointer(new CTimeHandler());

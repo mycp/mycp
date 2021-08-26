@@ -72,7 +72,7 @@ class CRtpRemoteInfo
 	: public CCommEventData
 {
 public:
-	typedef boost::shared_ptr<CRtpRemoteInfo> pointer;
+	typedef std::shared_ptr<CRtpRemoteInfo> pointer;
 
 	static CRtpRemoteInfo::pointer create(CCommEventData::CommEventType commEventType)
 	{
@@ -188,10 +188,10 @@ class CRtpServer
 	, public cgcOnTimerHandler
 	, public cgcCommunication
 	, public CRemoteHandler
-	, public boost::enable_shared_from_this<CRtpServer>
+	, public std::enable_shared_from_this<CRtpServer>
 {
 public:
-	typedef boost::shared_ptr<CRtpServer> pointer;
+	typedef std::shared_ptr<CRtpServer> pointer;
 	static CRtpServer::pointer create(cgcRtp::pointer rtpService)
 	{
 		return CRtpServer::pointer(new CRtpServer(rtpService));

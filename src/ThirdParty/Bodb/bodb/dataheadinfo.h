@@ -34,7 +34,7 @@ namespace bo
 			, DHIT_UNKNOWN	= 0xf
 		};
 
-		typedef boost::shared_ptr<CDataHeadInfo> pointer;
+		typedef std::shared_ptr<CDataHeadInfo> pointer;
 		static CDataHeadInfo::pointer create(DataHeadInfoType type, unsigned int objectid)
 		{
 			return CDataHeadInfo::pointer(new CDataHeadInfo(type, objectid));

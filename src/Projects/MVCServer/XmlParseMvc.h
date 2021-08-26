@@ -33,7 +33,7 @@ using boost::property_tree::ptree;
 class CMvcInfo
 {
 public:
-	typedef boost::shared_ptr<CMvcInfo> pointer;
+	typedef std::shared_ptr<CMvcInfo> pointer;
 	const tstring & getServletName(void) const {return m_sServletName;}
 	const tstring & getFullName(void) const {return m_sFullName;}
 	const tstring & getMvcFile(void) const {return m_sMvcFile;}

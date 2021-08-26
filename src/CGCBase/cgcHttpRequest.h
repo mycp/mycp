@@ -31,7 +31,7 @@ class cgcHttpRequest
 	: public cgcRequest
 {
 public:
-	typedef boost::shared_ptr<cgcHttpRequest> pointer;
+	typedef std::shared_ptr<cgcHttpRequest> pointer;
 
 	virtual const tstring& getHost(void) const = 0;
 	virtual const tstring& getModuleName(void) const = 0;

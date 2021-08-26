@@ -20,8 +20,8 @@
 #define USES_OPENSSL
 #ifdef USES_OPENSSL
 #ifdef WIN32
-#pragma comment(lib, "libeay32.lib")  
-#pragma comment(lib, "ssleay32.lib") 
+//#pragma comment(lib, "libeay32.lib")  
+//#pragma comment(lib, "ssleay32.lib") 
 #endif // WIN32
 #endif // USES_OPENSSL
 
@@ -71,7 +71,7 @@ class CHttpService
 	: public cgcServiceInterface
 {
 public:
-	typedef boost::shared_ptr<CHttpService> pointer;
+	typedef std::shared_ptr<CHttpService> pointer;
 
 	static CHttpService::pointer create(void)
 	{

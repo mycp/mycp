@@ -25,7 +25,7 @@ namespace mycp {
 class CVirtualHost
 {
 public:
-	typedef boost::shared_ptr<CVirtualHost> pointer;
+	typedef std::shared_ptr<CVirtualHost> pointer;
 
 	const tstring& getHost(void) const {return m_host;}
 
@@ -77,7 +77,7 @@ const CVirtualHost::pointer NullVirtualHost;
 class CFastcgiInfo
 {
 public:
-	typedef boost::shared_ptr<CFastcgiInfo> pointer;
+	typedef std::shared_ptr<CFastcgiInfo> pointer;
 	static CFastcgiInfo::pointer create(const std::string& sName, const std::string& sUrl)
 	{
 		return CFastcgiInfo::pointer(new CFastcgiInfo(sName, sUrl));

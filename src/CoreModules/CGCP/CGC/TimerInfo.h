@@ -53,7 +53,7 @@ private:
 	const void * m_pvParam;
 
 	TimerState m_timerState;
-	boost::shared_ptr<boost::thread> m_timerThread;
+	std::shared_ptr<boost::thread> m_timerThread;
 	struct timeb m_tLastRunTime;
 
 public:

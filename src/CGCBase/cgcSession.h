@@ -31,10 +31,10 @@ const int DEFAULT_MAX_INACTIVE_INTERVAL = 10;	//10*60;
 
 class cgcSession
 	//: public cgcAttributes
-	: public boost::enable_shared_from_this<cgcSession>
+	: public std::enable_shared_from_this<cgcSession>
 {
 public:
-	typedef boost::shared_ptr<cgcSession> pointer;
+	typedef std::shared_ptr<cgcSession> pointer;
 
 	//////////////////////////////////////////
 	//	session info

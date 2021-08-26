@@ -35,7 +35,7 @@ namespace mycp {
 class CCSPFileInfo
 {
 public:
-	typedef boost::shared_ptr<CCSPFileInfo> pointer;
+	typedef std::shared_ptr<CCSPFileInfo> pointer;
 
 	bool isModified(ubigint filesize, time_t lastTime) {return m_fileSize != filesize || m_lastTime != lastTime;}
 
@@ -63,7 +63,7 @@ private:
 class CFileScripts
 {
 public:
-	typedef boost::shared_ptr<CFileScripts> pointer;
+	typedef std::shared_ptr<CFileScripts> pointer;
 
 	typedef enum ScriptObject_Type
 	{

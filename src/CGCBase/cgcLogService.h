@@ -30,7 +30,7 @@ class cgcLogService
 	: public cgcServiceInterface
 {
 public:
-	typedef boost::shared_ptr<cgcLogService> pointer;
+	typedef std::shared_ptr<cgcLogService> pointer;
 
 	virtual void log(LogLevel level, const char * format,...) = 0;
 	virtual void log(LogLevel level, const wchar_t * format,...) = 0;
@@ -41,7 +41,7 @@ public:
 
 const cgcLogService::pointer cgcNullLogService;
 
-#define CGC_LOGSERVICE_DEF(s) boost::static_pointer_cast<cgcLogService, cgcServiceInterface>(s)
+#define CGC_LOGSERVICE_DEF(s) std::static_pointer_cast<cgcLogService, cgcServiceInterface>(s)
 
 } // namespace mycp
 

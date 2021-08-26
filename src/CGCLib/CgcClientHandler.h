@@ -74,7 +74,7 @@ enum SOTP_CLIENT_CONFIG_TYPE
 class DoSotpClientHandler
 {
 public:
-	typedef boost::shared_ptr<DoSotpClientHandler> pointer;
+	typedef std::shared_ptr<DoSotpClientHandler> pointer;
 
 	// response handler
 	virtual void doSetResponseHandler(CgcClientHandler * newv) = 0;

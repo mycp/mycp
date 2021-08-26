@@ -34,7 +34,7 @@ using boost::property_tree::ptree;
 class XmlParseStructs
 {
 public:
-	typedef boost::shared_ptr<XmlParseStructs> pointer;
+	typedef std::shared_ptr<XmlParseStructs> pointer;
 	XmlParseStructs(void)
 	{}
 	~XmlParseStructs(void)

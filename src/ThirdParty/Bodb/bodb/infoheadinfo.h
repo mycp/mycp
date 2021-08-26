@@ -36,7 +36,7 @@ namespace bo
 			, IHIT_UNKNOWN		= 0xf
 		};
 
-		typedef boost::shared_ptr<CInfoHeadInfo> pointer;
+		typedef std::shared_ptr<CInfoHeadInfo> pointer;
 		static CInfoHeadInfo::pointer create(InfoHeadInfoType type, unsigned int objectid)
 		{
 			return CInfoHeadInfo::pointer(new CInfoHeadInfo(type, objectid));

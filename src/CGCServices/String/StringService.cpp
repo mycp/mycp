@@ -324,7 +324,7 @@ class CStringService
 	: public cgcString
 {
 public:
-	typedef boost::shared_ptr<CStringService> pointer;
+	typedef std::shared_ptr<CStringService> pointer;
 
 	static CStringService::pointer create(void)
 	{
@@ -1034,9 +1034,9 @@ protected:
 		default:
 			{
 				if (sKey.empty())
-					ptResponse.push_back(std::make_pair(L"", conv::utf_to_utf<wchar_t>(pValueInfo->toString().c_str())));
+					ptResponse.push_back(std::make_pair(L"", wptree(conv::utf_to_utf<wchar_t>(pValueInfo->toString().c_str()))));
 				else
-					ptResponse.push_back(std::make_pair(conv::utf_to_utf<wchar_t>(sKey), conv::utf_to_utf<wchar_t>(pValueInfo->toString().c_str())));
+					ptResponse.push_back(std::make_pair(conv::utf_to_utf<wchar_t>(sKey), wptree(conv::utf_to_utf<wchar_t>(pValueInfo->toString().c_str()))));
 				//if (bVector || (bRoot && sKey.empty()))
 				//	ptResponse.push_back(std::make_pair(L"", conv::utf_to_utf<wchar_t>(pValueInfo->toString())));		// สýื้
 				//else

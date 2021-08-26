@@ -538,7 +538,7 @@ void CGCApp::do_autoupdate(void)
 			}
 			pModuleImpl->m_sTempFile = sTempFile;
 #ifdef USES_MODULE_SERVICE_MANAGER
-			CModuleImpl::pointer pNewApplication = boost::static_pointer_cast<CModuleImpl,cgcApplication>(pUpdateFromApplication);
+			CModuleImpl::pointer pNewApplication = std::static_pointer_cast<CModuleImpl,cgcApplication>(pUpdateFromApplication);
 #else
 			CModuleImpl::pointer pNewApplication(pUpdateFromApplication);
 #endif
@@ -919,11 +919,11 @@ void CGCApp::AppInit(bool bNTService)
 #ifdef USES_THREAD_STACK_SIZE
 	boost::thread_attributes attrs;
 	attrs.set_stack_size(CGC_THREAD_STACK_MAX);	// CGC_THREAD_STACK_MIN
-	m_pProcSessionTimeout = boost::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&CGCApp::do_sessiontimeout, this)));
-	m_pProcDataResend = boost::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&CGCApp::do_dataresend, this)));
+	m_pProcSessionTimeout = std::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&CGCApp::do_sessiontimeout, this)));
+	m_pProcDataResend = std::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&CGCApp::do_dataresend, this)));
 #else
-	m_pProcSessionTimeout = boost::shared_ptr<boost::thread>(new boost::thread(boost::bind(&CGCApp::do_sessiontimeout, this)));
-	m_pProcDataResend = boost::shared_ptr<boost::thread>(new boost::thread(boost::bind(&CGCApp::do_dataresend, this)));
+	m_pProcSessionTimeout = std::shared_ptr<boost::thread>(new boost::thread(boost::bind(&CGCApp::do_sessiontimeout, this)));
+	m_pProcDataResend = std::shared_ptr<boost::thread>(new boost::thread(boost::bind(&CGCApp::do_dataresend, this)));
 #endif
 }
 
@@ -2933,9 +2933,9 @@ void CGCApp::ProcCheckAutoUpdate(void)
 #ifdef USES_THREAD_STACK_SIZE
 	boost::thread_attributes attrs;
 	attrs.set_stack_size(CGC_THREAD_STACK_MIN);
-	m_pProcAutoUpdate = boost::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&CGCApp::do_autoupdate, this)));
+	m_pProcAutoUpdate = std::shared_ptr<boost::thread>(new boost::thread(attrs,boost::bind(&CGCApp::do_autoupdate, this)));
 #else
-	m_pProcAutoUpdate = boost::shared_ptr<boost::thread>(new boost::thread(boost::bind(&CGCApp::do_autoupdate, this)));
+	m_pProcAutoUpdate = std::shared_ptr<boost::thread>(new boost::thread(boost::bind(&CGCApp::do_autoupdate, this)));
 #endif
 }
 void CGCApp::DetachAutoUpdateThread(void)
@@ -3927,7 +3927,7 @@ void CGCApp::SetModuleHandler(void* hModule,const CModuleImpl::pointer& pModuleI
 	BOOST_ASSERT(hModule != NULL);
 	BOOST_ASSERT(pModuleImpl.get() != NULL);
 #ifdef USES_MODULE_SERVICE_MANAGER
-	cgcApplication::pointer moduleImpl = boost::static_pointer_cast<cgcApplication, CModuleImpl>(pModuleImpl);
+	cgcApplication::pointer moduleImpl = std::static_pointer_cast<cgcApplication, CModuleImpl>(pModuleImpl);
 #else
 	cgcApplication::pointer moduleImpl(pModuleImpl);
 #endif
@@ -3983,7 +3983,7 @@ void CGCApp::SetModuleHandler(void* hModule,const CModuleImpl::pointer& pModuleI
 		if (fp)
 		{
 #ifdef USES_MODULE_SERVICE_MANAGER
-			const cgcServiceManager::pointer pServiceManager = boost::static_pointer_cast<cgcServiceManager, CModuleImpl>(pModuleImpl);
+			const cgcServiceManager::pointer pServiceManager = std::static_pointer_cast<cgcServiceManager, CModuleImpl>(pModuleImpl);
 			fp(pServiceManager);
 #else
 			fp(shared_from_this());
@@ -4132,7 +4132,7 @@ bool CGCApp::OpenModuleLibrary(const ModuleItem::pointer& moduleItem)
 	pModuleImpl->m_sTempFile = sTempFile;
 	SetModuleHandler(hModule, pModuleImpl);
 //#ifdef USES_MODULE_SERVICE_MANAGER
-//	cgcApplication::pointer moduleImpl = boost::static_pointer_cast<cgcApplication, CModuleImpl>(pModuleImpl);
+//	cgcApplication::pointer moduleImpl = std::static_pointer_cast<cgcApplication, CModuleImpl>(pModuleImpl);
 //#else
 //	cgcApplication::pointer moduleImpl(pModuleImpl);
 //#endif
@@ -4179,7 +4179,7 @@ bool CGCApp::OpenModuleLibrary(const ModuleItem::pointer& moduleItem)
 //		if (fp)
 //		{
 //#ifdef USES_MODULE_SERVICE_MANAGER
-//			const cgcServiceManager::pointer pServiceManager = boost::static_pointer_cast<cgcServiceManager, CModuleImpl>(pModuleImpl);
+//			const cgcServiceManager::pointer pServiceManager = std::static_pointer_cast<cgcServiceManager, CModuleImpl>(pModuleImpl);
 //			fp(pServiceManager);
 //#else
 //			fp(shared_from_this());
@@ -4317,7 +4317,7 @@ void CGCApp::OpenLibrarys(void)
 //		pModuleImpl->loadSyncData(false);
 //		pModuleImpl->m_sTempFile = sTempFile;
 //#ifdef USES_MODULE_SERVICE_MANAGER
-//		cgcApplication::pointer moduleImpl = boost::static_pointer_cast<cgcApplication, CModuleImpl>(pModuleImpl);
+//		cgcApplication::pointer moduleImpl = std::static_pointer_cast<cgcApplication, CModuleImpl>(pModuleImpl);
 //#else
 //		cgcApplication::pointer moduleImpl(pModuleImpl);
 //#endif
@@ -4364,7 +4364,7 @@ void CGCApp::OpenLibrarys(void)
 //			if (fp)
 //			{
 //#ifdef USES_MODULE_SERVICE_MANAGER
-//				const cgcServiceManager::pointer pServiceManager = boost::static_pointer_cast<cgcServiceManager, CModuleImpl>(pModuleImpl);
+//				const cgcServiceManager::pointer pServiceManager = std::static_pointer_cast<cgcServiceManager, CModuleImpl>(pModuleImpl);
 //				fp(pServiceManager);
 //#else
 //				fp(shared_from_this());

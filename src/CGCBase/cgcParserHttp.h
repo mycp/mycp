@@ -32,7 +32,7 @@ class cgcParserHttp
 	: public cgcParserBase
 {
 public:
-	typedef boost::shared_ptr<cgcParserHttp> pointer;
+	typedef std::shared_ptr<cgcParserHttp> pointer;
 
 	//////////////////////////////////////////
 	// Request
@@ -110,7 +110,7 @@ public:
 
 const cgcParserHttp::pointer cgcNullParserHttpService;
 
-#define CGC_PARSERHTTPSERVICE_DEF(s) boost::static_pointer_cast<cgcParserHttp, cgcServiceInterface>(s)
+#define CGC_PARSERHTTPSERVICE_DEF(s) std::static_pointer_cast<cgcParserHttp, cgcServiceInterface>(s)
 
 } // namespace mycp
 

@@ -30,7 +30,7 @@ namespace bo
 	class CResultSet
 	{
 	public:
-		typedef boost::shared_ptr<CResultSet> pointer;
+		typedef std::shared_ptr<CResultSet> pointer;
 		static CResultSet::pointer create(CTableInfo::pointer tableInfo)
 		{
 			return CResultSet::pointer(new CResultSet(tableInfo));

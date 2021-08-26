@@ -30,7 +30,7 @@ namespace mycp {
 class cgcMultiPart
 {
 public:
-	typedef boost::shared_ptr<cgcMultiPart> pointer;
+	typedef std::shared_ptr<cgcMultiPart> pointer;
 
 	const tstring& getBoundary(void) const {return m_boundary;}
 

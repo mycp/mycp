@@ -10,7 +10,7 @@
 class LIBDS_CLASS CStreamData
 {
 public:
-	typedef boost::shared_ptr<CStreamData> pointer;
+	typedef std::shared_ptr<CStreamData> pointer;
 
 	static CStreamData::pointer create(void)
 	{

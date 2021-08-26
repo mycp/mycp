@@ -59,7 +59,7 @@ mycp::cgcApplication2::pointer theApplication2;
 class CCDBCResultSet
 {
 public:
-	typedef boost::shared_ptr<CCDBCResultSet> pointer;
+	typedef std::shared_ptr<CCDBCResultSet> pointer;
 
 	CCDBCResultSet::pointer copyNew(void) const
 	{
@@ -254,10 +254,10 @@ const int const_check_pool_info_timerid = 1000;
 class CPgCdbc
 	: public cgcCDBCService
 	, public cgcOnTimerHandler
-	, public boost::enable_shared_from_this<CPgCdbc>
+	, public std::enable_shared_from_this<CPgCdbc>
 {
 public:
-	typedef boost::shared_ptr<CPgCdbc> pointer;
+	typedef std::shared_ptr<CPgCdbc> pointer;
 
 #if (USES_LOG_CHECK_POOL_INFO==1)
 	int m_nCurrentCheckId;
@@ -960,7 +960,7 @@ class CTimeHandler
 	: public cgcOnTimerHandler
 {
 public:
-	typedef boost::shared_ptr<CTimeHandler> pointer;
+	typedef std::shared_ptr<CTimeHandler> pointer;
 	static CTimeHandler::pointer create(void)
 	{
 		return CTimeHandler::pointer(new CTimeHandler());

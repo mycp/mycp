@@ -31,7 +31,7 @@ class cgcServiceCall
 	: public cgcObject
 {
 public:
-	typedef boost::shared_ptr<cgcServiceCall> pointer;
+	typedef std::shared_ptr<cgcServiceCall> pointer;
 
 	virtual bool callService(int function, const cgcValueInfo::pointer& inParam = cgcNullValueInfo, cgcValueInfo::pointer outParam = cgcNullValueInfo) {return false;}
 	virtual bool callService(const tstring& function, const cgcValueInfo::pointer& inParam = cgcNullValueInfo, cgcValueInfo::pointer outParam = cgcNullValueInfo) {return false;}
@@ -51,7 +51,7 @@ class cgcServiceInterface
 	: public cgcServiceCall
 {
 public:
-	typedef boost::shared_ptr<cgcServiceInterface> pointer;
+	typedef std::shared_ptr<cgcServiceInterface> pointer;
 
 	virtual tstring serviceName(void) const {return _T("");}
 	virtual bool initService(cgcValueInfo::pointer parameter = cgcNullValueInfo) {m_bServiceInited = true; return true;}

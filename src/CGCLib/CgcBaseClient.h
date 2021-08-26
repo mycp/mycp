@@ -53,10 +53,10 @@ class CGCLIB_CLASS CgcBaseClient
 	: public SotpCallTable2
 	, public DoSotpClientHandler
 	, public cgcParserCallback
-	, public boost::enable_shared_from_this<CgcBaseClient>
+	, public std::enable_shared_from_this<CgcBaseClient>
 {
 public:
-	typedef boost::shared_ptr<CgcBaseClient> pointer;
+	typedef std::shared_ptr<CgcBaseClient> pointer;
 
 	enum ClientState
 	{
@@ -77,7 +77,7 @@ public:
 	class CIndexInfo
 	{
 	public:
-		typedef boost::shared_ptr<CIndexInfo> pointer;
+		typedef std::shared_ptr<CIndexInfo> pointer;
 		//std::string m_sSessionId;
 		tstring m_sSslPassword;
 		//int m_nAcceptEncoding;
@@ -378,8 +378,8 @@ private:
 	boost::mutex m_recvMutex;
 	boost::mutex::scoped_lock * m_pSendLock;
 	//BoostThreadList m_listBoostThread;
-	boost::shared_ptr<boost::thread> m_threadActiveSes;
-	boost::shared_ptr<boost::thread> m_threadCIDTimeout;
+	std::shared_ptr<boost::thread> m_threadActiveSes;
+	std::shared_ptr<boost::thread> m_threadCIDTimeout;
 	unsigned short m_nActiveWaitSeconds;					// 
 	unsigned short m_nSendP2PTrySeconds;
 
@@ -391,7 +391,7 @@ private:
 	class CReceiveInfo
 	{
 	public:
-		typedef boost::shared_ptr<CReceiveInfo> pointer;
+		typedef std::shared_ptr<CReceiveInfo> pointer;
 		static CReceiveInfo::pointer create(void)
 		{
 			return CReceiveInfo::pointer(new CReceiveInfo());

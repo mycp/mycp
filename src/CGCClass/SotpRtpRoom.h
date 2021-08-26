@@ -37,7 +37,7 @@ public:
 class CSotpRtpRoom
 {
 public:
-	typedef boost::shared_ptr<CSotpRtpRoom> pointer;
+	typedef std::shared_ptr<CSotpRtpRoom> pointer;
 	static CSotpRtpRoom::pointer create(bool bServerMode, bigint nRoomId)
 	{
 		return CSotpRtpRoom::pointer(new CSotpRtpRoom(bServerMode, nRoomId));

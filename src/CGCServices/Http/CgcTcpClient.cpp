@@ -136,8 +136,8 @@ int CgcTcpClient::startClient(const tstring & sCgcServerAddr, unsigned int bindP
 	if (m_ipService.get() == 0)
 		m_ipService = mycp::asio::IoService::create();
 
-	TcpClient_Handler::pointer clientHandler = boost::enable_shared_from_this<CgcTcpClient>::shared_from_this();
-	//CgcTcpClient::pointer clientHandler = boost::static_pointer_cast<CgcTcpClient, CgcBaseClient>(boost::enable_shared_from_this<CgcBaseClient>::shared_from_this());
+	TcpClient_Handler::pointer clientHandler = std::enable_shared_from_this<CgcTcpClient>::shared_from_this();
+	//CgcTcpClient::pointer clientHandler = std::static_pointer_cast<CgcTcpClient, CgcBaseClient>(std::enable_shared_from_this<CgcBaseClient>::shared_from_this());
 
 	m_tcpClient = TcpClient::create(clientHandler);
 	m_connectReturned = false;
@@ -222,7 +222,7 @@ void CgcTcpClient::OnReceiveData(const TcpClientPointer& tcpClient, const mycp::
 		return;
 	}
 	m_tLastTime = time(0);
-	if (m_pParserHttp.get()==NULL)
+	if (nullptr == m_pParserHttp.get())
 	{
 		CPpHttp* parserHttp = new CPpHttp();
 		parserHttp->SetResponseSaveFile(m_sResponseSaveFile);

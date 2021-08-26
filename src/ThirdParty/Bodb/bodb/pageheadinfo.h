@@ -62,7 +62,7 @@ namespace bo
 			, PST_FIELDINFO
 		};
 
-		typedef boost::shared_ptr<CPageHeadInfo> pointer;
+		typedef std::shared_ptr<CPageHeadInfo> pointer;
 		static CPageHeadInfo::pointer create(void);
 		static CPageHeadInfo::pointer create(uinteger id, PageHeadType type, uinteger objectid);
 

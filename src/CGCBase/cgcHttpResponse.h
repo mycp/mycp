@@ -32,7 +32,7 @@ class cgcHttpResponse
 	: public cgcResponse
 {
 public:
-	typedef boost::shared_ptr<cgcHttpResponse> pointer;
+	typedef std::shared_ptr<cgcHttpResponse> pointer;
 
 	virtual void println(const tstring& text) = 0;
 	virtual void println(const char * format,...) = 0;

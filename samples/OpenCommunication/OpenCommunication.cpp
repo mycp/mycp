@@ -22,10 +22,10 @@ using namespace mycp;
 
 class CMyCommServer
 	: public cgcCommHandler
-	//, public boost::enable_shared_from_this<CMyCommServer>
+	//, public std::enable_shared_from_this<CMyCommServer>
 {
 public:
-	typedef boost::shared_ptr<CMyCommServer> pointer;
+	typedef std::shared_ptr<CMyCommServer> pointer;
 	static CMyCommServer::pointer create(void)
 	{
 		return CMyCommServer::pointer(new CMyCommServer());

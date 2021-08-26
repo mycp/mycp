@@ -49,7 +49,7 @@ namespace bo
 			, TT_UNKNOWN	= 0xf
 		};
 
-		typedef boost::shared_ptr<CTableInfo> pointer;
+		typedef std::shared_ptr<CTableInfo> pointer;
 		static CTableInfo::pointer create(void);
 		static CTableInfo::pointer create(const tstring & name, TableType type = TT_NORMAL, const tstring & note = _T(""));
 

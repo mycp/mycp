@@ -35,7 +35,7 @@ namespace mycp {
 class CSyncDataInfo
 {
 public:
-	typedef boost::shared_ptr<CSyncDataInfo> pointer;
+	typedef std::shared_ptr<CSyncDataInfo> pointer;
 	static CSyncDataInfo::pointer create(bigint nId, int nType, const std::string& sName, bool bBackup)
 	{
 		return CSyncDataInfo::pointer(new CSyncDataInfo(nId, nType, sName, bBackup));
@@ -68,7 +68,7 @@ class CCGCParameterList
 	: public cgcParameterMap
 {
 public:
-	typedef boost::shared_ptr<CCGCParameterList> pointer;
+	typedef std::shared_ptr<CCGCParameterList> pointer;
 	static CCGCParameterList::pointer create(void)
 	{
 		return CCGCParameterList::pointer(new CCGCParameterList());
@@ -89,7 +89,7 @@ const CCGCParameterList NullCGCParameterList;
 //	: public cgcObject
 //{
 //public:
-//	typedef boost::shared_ptr<CPOPSotpResponseInfo> pointer;
+//	typedef std::shared_ptr<CPOPSotpResponseInfo> pointer;
 //	static CPOPSotpResponseInfo::pointer create(unsigned long nCallId, unsigned long nCallSign, int nResultValue)
 //	{
 //		return CPOPSotpResponseInfo::pointer(new CPOPSotpResponseInfo(nCallId, nCallSign, nResultValue));
@@ -116,7 +116,7 @@ const CCGCParameterList NullCGCParameterList;
 class CCGCSotpRequestInfo
 {
 public:
-	typedef boost::shared_ptr<CCGCSotpRequestInfo> pointer;
+	typedef std::shared_ptr<CCGCSotpRequestInfo> pointer;
 	static CCGCSotpRequestInfo::pointer create(unsigned long nCallId)
 	{
 		return CCGCSotpRequestInfo::pointer(new CCGCSotpRequestInfo(nCallId));
@@ -180,7 +180,7 @@ class CModuleImpl
 {
 public:
 #ifdef USES_MODULE_SERVICE_MANAGER
-	typedef boost::shared_ptr<CModuleImpl> pointer;
+	typedef std::shared_ptr<CModuleImpl> pointer;
 #endif
 private:
 	ModuleItem::pointer m_module;
@@ -207,7 +207,7 @@ private:
 	CModuleHandler* m_pModuleHandler;
 	bool m_pSyncErrorStoped;
 	bool m_pSyncThreadKilled;
-	boost::shared_ptr<boost::thread> m_pSyncThread;
+	std::shared_ptr<boost::thread> m_pSyncThread;
 	CLockList<CSyncDataInfo::pointer> m_pSyncList;
 	//CCGCSotpClient::pointer m_pCGCSotpClient;
 	std::vector<tstring> m_pHostList;

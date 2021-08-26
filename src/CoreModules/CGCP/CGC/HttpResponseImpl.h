@@ -30,7 +30,7 @@ public:
 
 class CHttpResponseImpl
 	: public cgcHttpResponse
-	, public boost::enable_shared_from_this<CHttpResponseImpl>
+	, public std::enable_shared_from_this<CHttpResponseImpl>
 {
 private:
 	cgcRemote::pointer m_cgcRemote;

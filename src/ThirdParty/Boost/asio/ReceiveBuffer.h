@@ -12,7 +12,7 @@ const size_t Max_ReceiveBuffer_ReceiveSize	= 64*1024;	// 16*1024
 class ReceiveBuffer
 {
 public:
-	typedef boost::shared_ptr<ReceiveBuffer> pointer;
+	typedef std::shared_ptr<ReceiveBuffer> pointer;
 	static ReceiveBuffer::pointer create(size_t nBufferSize = Max_ReceiveBuffer_ReceiveSize) {return ReceiveBuffer::pointer(new ReceiveBuffer(nBufferSize));}
 	void reset(void)
 	{

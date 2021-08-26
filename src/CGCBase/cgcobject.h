@@ -20,7 +20,7 @@
 #ifndef __cgcobject_head__
 #define __cgcobject_head__
 
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "../ThirdParty/stl/lockmap.h"
 #include "../ThirdParty/stl/locklist.h"
 #include "cgcSmartString.h"
@@ -84,7 +84,7 @@ inline mycp::ubigint ntohll(mycp::ubigint val) {
 class cgcObject
 {
 public:
-	typedef boost::shared_ptr<cgcObject> pointer;
+	typedef std::shared_ptr<cgcObject> pointer;
 #ifdef USES_OBJECT_COPYNEW
 	virtual cgcObject::pointer copyNew(void) const = 0;
 #endif // USES_OBJECT_COPYNEW
@@ -143,10 +143,10 @@ public:
 #endif
 };
 
-typedef boost::shared_ptr<CObjectMap<tstring> >			StringObjectMapPointer;
-typedef boost::shared_ptr<CObjectMap<int> >				LongObjectMapPointer;
-typedef boost::shared_ptr<CObjectMap<bigint> >			BigIntObjectMapPointer;
-typedef boost::shared_ptr<CObjectMap<void*> >			VoidObjectMapPointer;
+typedef std::shared_ptr<CObjectMap<tstring> >			StringObjectMapPointer;
+typedef std::shared_ptr<CObjectMap<int> >				LongObjectMapPointer;
+typedef std::shared_ptr<CObjectMap<bigint> >			BigIntObjectMapPointer;
+typedef std::shared_ptr<CObjectMap<void*> >			VoidObjectMapPointer;
 
 template<typename N>
 class CStringObjectMap
@@ -219,7 +219,7 @@ public:
 	}
 };
 
-typedef boost::shared_ptr<CLockList<cgcObject::pointer> >			ObjectListPointer;
+typedef std::shared_ptr<CLockList<cgcObject::pointer> >			ObjectListPointer;
 
 template<typename N>
 class CListObjectMap
@@ -235,14 +235,14 @@ public:
 };
 
 
-template<typename T> boost::shared_ptr<T> CGC_OBJECT_CAST(boost::shared_ptr<cgcObject> const & r)
+template<typename T> std::shared_ptr<T> CGC_OBJECT_CAST(std::shared_ptr<cgcObject> const & r)
 {
-	return boost::static_pointer_cast<T, cgcObject>(r);
+	return std::static_pointer_cast<T, cgcObject>(r);
 }
 
-template<typename T> boost::shared_ptr<cgcObject> CGC_OBJECT_CAST(boost::shared_ptr<T> const & r)
+template<typename T> std::shared_ptr<cgcObject> CGC_OBJECT_CAST(std::shared_ptr<T> const & r)
 {
-	return boost::static_pointer_cast<cgcObject, T>(r);
+	return std::static_pointer_cast<cgcObject, T>(r);
 }
 
 } // namespace mycp

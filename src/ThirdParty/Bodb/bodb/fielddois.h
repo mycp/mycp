@@ -30,7 +30,7 @@ namespace bo
 	class CFieldDOIs
 	{
 	public:
-		typedef boost::shared_ptr<CFieldDOIs> pointer;
+		typedef std::shared_ptr<CFieldDOIs> pointer;
 		static CFieldDOIs::pointer create(unsigned int fieldid)
 		{
 			return CFieldDOIs::pointer(new CFieldDOIs(fieldid));

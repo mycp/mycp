@@ -19,11 +19,11 @@ namespace mycp {
 namespace asio {
 
 class TcpConnection;
-typedef boost::shared_ptr<TcpConnection> TcpConnectionPointer;
+typedef std::shared_ptr<TcpConnection> TcpConnectionPointer;
 class TcpConnection_Handler
 {
 public:
-	typedef boost::shared_ptr<TcpConnection_Handler> pointer;
+	typedef std::shared_ptr<TcpConnection_Handler> pointer;
 	virtual void OnRemoteAccept(const TcpConnectionPointer& pRemote)=0;
 	virtual bool OnRemoteRecv(const TcpConnectionPointer& pRemote, const ReceiveBuffer::pointer& data)=0;
 	virtual void OnRemoteClose(const TcpConnection* pRemote, int nErrorCode)=0;
@@ -36,7 +36,7 @@ const TcpConnection_Handler::pointer NullTcpConnectionHandler;
 //#define USES_STATIC_READ_SOME_HANDLER
 
 class TcpConnection
-	: public boost::enable_shared_from_this<TcpConnection>
+	: public std::enable_shared_from_this<TcpConnection>
 {
 private:
 	unsigned long m_nId;
@@ -59,7 +59,7 @@ private:
 	TcpConnectionPointer m_pOwner;
 #endif
 public:
-	//typedef boost::shared_ptr<TcpConnection> pointer;
+	//typedef std::shared_ptr<TcpConnection> pointer;
 #ifdef USES_OPENSSL
 	static TcpConnectionPointer create(boost::asio::io_service& io_service, const TcpConnection_Handler::pointer& handler,boost::asio::ssl::context* ctx=NULL)
 	{

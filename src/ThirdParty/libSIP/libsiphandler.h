@@ -37,7 +37,7 @@ public:
 		, ET_Other = 0xFF
 	};
 
-	typedef boost::shared_ptr<SipEventInfo> pointer;
+	typedef std::shared_ptr<SipEventInfo> pointer;
 	
 	static SipEventInfo::pointer create(EventType et, int eventData)
 	{
@@ -78,7 +78,7 @@ public:
 class DoSipHandler
 {
 public:
-	typedef boost::shared_ptr<DoSipHandler> pointer;
+	typedef std::shared_ptr<DoSipHandler> pointer;
 
 	virtual bool initSip(const CSipParameter & sipp, OnSipHandler * handler) = 0;
 	virtual bool isInitSip(void) const = 0;

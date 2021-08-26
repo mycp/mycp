@@ -31,7 +31,7 @@ namespace mycp {
 class cgcKVInfo
 {
 public:
-	typedef boost::shared_ptr<cgcKVInfo> pointer;
+	typedef std::shared_ptr<cgcKVInfo> pointer;
 	static cgcKVInfo::pointer create(const tstring& key, const tstring& value)
 	{
 		return cgcKVInfo::pointer(new cgcKVInfo(key, value));
@@ -59,7 +59,7 @@ class cgcNamespace
 	: public cgcServiceInterface
 {
 public:
-	typedef boost::shared_ptr<cgcNamespace> pointer;
+	typedef std::shared_ptr<cgcNamespace> pointer;
 
 	// Get all key values.
 	virtual bool get(const tstring& key, std::vector<tstring>& outValues) const = 0;
@@ -97,7 +97,7 @@ public:
 
 };
 
-#define CGC_NAMESPACESERVICE_DEF(s) boost::static_pointer_cast<cgcNamespace, cgcServiceInterface>(s)
+#define CGC_NAMESPACESERVICE_DEF(s) std::static_pointer_cast<cgcNamespace, cgcServiceInterface>(s)
 
 } // namespace mycp
 

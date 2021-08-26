@@ -26,7 +26,7 @@
 class CLogInfo
 {
 public:
-	typedef boost::shared_ptr<CLogInfo> pointer;
+	typedef std::shared_ptr<CLogInfo> pointer;
 
 	static CLogInfo::pointer create(LogLevel level, const tstring & msg)
 	{

@@ -267,7 +267,7 @@ public:
 //class CSotpRtpFrameEx : public CSotpRtpFrame
 //{
 //public:
-//	typedef boost::shared_ptr<CSotpRtpFrame> pointer;
+//	typedef std::shared_ptr<CSotpRtpFrame> pointer;
 //	static CSotpRtpFrameEx::pointer create(const tagSotpRtpDataHead& pRtpHead)
 //	{
 //		return CSotpRtpFrameEx::pointer(new CSotpRtpFrameEx(pRtpHead));
@@ -303,7 +303,7 @@ public:
 class CSotpRtpSource
 {
 public:
-	typedef boost::shared_ptr<CSotpRtpSource> pointer;
+	typedef std::shared_ptr<CSotpRtpSource> pointer;
 	static CSotpRtpSource::pointer create(bool bServerMode, bigint nRoomId,bigint nSrcId,bigint nParam)
 	{
 		return CSotpRtpSource::pointer(new CSotpRtpSource(bServerMode,nRoomId,nSrcId,nParam));

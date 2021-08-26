@@ -28,7 +28,7 @@
 class CCgcData
 {
 public:
-	typedef boost::shared_ptr<CCgcData> pointer;
+	typedef std::shared_ptr<CCgcData> pointer;
 
 	static CCgcData::pointer create(void)
 	{

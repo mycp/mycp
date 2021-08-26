@@ -30,7 +30,7 @@ class cgcParameter
 	: public cgcValueInfo
 {
 public:
-	typedef boost::shared_ptr<cgcParameter> pointer;
+	typedef std::shared_ptr<cgcParameter> pointer;
 
 	void setName(const tstring& v) {m_name = v;}
 	const tstring& getName(void) const {return m_name;}
@@ -71,7 +71,7 @@ class cgcParameterMap
 	: public CLockMultiMap<tstring, cgcParameter::pointer>
 {
 public:
-	typedef boost::shared_ptr<cgcParameterMap> pointer;
+	typedef std::shared_ptr<cgcParameterMap> pointer;
 
 	cgcParameter::pointer getParameter(const tstring & paramName) const
 	{

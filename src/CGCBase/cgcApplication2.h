@@ -34,7 +34,7 @@ class cgcApplication2
 	: public cgcApplication
 {
 public:
-	typedef boost::shared_ptr<cgcApplication2> pointer;
+	typedef std::shared_ptr<cgcApplication2> pointer;
 	typedef enum SOTP_CLIENT_SOCKET_TYPE
 	{
 		SOTP_CLIENT_SOCKET_TYPE_TCP = 1
@@ -55,13 +55,13 @@ public:
 };
 
 //cgc::cgcApplication2::pointer theApplication2 = CGC_APPLICATION2_CAST(theApplication);
-inline boost::shared_ptr<cgcApplication2> CGC_APPLICATION2_CAST(boost::shared_ptr<cgcApplication> const & r)
+inline std::shared_ptr<cgcApplication2> CGC_APPLICATION2_CAST(std::shared_ptr<cgcApplication> const & r)
 {
-	return boost::static_pointer_cast<cgcApplication2, cgcApplication>(r);
+	return std::static_pointer_cast<cgcApplication2, cgcApplication>(r);
 }
-//template<typename T> boost::shared_ptr<T> CGC_APPLICATION2_CAST(boost::shared_ptr<cgcApplication> const & r)
+//template<typename T> std::shared_ptr<T> CGC_APPLICATION2_CAST(std::shared_ptr<cgcApplication> const & r)
 //{
-//	return boost::static_pointer_cast<T, cgcApplication>(r);
+//	return std::static_pointer_cast<T, cgcApplication>(r);
 //}
 
 } // namespace mycp

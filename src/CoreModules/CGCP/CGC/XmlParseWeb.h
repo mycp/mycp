@@ -32,7 +32,7 @@ using boost::property_tree::ptree;
 class CServletInfo
 {
 public:
-	typedef boost::shared_ptr<CServletInfo> pointer;
+	typedef std::shared_ptr<CServletInfo> pointer;
 	const tstring & getServletRequest(void) const {return m_sServletRequest;}
 	const tstring & getServletApp(void) const {return m_sServletApp;}
 	//const tstring & getServletRunction(void) const {return m_sServletFunction;}
